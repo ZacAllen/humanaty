@@ -1,0 +1,10 @@
+#search {
+    height: 400px;
+    background-color: white;
+    padding: 50px;
+}
+
+#autocomplete {
+    min-width: 800px;
+    margin: 50px;
+}
