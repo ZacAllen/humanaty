@@ -1,0 +1,29 @@
+#plateBackground {
+    height: 400px;
+}
+#plateContainer {
+    height: 100%;
+}
+#plateRow {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#plate {
+    height: 100%;
+    width: 100%;
+    background-image: url("humanatybackground.png");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 55%;
+}
+#searchBarContainer {
+    height: 100%;
+}
+#searchBar {
+    width: 80%; margin: auto;
+}
+#searchTitle {
+    text-align: center;
+}
