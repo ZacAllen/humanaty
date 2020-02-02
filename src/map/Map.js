@@ -5,7 +5,7 @@ import Geocode from "react-geocode";
 Geocode.setApiKey("AIzaSyDKNJ1TI_zJnzqBEmMzjlpw3tUBdoCK66g");
 Geocode.enableDebug();
 class Map extends React.Component{
-constructor( props ){
+constructor( props )  {
   super( props );
   this.state = {
    address: '',
@@ -21,7 +21,7 @@ constructor( props ){
     lng: this.props.center.lng
 }
   }
- }
+}
 /**
   * Get the current address from the default map position and set those values in the state
   */
@@ -180,7 +180,7 @@ Geocode.fromLatLng( newLat , newLng ).then(
      city = this.getCity( addressArray ),
      area = this.getArea( addressArray ),
      state = this.getState( addressArray );
-this.setState( {
+    this.setState( {
      address: ( address ) ? address : '',
      area: ( area ) ? area : '',
      city: ( city ) ? city : '',
@@ -192,51 +192,54 @@ this.setState( {
    }
   );
  };
+
+
+
 render(){
 const AsyncMap = withScriptjs(
    withGoogleMap(
     props => (
      <GoogleMap google={this.props.google}
-      defaultZoom={this.props.zoom}
-      defaultCenter={{ lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng }}
-     >
-      {/* For Auto complete Search Box */}
-      <Autocomplete
-       style={{
-        width: '100%',
-        height: '40px',
-        paddingLeft: '16px',
-        marginTop: '2px',
-        marginBottom: '100px'
-       }}
-       onPlaceSelected={ this.onPlaceSelected }
-       types={['(regions)']}
-      />
-{/*Marker*/}
-      <Marker google={this.props.google}
-       name={'Dolores park'}
-          draggable={true}
-          onDragEnd={ this.onMarkerDragEnd }
-             position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}
-      />
-      <Marker />
-{/* InfoWindow on top of marker */}
-      <InfoWindow
-       onClose={this.onInfoWindowClose}
-       position={{ lat: ( this.state.markerPosition.lat + 0.0018 ), lng: this.state.markerPosition.lng }}
-      >
-       <div>
-        <span style={{ padding: 0, margin: 0 }}>{ this.state.address }</span>
-       </div>
-      </InfoWindow>
-</GoogleMap>
+                defaultZoom={this.props.zoom}
+                defaultCenter={{ lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng }}>
+
+        {/* For Auto complete Search Box */}
+        <Autocomplete
+          style={{
+            width: '100%',
+            height: '40px',
+            paddingLeft: '16px',
+            marginTop: '2px',
+            marginBottom: '100px'
+          }}
+          onPlaceSelected={ this.onPlaceSelected }
+          types={['(regions)']}
+        />
+        {/*Marker*/}
+        <Marker google={this.props.google}
+                name={'Dolores park'}
+                draggable={true}
+                onDragEnd={ this.onMarkerDragEnd }
+                position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}
+                />
+        <Marker />
+        {/* InfoWindow on top of marker */}
+        <InfoWindow
+              onClose={this.onInfoWindowClose}
+              position={{ lat: ( this.state.markerPosition.lat + 0.0018 ), lng: this.state.markerPosition.lng }}
+              >
+              <div>
+                <span style={{ padding: 0, margin: 0 }}>{ this.state.address }</span>
+              </div>
+        </InfoWindow>
+      </GoogleMap>
 )
    )
   );
 let map;
   if( this.props.center.lat !== undefined ) {
    map = <div>
-     <div>
+     {/* <div>
       <div className="form-group">
        <label htmlFor="">City</label>
        <input type="text" name="city" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.city }/>
@@ -253,7 +256,7 @@ let map;
        <label htmlFor="">Address</label>
        <input type="text" name="address" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.address }/>
       </div>
-     </div>
+     </div> */}
      <AsyncMap
       googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKNJ1TI_zJnzqBEmMzjlpw3tUBdoCK66g&libraries=places"
       loadingElement={
