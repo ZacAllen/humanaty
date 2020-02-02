@@ -36,14 +36,12 @@ class App extends Component {
 
       return (
         <Router>
-                    <Test/>
-
             <div className="App">
                 <p className="App-intro">{this.state.apiResponse}</p>
                 <Route exact path="/" component={Home} />
                 <Route path="/search" component={SearchPage} />
                 <Route path="/test" component={Test} />
-                {/* <Route path="*" component={Page404} /> */}
+                <Route path="*" component={Page404} />
             </div>
         </Router>
       );

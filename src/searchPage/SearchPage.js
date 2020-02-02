@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
 /* global google */
+
+import React, { Component } from 'react';
 
 import './SearchPage.css';
 import NavBar from '../navbar/NavBar.js';
@@ -153,7 +154,6 @@ onChange = ( event ) => {
             mapPosition= {this.state.mapPosition}
             markerPosition= {this.state.markerPosition}
 
-            //center={{lat: 18.5204, lng: 73.8567}}
             height='800px'
             zoom={15}
           />
