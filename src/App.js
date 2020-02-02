@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import './App.css';
 import Home from './home/Home.js';
 
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import Test from "./testComponent/Test";
+import SearchPage from "./searchPage/SearchPage";
 
 class App extends Component {
   constructor(props) {
@@ -20,18 +23,31 @@ class App extends Component {
   componentDidMount() {
       this.callAPI();
   }
+  
 
   render() {
-      return (
 
-          <div className="App">
-          <p className="App-intro">{this.state.apiResponse}</p>
-          <Home/>
-          </div>
+    //404 error page
+    const Page404 = ({ location }) => (
+        <div>
+           <h2>No match found for <code>{location.pathname}</code></h2>
+        </div>
+     );
+
+      return (
+        <Router>
+                    <Test/>
+
+            <div className="App">
+                <p className="App-intro">{this.state.apiResponse}</p>
+                <Route exact path="/" component={Home} />
+                <Route path="/search" component={SearchPage} />
+                <Route path="/test" component={Test} />
+                {/* <Route path="*" component={Page404} /> */}
+            </div>
+        </Router>
       );
   }
 }
-
-
 
 export default App;

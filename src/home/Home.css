@@ -1,3 +1,49 @@
+#search-container {
+    height: auto;
+    background-color: white;
+    padding: 50px;
+}
+
+#autocomplete {
+    min-width: 50%;
+    margin: 50px;
+}
+
+#home-container {
+    height: 500px;
+}
+#plateContainer {
+    height: 100%;
+    width: 100%;
+    background-image: url("humanatybackground.png");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 55%;
+}
+#plateRow {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#home-section {
+    height: 100%;
+    width: 100%;
+    background-image: url("humanatybackground.png");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 55%;
+}
+#searchBarContainer {
+    height: 100%;
+}
+#searchBar {
+    width: 100%; margin: auto;
+}
+#searchTitle {
+    text-align: center;
+}
+
 #header {
     background-color: #C8E4D7;
     text-align: center;
