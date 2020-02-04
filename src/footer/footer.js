@@ -1,5 +1,5 @@
 import React from 'react';
-import './Footer.css';
+import './footer.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const Footer = () => {
