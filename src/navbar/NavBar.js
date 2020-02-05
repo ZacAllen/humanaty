@@ -54,9 +54,8 @@ function testMakeUser() {
 
   //create function links to the event form creation
 
-// function testCreate() {
-//   firebase.auth.
-// }
+function testCreate() {
+}
 
 
 export default NavBar;
