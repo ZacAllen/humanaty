@@ -21,7 +21,7 @@ const NavBar = () => {
               <a class="nav-link js-scroll-trigger">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger"  onClick= {() => testCreate()}>Create</a>
+              <a class="nav-link js-scroll-trigger" id = "createEvent" href="/event" onClick= {() => testCreate()}>Create</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" id = "loginClick">Login</a>
