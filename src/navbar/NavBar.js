@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavBar.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import firebase from '../components/Firebase/firebase.js';
+import axios from 'axios';
 
 const NavBar = () => {
   return (
@@ -38,17 +38,17 @@ const NavBar = () => {
   );
 };
 
-// Firebase.signOut();
 function testMakeUser() {
-    var email = "TEST@gmail.com";
-    var password = "TEST123456";
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorMessage);
-      // ...
-    });
-  }
+  
+  var testEmail = "MRTEST@gmail.com";
+  var testPassword = "testword123";
+
+  var obj = {email: testEmail, password: testPassword};
+  axios.post('http://localhost:9000/signUp', obj);
+
+  console.log(obj);
+  
+   
+}
 
 export default NavBar;
