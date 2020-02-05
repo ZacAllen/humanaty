@@ -9,6 +9,7 @@ class EventCreation extends Component {
   
       // Declare State
       this.state = {
+        pathname: "/event"
       };
     }
   
