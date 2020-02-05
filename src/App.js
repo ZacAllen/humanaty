@@ -5,6 +5,7 @@ import Home from './home/Home.js';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import Test from "./testComponent/Test";
 import SearchPage from "./searchPage/SearchPage";
+import SignUp from "./signUp/SignUp";
 
 class App extends Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class App extends Component {
                 <Route exact path="/" component={Home} />
                 <Route path="/search" component={SearchPage} />
                 <Route path="/test" component={Test} />
+                <Route path="/signup" component={SignUp}/>
                 <Route path="*" component={Page404} />
             </div>
         </Router>

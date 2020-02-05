@@ -2,6 +2,7 @@ import React from 'react';
 import './NavBar.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 
 const NavBar = () => {
   return (
@@ -27,7 +28,7 @@ const NavBar = () => {
               <a class="nav-link" id = "loginClick">Login</a>
             </li>
             <li class="nav-item">
-             <a class="nav-link" id = "signupClick" onClick= {() => testMakeUser()}>Sign Up</a>
+             <a class="nav-link" id = "signupClick" onClick= {event => window.location.href='../signup'}>Sign Up</a>
             </li>
           </ul>
           </div>
@@ -37,18 +38,5 @@ const NavBar = () => {
     </div>
   );
 };
-
-function testMakeUser() {
-  
-  var testEmail = "MRTEST@gmail.com";
-  var testPassword = "testword123";
-
-  var obj = {email: testEmail, password: testPassword};
-  axios.post('http://localhost:9000/signUp', obj);
-
-  console.log(obj);
-  
-   
-}
 
 export default NavBar;
