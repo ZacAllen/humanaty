@@ -120,3 +120,25 @@ padding: 1em;
     position: relative;
 }
 
+.meals {
+    width: 89%;
+    float: center;
+}
+
+.guests {
+    width: 89%;
+    float: center;
+}
+
+.meal-input {
+    width: 95%;
+    height: 14em; 
+}
+
+.allergy-input {
+    width: 96%;
+}
+
+.additional-input {
+    width: 96%;
+}
