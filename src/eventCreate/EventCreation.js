@@ -47,7 +47,7 @@ class EventCreation extends Component {
                     </ul>
                 </div>
                 <div className = "box">
-                    <div className="labels">
+                    {/* <div className="labels">
                         <label htmlFor="name">Event Title</label>
                     </div>
                     <div className="input-group">
@@ -130,10 +130,9 @@ class EventCreation extends Component {
                         onClick={this
                             .nextPage
                             .bind(this)}>Continue
-                    </button>
+                    </button> */}
 
 
-                    {/* Code for the second event screen
                     <div className = "labels">
                         <label htmlFor="name">Meal Type</label>
                     </div>
@@ -146,12 +145,12 @@ class EventCreation extends Component {
                     <div className = "labels">
                         <label htmlFor="name">Number of Guests</label>
                     </div>
-                    <select className = "guests" value={this.state.value} onChange={this.handleChange}>
-                        <option selected value="zero">0</option>
-                        <option value="one">1</option>
-                        <option value="two">2</option>
-                        <option value="three">3</option>
-                    </select>
+                    <div className = "input-group">
+                        <input
+                            type="text"
+                            name="guest"
+                            className="guests"></input>
+                    </div>
                     <div className = "labels">
                         <label htmlFor="name">Meal Description</label>
                     </div>
@@ -168,7 +167,7 @@ class EventCreation extends Component {
                         onClick={this
                             .nextPage
                             .bind(this)}>Continue
-                    </button> */}
+                    </button>
 
                     {/* Code for the third event screen
                     <div className="labels">
