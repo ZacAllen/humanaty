@@ -1,0 +1,122 @@
+
+.header {
+    font-weight: bold;
+    font-size: xx-large;
+    color: rgb(99, 109, 109);
+}
+
+.thisContainer {
+    width: 100%;
+padding: 1em;
+
+
+
+}
+.progress {
+    counter-reset: step;
+    background-color: white;
+    height: 30px;
+
+}
+
+.progress li {
+    list-style-type: none;
+    float: left;
+    width: 33.33%;
+    position: relative;
+    text-align: center;
+    z-index: 4;
+
+}
+.progress li:before {
+    content: ' ';
+    counter-increment: step;
+    width: 25px;
+    height: 25px;
+    line-height: 30px;
+   display:block;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    text-align: center;
+    border: 1px solid #ddd;
+    z-index: 3;
+
+ 
+
+}
+.progress li:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    color: black;
+    border: 1px solid #ddd;
+    top: 13px;
+    left: -50%;
+    z-index: 2;
+
+}
+
+.progress li:first-child:after {
+    content:none;
+}
+
+.progress li.active {
+    color: green;
+}
+.progress li.active:before {
+    border-color:green;
+
+}
+
+.progress li.active + li.after {
+    background-color: green;
+}
+
+.notice {
+    position: relative;
+    font-size: smaller;
+    text-align: center;
+    margin-top: 1em;
+
+}
+
+
+.box {
+    width : 32em;
+    background-color: white;
+    position: relative;
+    top: 30%;
+    margin-left: -250px;
+    left: 50%;
+    height: 30em;
+    border: 1px solid whitesmoke;
+    border-radius: 25px;
+    box-shadow:  5px 4px 5px 5px lightgrey;
+
+
+}
+
+.input-group {
+    padding-left: 2em;
+    margin-right: 2em;
+   
+ } 
+
+.next {
+    position: relative;
+    margin-top: 1em;
+    text-align: right;
+}
+.labels {
+   text-align: left;
+   font-weight: bold;
+   color: rgb(99, 109, 109);
+    margin-top: 1em;
+    padding-left: 2em;
+  
+    width: 35%;
+    float: left;
+    position: relative;
+}
+
