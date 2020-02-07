@@ -5,6 +5,7 @@ import Home from './home/Home.js';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import Test from "./testComponent/Test";
 import SearchPage from "./searchPage/SearchPage";
+import RegisterEvent from ".eventRegister/RegisterEvent";
 
 class App extends Component {
   constructor(props) {
