@@ -6,6 +6,8 @@ import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import Test from "./testComponent/Test";
 import SearchPage from "./searchPage/SearchPage";
 import EventCreation from "./eventCreate/EventCreation";
+import EventCreation2 from "./eventCreate/EventCreation2";
+import EventCreation3 from "./eventCreate/EventCreation3";
 
 class App extends Component {
   constructor(props) {
@@ -44,6 +46,8 @@ class App extends Component {
                 <Route path="/test" component={Test} />
                 <Route path="*" component={Page404} />
                 <Route path="/event" component={EventCreation} />
+                <Route path="/event2" component={EventCreation2} />
+                <Route path="/event3" component={EventCreation3} />
             </div>
         </Router>
       );

@@ -17,18 +17,6 @@ class EventCreation extends Component {
         };
     }
 
-    // render() {
-    //     return (
-    //
-    //     );
-    // }
-
-
-
-    nextPage(e) {
-
-    }
-
     render() {
         return (
             <div id="eventCreation">
@@ -47,7 +35,7 @@ class EventCreation extends Component {
                     </ul>
                 </div>
                 <div className = "box">
-                    {/* <div className="labels">
+                    <div className="labels">
                         <label htmlFor="name">Event Title</label>
                     </div>
                     <div className="input-group">
@@ -124,77 +112,11 @@ class EventCreation extends Component {
                     </div>
 
 
-                    <button
+                    <a button
                         type="button"
                         className="next"
-                        onClick={this
-                            .nextPage
-                            .bind(this)}>Continue
-                    </button> */}
-
-
-                    <div className = "labels">
-                        <label htmlFor="name">Meal Type</label>
-                    </div>
-                    <select className = "meals" value={this.state.value} onChange={this.handleChange}>
-                        <option value="breakfast">Breakfast</option>
-                        <option value="brunch">Brunch</option>
-                        <option value="lunch">Lunch</option>
-                        <option selected value="dinner">Dinner</option>
-                    </select>
-                    <div className = "labels">
-                        <label htmlFor="name">Number of Guests</label>
-                    </div>
-                    <div className = "input-group">
-                        <input
-                            type="text"
-                            name="guest"
-                            className="guests"></input>
-                    </div>
-                    <div className = "labels">
-                        <label htmlFor="name">Meal Description</label>
-                    </div>
-                    <div className = "input-group">
-                        <input
-                            type="text"
-                            name="meal"
-                            className="meal-input">
-                        </input>
-                    </div>
-                    <button
-                        type="button"
-                        className="next"
-                        onClick={this
-                            .nextPage
-                            .bind(this)}>Continue
-                    </button>
-
-                    {/* Code for the third event screen
-                    <div className="labels">
-                        <label htmlFor="name">Dietary Restrictions</label>
-                    </div>
-                    <div className="input-group">
-                        <input
-                            type="text"
-                            name="name"
-                            className="allergy-input"></input>
-                    </div>
-                    <div className="labels">
-                        <label htmlFor="name">Additional Information</label>
-                    </div>
-                    <div className="input-group">
-                        <input
-                            type="text"
-                            name="name"
-                            className="additional-input"></input>
-                    </div>
-                    <button
-                        type="button"
-                        className="next"
-                        onClick={this
-                            .nextPage
-                            .bind(this)}>Create
-                    </button> */}
+                        href="/event2">Continue
+                    </a>
                 </div>
 
             </div>
