@@ -30,7 +30,7 @@ class RegisterEvent extends Component {
 
             <div className="inner-container">
                 <div className="header">
-                    Create an Event
+                    Attend an Event
                 </div>
                 <div class="thisContainer">
                     <ul class="progress">
