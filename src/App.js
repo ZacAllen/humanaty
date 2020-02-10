@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import './App.css';
 import Home from './home/Home.js';
-
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import Test from "./testComponent/Test";
+import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SearchPage from "./searchPage/SearchPage";
 
 class App extends Component {
@@ -35,15 +33,15 @@ class App extends Component {
      );
 
       return (
-        <Router>
-            <div className="App">
-                <p className="App-intro">{this.state.apiResponse}</p>
-                <Route exact path="/" component={Home} />
-                <Route path="/search" component={SearchPage} />
-                <Route path="/test" component={Test} />
-                <Route path="*" component={Page404} />
-            </div>
-        </Router>
+        <div className="App">
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/search" component={SearchPage} />
+                    <Route component={Page404} />
+                </Switch>
+            </Router>    
+        </div>      
       );
   }
 }
