@@ -30,49 +30,41 @@ class RegisterEvent extends Component {
 
             <div className="inner-container">
                 <div className="header">
-                    Attend Event
+                    event title here
                 </div>
-                <div class="thisContainer">
-                    <ul class="progress">
-                        <li class="active"></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                <div className = "box">
-                    <div className="labels">
-                        <label htmlFor="name">Event Title:</label>
+                <div className="box">
+                    <div className="modprice">
+                        <label htmlFor="name">$ /meal</label>
                     </div>
-                    <div className="labels">
-                        <label htmlFor="name">Location:</label>
+                    <div className="modseparate">
+                        {/* figure out how to put a line in */}
                     </div>
-                    <div className="labels">
-                        <label htmlFor="name">Host:</label>
-                    </div>
-                    <div className="labels">
-                        <label htmlFor="name">Event Date:</label>
-                    </div>
-                    <div className="labels">
-                        <label htmlFor="name">Event Time:</label>
-                    </div>
-                    <div className = "labels">
-                        <label htmlFor="name">Number of Guests In Your Party:</label>
-                        <input
-                            type="number"
-                            name="name"
-                            defaultValue="1"
-                            min="1"
-                            className="number-of-guests"></input>
-                    </div>
-                    
+                    <button type="submit">Reserve</button>
                     
                 </div>
+                    
+                <div className="host">
+                    <label htmlFor="name">Hostnamehere</label>
+                </div>
+                <div className = "details">
+                    <label htmlFor="name">Number of Guests In Your Party:</label>
+                    <input
+                        type="number"
+                        name="name"
+                        defaultValue="1"
+                        min="1"
+                        max="40"
+                        className="number-of-guests"></input> 
+                </div> 
 
+                <div className="notice">
+                    <p>*Note the exact location of this event will not be available to guests until 48 hours before the meal</p>
+                </div>
+                
+                
             </div>
-            <div className="notice">
-                <p>*Note the exact location of this event will not be available to
-                        guests until 48 hours before the meal</p>
-            </div>
+            
+            
             </div>
         );
     }
