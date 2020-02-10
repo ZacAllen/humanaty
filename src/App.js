@@ -30,13 +30,6 @@ class App extends Component {
 
   render() {
 
-    //404 error page
-    const Page404 = ({ location }) => (
-        <div>
-           <h2>No match found for <code>{location.pathname}</code></h2>
-        </div>
-     );
-
       return (
         <Router>
             <div className="App">
@@ -44,7 +37,6 @@ class App extends Component {
                 <Route exact path="/" component={Home} />
                 <Route path="/search" component={SearchPage} />
                 <Route path="/test" component={Test} />
-                <Route path="*" component={Page404} />
                 <Route path="/event" component={EventCreation} />
                 <Route path="/event2" component={EventCreation2} />
                 <Route path="/event3" component={EventCreation3} />
