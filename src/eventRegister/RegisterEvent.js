@@ -30,7 +30,7 @@ class RegisterEvent extends Component {
 
             <div className="inner-container">
                 <div className="header">
-                    Attend an Event
+                    Attend Event
                 </div>
                 <div class="thisContainer">
                     <ul class="progress">
@@ -40,150 +40,39 @@ class RegisterEvent extends Component {
                     </ul>
                 </div>
                 <div className = "box">
-                    {/* <div className="labels">
-                        <label htmlFor="name">Event Title</label>
-                    </div>
-                    <div className="input-group">
-                        <input
-                            type="text"
-                            name="name"
-                            className="name-input"
-                            placeholder="My Event"/>
+                    <div className="labels">
+                        <label htmlFor="name">Event Title:</label>
                     </div>
                     <div className="labels">
-                        <label htmlFor="name">Street Address*</label>
-                    </div>
-                    <div className="input-group">
-                        <input
-                            type="text"
-                            name="name"
-                            className="name-input"
-                            placeholder=" "/>
+                        <label htmlFor="name">Location:</label>
                     </div>
                     <div className="labels">
-                        <label htmlFor="name">City</label>
+                        <label htmlFor="name">Host:</label>
                     </div>
                     <div className="labels">
-                        <label htmlFor="name">State</label>
-                    </div>
-                    <div className="input-group">
-                        <input
-                        type="text"
-                        name="name"
-                        className="name-input"
-                        placeholder=" "/>
-                        <input
-                            type="text"
-                            name="name"
-                            className="name-input"
-                            placeholder=" "/>
+                        <label htmlFor="name">Event Date:</label>
                     </div>
                     <div className="labels">
-                        <label htmlFor="name">Postal Code</label>
-                    </div>
-                    <div className="input-group">
-                        <input
-                            type="text"
-                            name="name"
-                            className="name-input"
-                            placeholder=" "/>
-                    </div>
-                    <div className="labels">
-                        <label htmlFor="name">Date</label>
-                    </div>
-                    <div className="labels">
-                        <label htmlFor="name">Time</label>
-                    </div>
-                    <div className="input-group">
-                        <input
-                            type="date"
-                            name="name"
-                            className="name-input"
-                            placeholder=" "/>
-                        <input
-                            type="time"
-                            name="name"
-                            className="name-input"
-                            placeholder=" "/>
-                    </div>
-                    <button
-                        type="button"
-                        className="next"
-                        onClick={this
-                            .nextPage
-                            .bind(this)}>Continue
-                    </button> */}
-
-
-                    <div className = "labels">
-                        <label htmlFor="name">Meal Type</label>
-                    </div>
-                    <select className = "meals" value={this.state.value} onChange={this.handleChange}>
-                        <option value="breakfast">Breakfast</option>
-                        <option value="brunch">Brunch</option>
-                        <option value="lunch">Lunch</option>
-                        <option selected value="dinner">Dinner</option>
-                    </select>
-                    <div className = "labels">
-                        <label htmlFor="name">Number of Guests</label>
-                    </div>
-                    <div className = "input-group">
-                        <input
-                            type="text"
-                            name="guest"
-                            className="guests"></input>
+                        <label htmlFor="name">Event Time:</label>
                     </div>
                     <div className = "labels">
-                        <label htmlFor="name">Meal Description</label>
-                    </div>
-                    <div className = "input-group">
+                        <label htmlFor="name">Number of Guests In Your Party:</label>
                         <input
-                            type="text"
-                            name="meal"
-                            className="meal-input">
-                        </input>
-                    </div>
-                    <button
-                        type="button"
-                        className="next"
-                        onClick={this
-                            .nextPage
-                            .bind(this)}>Continue
-                    </button>
-
-                    {/* Code for the third event screen
-                    <div className="labels">
-                        <label htmlFor="name">Dietary Restrictions</label>
-                    </div>
-                    <div className="input-group">
-                        <input
-                            type="text"
+                            type="number"
                             name="name"
-                            className="allergy-input"></input>
+                            defaultValue="1"
+                            min="1"
+                            className="number-of-guests"></input>
                     </div>
-                    <div className="labels">
-                        <label htmlFor="name">Additional Information</label>
-                    </div>
-                    <div className="input-group">
-                        <input
-                            type="text"
-                            name="name"
-                            className="additional-input"></input>
-                    </div>
-                    <button
-                        type="button"
-                        className="next"
-                        onClick={this
-                            .nextPage
-                            .bind(this)}>Create
-                    </button> */}
+                    
+                    
                 </div>
 
             </div>
-                <div className="notice">
-                    <p>*Note your exact location will not be available to
+            <div className="notice">
+                <p>*Note the exact location of this event will not be available to
                         guests until 48 hours before the meal</p>
-                </div>
+            </div>
             </div>
         );
     }
