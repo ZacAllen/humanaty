@@ -27,6 +27,11 @@ class App extends Component {
   
 
   render() {
+     const Page404 = ({ location }) => (
+        <div>
+           <h2>No match found for <code>{location.pathname}</code></h2>
+        </div>
+     );
 
       return (
         <div className="App">
