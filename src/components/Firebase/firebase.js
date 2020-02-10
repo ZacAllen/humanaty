@@ -13,6 +13,8 @@ const config = {
 };
 
 
+
+
 var app = firebase.initializeApp(config);
 
 var database = firebase.firestore(app);

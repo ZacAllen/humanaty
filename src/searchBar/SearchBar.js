@@ -54,6 +54,7 @@ class SearchBar extends React.Component{
     }
   );
 };
+
 /**
   * Component should only update ( meaning re-render ), when the user selects the address, or drags the pin
   *
