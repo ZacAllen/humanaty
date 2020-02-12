@@ -123,6 +123,9 @@ padding: 1em;
     width: 10em;
     height: 2em;
     padding-left: 5px;
+    border-color: lightgrey;
+    border-width: 1px;
+    border-style: solid;
   }
 
   .reservebutton:hover {

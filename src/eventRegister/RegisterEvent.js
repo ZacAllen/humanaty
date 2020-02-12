@@ -44,17 +44,17 @@ class RegisterEvent extends Component {
                     </div>
                     <div className="moddetails">
                         <label htmlFor="name">Guests</label>
-                        <select id="guests">
-                            <option value="volvo">1</option>
-                            <option value="saab">2</option>
-                            <option value="opel">3</option>
-                            <option value="audi">4</option>
-                            <option value="volvo">5</option>
-                            <option value="saab">6</option>
-                            <option value="opel">7</option>
-                            <option value="audi">8</option>
-                            <option value="volvo">9</option>
-                            <option value="saab">10</option>
+                        <select id="guests" className="number-of-guests">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
                         </select>
                         {/* <input
                             type="number"
