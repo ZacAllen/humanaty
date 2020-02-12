@@ -27,28 +27,25 @@ class App extends Component {
   
 
   render() {
-
-    //404 error page
-    const Page404 = ({ location }) => (
+     const Page404 = ({ location }) => (
         <div>
            <h2>No match found for <code>{location.pathname}</code></h2>
         </div>
      );
 
       return (
-            <div className="App">
-                <Router>
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route exact path="/search" component={SearchPage} />
+        <div className="App">
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/search" component={SearchPage} />
                         <Route path="/event" component={EventCreation} />
                 <Route path="/event2" component={EventCreation2} />
                 <Route path="/event3" component={EventCreation3} />
-                        <Route component={Page404} />
-  
-                    </Switch>
-                </Router>
-            </div>
+                    <Route component={Page404} />
+                </Switch>
+            </Router>    
+        </div>      
       );
   }
 }
