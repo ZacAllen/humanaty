@@ -12,29 +12,17 @@ padding: 1em;
 
 }
 
-.notice {
-    position: relative;
-    /* font-size: smaller; */
-    text-align: left;
-    margin-top: 10em;
-    margin-right: 30em;
-    margin-left: 10em;
-
-}
-
 .box {
-    width : 20em;
+    width : 17em;
     background-color: white;
     position: absolute;
-    top: 30%;
+    top: 25%;
     margin-left: 5em;
     left: 60%;
     height: 20em;
     border: 1px solid whitesmoke;
     border-radius: 25px;
     box-shadow:  5px 4px 5px 5px lightgrey;
-
-
 }
 
 .modprice {
@@ -48,11 +36,24 @@ padding: 1em;
 }
 
 .modseparate {
-    position:absolute;
     content: '';
-    color:black;
+    position: relative;
+    width: 90%;
     height: 1px;
-    width:100%;
+    color: black;
+    border: 1px solid #ddd;
+    margin: auto;
+    z-index: 2;
+}
+
+.moddetails {
+    position: relative;
+    text-align: left;
+    font-weight: bold;
+    color: rgb(99, 109, 109);
+    margin-right: 21em;
+    margin-top: 1em;
+    margin-left: 1em;
 }
 
 
@@ -93,7 +94,7 @@ padding: 1em;
     position: relative;
     text-align: left;
     font-weight: bold;
-    font-size: medium;
+    font-size: xx-large;
     color: rgb(99, 109, 109);
     margin-right: 21em;
     margin-top: 2em;
@@ -101,7 +102,105 @@ padding: 1em;
 }
 
   .number-of-guests {
-    margin-left: 1em;
-    width: 3em;
+    width: 10em;
+    height: 2em;
     padding-left: 5px;
   }
+
+  .reservebutton:hover {
+
+    /* this is for shadow box  */
+    /* box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24), 0 5px 10px 0 rgba(0,0,0,0.19); */
+
+    /* this is for white -> filled in */
+    background-color: #C8E4D7;
+    width: 15em;
+    border-radius: 10ch;
+    border: #C8E4D7;
+    border-style: solid;
+    color: rgb(99, 109, 109);
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    transition-duration: 0.5s;
+    font-weight: 600;
+    
+  }
+  .reservebutton {
+    
+    /* this is for shadow box  */
+    /* background-color: #C8E4D7;
+    width: 15em;
+    border-radius: 10ch;
+    border: #C8E4D7;
+    color: rgb(99, 109, 109);
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    transition-duration: 0.5s; */
+
+    /* this is for white -> filled in */
+    background-color: white;
+    width: 14em;
+    border-radius: 10ch;
+    border: #C8E4D7;
+    border-style: solid;
+    color: #C8E4D7;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    transition-duration: 0.4s;
+    font-weight: 600;
+    
+  }
+
+  .detailheaders {
+    text-align: left;
+    font-weight: bold;
+    color: rgb(99, 109, 109);
+    margin-top: 5px;
+    margin-left: 15em;  
+    width: 35%;
+    position: relative;
+  }
+
+  .detaildescriptions {
+    text-align: left;
+    color: rgb(99, 109, 109);
+    margin-top: 5px;
+    margin-left: 15em;  
+    width: 35%;
+    position: relative;
+    margin-bottom: 2em;
+  }
+
+  .mealdescriptions {
+    text-align: left;
+    color: rgb(99, 109, 109);
+    margin-top: 5px;
+    margin-left: 13.5em;  
+    width: 35%;
+    position: relative;
+    margin-bottom: 2em;
+    font-size: large;
+  }
+
+  .detailseparate {
+    content: '';
+    position: relative;
+    width: 45%;
+    height: 1px;
+    color: black;
+    border: 1px solid #ddd;
+    margin: left;
+    margin-left: 15em;
+    z-index: 2;
+  }
+
+  

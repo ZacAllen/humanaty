@@ -36,28 +36,99 @@ class RegisterEvent extends Component {
                     <div className="modprice">
                         <label htmlFor="name">$ /meal</label>
                     </div>
-                    <div className="modseparate">
-                        {/* figure out how to put a line in */}
+                    <div>
+                        <ul class = "modseparate"></ul>
                     </div>
-                    <button type="submit">Reserve</button>
-                    
+                    <div className="moddetails">
+                        <label htmlFor="name">Dates</label>
+                        <input 
+                        type="date"
+                        className="number-of-guests"></input>
+                    </div>
+                    <div className="moddetails">
+                        <label htmlFor="name">Guests</label>
+                        {/* <select id="guests">
+                            <option value="volvo">1</option>
+                            <option value="saab">2</option>
+                            <option value="opel">3</option>
+                            <option value="audi">4</option>
+                            <option value="volvo">5</option>
+                            <option value="saab">6</option>
+                            <option value="opel">7</option>
+                            <option value="audi">8</option>
+                            <option value="volvo">9</option>
+                            <option value="saab">10</option>
+                            <option value="opel">11</option>
+                            <option value="audi">12</option>
+                            <option value="opel">13</option>
+                            <option value="audi">14</option>
+                            <option value="opel">15</option>
+                            <option value="audi">16</option>
+                        </select> */}
+                        <input
+                            type="number"
+                            name="name"
+                            defaultValue="1"
+                            min="1"
+                            max="40"
+                            className="number-of-guests"></input> 
+                    </div>
+                    <button 
+                        type="submit"  
+                        className="reservebutton">Reserve</button>
                 </div>
                     
                 <div className="host">
+                    {/* put account image here */}
                     <label htmlFor="name">Hostnamehere</label>
                 </div>
-                <div className = "details">
-                    <label htmlFor="name">Number of Guests In Your Party:</label>
-                    <input
-                        type="number"
-                        name="name"
-                        defaultValue="1"
-                        min="1"
-                        max="40"
-                        className="number-of-guests"></input> 
-                </div> 
+                <div className="detaildescriptions">
+                    <label htmlFor="name">Descriptor Descriptor Descriptor</label>
+                </div>
+                <div>
+                    <ul class = "detailseparate"></ul>
+                </div>
+                <div className="mealdescriptions">
+                    <label htmlFor="name">A basic description of meal/environment/whatever the host wants to put</label>
+                </div>
+                <div>
+                    <ul class = "detailseparate"></ul>
+                </div>
+                <div className="detailheaders">
+                    <label htmlFor="name">Menu</label>
+                </div>
+                
+                <div className="detaildescriptions">
+                    <label htmlFor="name">Menu description + ingredients etc</label>
+                </div>
+                <div>
+                    <ul class = "detailseparate"></ul>
+                </div>
+                <div className="detailheaders">
+                    <label htmlFor="name">House Rules</label>
+                </div>
+                
+                <div className="detaildescriptions">
+                    <label htmlFor="name">Children yes/no, no smoking, pet friendly, other info like that</label>
+                </div>
+                <div>
+                    <ul class = "detailseparate"></ul>
+                </div>
+                <div className="detailheaders">
+                    <label htmlFor="name">Cancellation Policy</label>
+                </div>
+                
+                <div className="detaildescriptions">
+                    <label htmlFor="name">Free cancellations provided up to 48 hours before event.</label>
+                </div>
+                <div>
+                    <ul class = "detailseparate"></ul>
+                </div>
+                <div className="detailheaders">
+                    <label htmlFor="name">Location</label>
+                </div>
 
-                <div className="notice">
+                <div className="detaildescriptions">
                     <p>*Note the exact location of this event will not be available to guests until 48 hours before the meal</p>
                 </div>
                 
