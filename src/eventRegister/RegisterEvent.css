@@ -15,7 +15,7 @@ padding: 1em;
 .box {
     width : 17em;
     background-color: white;
-    position: absolute;
+    position: fixed;
     top: 25%;
     margin-left: 5em;
     left: 60%;
@@ -99,6 +99,13 @@ padding: 1em;
     margin-right: 21em;
     margin-top: 2em;
     margin-left: 10em;
+}
+
+.acctimg {
+  width: 55px;
+  height: 55px;
+  position: absolute;
+  margin-left: -75px;
 }
 
   .number-of-guests {

@@ -79,7 +79,9 @@ class RegisterEvent extends Component {
                 </div>
                     
                 <div className="host">
-                    {/* put account image here */}
+                    <img 
+                        src="https://getdrawings.com/free-icon/google-account-icon-65.png"
+                        className="acctimg"></img>
                     <label htmlFor="name">Hostnamehere</label>
                 </div>
                 <div className="detaildescriptions">
