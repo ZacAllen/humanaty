@@ -127,7 +127,19 @@ class RegisterEvent extends Component {
                 <div className="detailheaders">
                     <label htmlFor="name">Location</label>
                 </div>
-
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe 
+                        width="700" 
+                        height="500" 
+                        id="gmap_canvas" 
+                        src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        marginheight="0" 
+                        marginwidth="0"></iframe>
+                    </div>
+                </div>
                 <div className="detaildescriptions">
                     <p>*Note the exact location of this event will not be available to guests until 48 hours before the meal</p>
                 </div>

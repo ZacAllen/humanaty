@@ -203,4 +203,21 @@ padding: 1em;
     z-index: 2;
   }
 
+  .mapouter {
+    position:relative;
+    text-align:right;
+    height:500px;
+    width:700px;
+    margin-left: 15em;
+  }
+
+  .gmap_canvas {
+      overflow:hidden;
+      background:none!important;
+      height:500px;
+      width:700px;
+      border-radius: 3ch;
+      margin-top: 1em;
+  }
+
   
