@@ -29,9 +29,6 @@ class RegisterEvent extends Component {
 
 
             <div className="inner-container">
-                <div className="header">
-                    event title here
-                </div>
                 <div className="box">
                     <div className="modprice">
                         <label htmlFor="name">$ /meal</label>
@@ -47,7 +44,7 @@ class RegisterEvent extends Component {
                     </div>
                     <div className="moddetails">
                         <label htmlFor="name">Guests</label>
-                        {/* <select id="guests">
+                        <select id="guests">
                             <option value="volvo">1</option>
                             <option value="saab">2</option>
                             <option value="opel">3</option>
@@ -58,31 +55,27 @@ class RegisterEvent extends Component {
                             <option value="audi">8</option>
                             <option value="volvo">9</option>
                             <option value="saab">10</option>
-                            <option value="opel">11</option>
-                            <option value="audi">12</option>
-                            <option value="opel">13</option>
-                            <option value="audi">14</option>
-                            <option value="opel">15</option>
-                            <option value="audi">16</option>
-                        </select> */}
-                        <input
+                        </select>
+                        {/* <input
                             type="number"
                             name="name"
                             defaultValue="1"
                             min="1"
                             max="40"
-                            className="number-of-guests"></input> 
+                            className="number-of-guests"></input>  */}
                     </div>
                     <button 
                         type="submit"  
                         className="reservebutton">Reserve</button>
                 </div>
-                    
+                <div className="event">
+                    <label htmlFor="name">EventTitleHere</label>
+                </div>    
                 <div className="host">
                     <img 
                         src="https://getdrawings.com/free-icon/google-account-icon-65.png"
                         className="acctimg"></img>
-                    <label htmlFor="name">Hostnamehere</label>
+                    <label htmlFor="name">HostNameHere</label>
                 </div>
                 <div className="detaildescriptions">
                     <label htmlFor="name">Descriptor Descriptor Descriptor</label>

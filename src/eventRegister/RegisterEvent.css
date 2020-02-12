@@ -22,7 +22,8 @@ padding: 1em;
     height: 20em;
     border: 1px solid whitesmoke;
     border-radius: 25px;
-    box-shadow:  5px 4px 5px 5px lightgrey;
+    box-shadow:  3px 2px 5px 3px rgb(238, 237, 237);
+    
 }
 
 .modprice {
@@ -90,22 +91,32 @@ padding: 1em;
     margin-left: 10em;
 }
 
+.event {
+  position: relative;
+  text-align: left;
+  font-weight: bold;
+  font-size: xx-large;
+  color: rgb(99, 109, 109);
+  margin-right: 21em;
+  margin-top: 2em;
+  margin-left: 7.5em;
+}
+
 .host {
     position: relative;
     text-align: left;
-    font-weight: bold;
-    font-size: xx-large;
+    font-size: x-large;
     color: rgb(99, 109, 109);
     margin-right: 21em;
-    margin-top: 2em;
-    margin-left: 10em;
+    margin-left: 12em;
+    margin-bottom: 1em;
 }
 
 .acctimg {
-  width: 55px;
-  height: 55px;
+  width: 40px;
+  height: 40px;
   position: absolute;
-  margin-left: -75px;
+  margin-left: -50px;
 }
 
   .number-of-guests {
@@ -115,9 +126,6 @@ padding: 1em;
   }
 
   .reservebutton:hover {
-
-    /* this is for shadow box  */
-    /* box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24), 0 5px 10px 0 rgba(0,0,0,0.19); */
 
     /* this is for white -> filled in */
     background-color: #C8E4D7;
@@ -137,18 +145,6 @@ padding: 1em;
   }
   .reservebutton {
     
-    /* this is for shadow box  */
-    /* background-color: #C8E4D7;
-    width: 15em;
-    border-radius: 10ch;
-    border: #C8E4D7;
-    color: rgb(99, 109, 109);
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 20px;
-    transition-duration: 0.5s; */
 
     /* this is for white -> filled in */
     background-color: white;
@@ -191,11 +187,10 @@ padding: 1em;
     text-align: left;
     color: rgb(99, 109, 109);
     margin-top: 5px;
-    margin-left: 13.5em;  
+    margin-left: 15em;  
     width: 35%;
     position: relative;
     margin-bottom: 2em;
-    font-size: large;
   }
 
   .detailseparate {
