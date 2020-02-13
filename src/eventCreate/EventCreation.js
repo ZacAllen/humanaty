@@ -21,8 +21,6 @@ class EventCreation extends Component {
         return (
             <div id="eventCreation">
                 <NavBar/>
-
-
             <div className="inner-container">
                 <div className="header">
                     Create an Event
