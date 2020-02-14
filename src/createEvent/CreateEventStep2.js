@@ -82,7 +82,7 @@ function makeEvent() {
     var description = document.getElementsByClassName("meal-input");
 
     var obj = {meal: meal, guest: guest, description: description};
-    Axios.post('http://localhost:9000/signUp', obj);
+    Axios.post('http://localhost:9000/create-event', obj);
 }
 
 export default CreateEventStep2;

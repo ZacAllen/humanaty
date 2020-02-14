@@ -69,7 +69,7 @@ function makeEvent() {
     var additional = document.getElementsByClassName("additional-input");
 
     var obj = {allergy: allergy, additional: additional};
-    Axios.post('http://localhost:9000/signUp', obj);
+    Axios.post('http://localhost:9000/create-event', obj);
 }
 
 export default CreateEventStep3;

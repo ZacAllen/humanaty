@@ -123,7 +123,7 @@ function makeEvent() {
     var time = document.getElementsByClassName("time-input");
     var obj = {name: name, address: address, city: city, state: state,
                 zip: zip, date: date, time: time};
-    Axios.post('http://localhost:9000/signUp', obj);
+    Axios.post('http://localhost:9000/create-event', obj);
 }
 
 export default CreateEventStep1;
