@@ -4,7 +4,8 @@ import Script from 'react-load-script';
 import SearchBar from '../searchBar/SearchBar.js';
 import NavBar from '../navbar/NavBar.js';
 import Header from '../header/Header.js';
-//import Footer from '../footer/footer.js';
+import Footer from '../footer/footer.js';
+
 
 class Home extends Component {
   
@@ -39,9 +40,13 @@ class Home extends Component {
               </div>
             </div>
         </div>
+        
+        <Footer/>
        
 
+
       </div>
+      
     );
   }
 }
