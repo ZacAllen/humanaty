@@ -65,7 +65,7 @@ class CreateEventStep2 extends Component {
                         <a button
                             type="button"
                             className="next"
-                            href="/event3"
+                            href="/create-event3"
                             onClick= {() => makeEvent()}
                             >Continue
                         </a>
