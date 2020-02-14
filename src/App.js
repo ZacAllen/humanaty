@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import './App.css';
 import Home from './home/Home.js';
 import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SearchPage from "./searchPage/SearchPage";
-import EventCreation from "./eventCreate/EventCreation";
-import EventCreation2 from "./eventCreate/EventCreation2";
-import EventCreation3 from "./eventCreate/EventCreation3";
+import CreateEventStep1 from "./eventCreate/CreateEventStep1.js";
+import CreateEventStep2 from "./eventCreate/CreateEventStep2.js";
+import CreateEventStep3 from "./eventCreate/CreateEventStep3.js";
+import SearchPage from "./searchPage/SearchPage.js";
 
 class App extends Component {
   constructor(props) {
@@ -36,14 +36,12 @@ class App extends Component {
       return (
         <div className="App">
             <Router>
-                <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/search" component={SearchPage} />
-                        <Route path="/event" component={EventCreation} />
-                <Route path="/event2" component={EventCreation2} />
-                <Route path="/event3" component={EventCreation3} />
+                    <Route path="/event" component={CreateEventStep1} />
+                    <Route path="/event2" component={CreateEventStep2} />
+                    <Route path="/event3" component={CreateEventStep3} />
                     <Route component={Page404} />
-                </Switch>
             </Router>    
         </div>      
       );

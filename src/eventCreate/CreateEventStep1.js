@@ -5,7 +5,7 @@ import NavBar from '../navbar/NavBar.js';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Axios from 'axios';
 
-class EventCreation extends Component {
+class CreateEventStep1 extends Component {
     constructor(props) {
         super(props);
         // Declare State
@@ -98,7 +98,9 @@ class EventCreation extends Component {
                     <a button
                         type="button"
                         className="next"
-                        href="/event2">Continue
+                        href="/event2"
+                        onClick= {() => makeEvent()}
+                        >Continue
                     </a>
                 </div>
             </div>
@@ -124,4 +126,4 @@ function makeEvent() {
     Axios.post('http://localhost:9000/signUp', obj);
 }
 
-export default EventCreation;
+export default CreateEventStep1;

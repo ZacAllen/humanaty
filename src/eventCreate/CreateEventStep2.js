@@ -7,7 +7,7 @@ import Axios from 'axios';
 
 
 
-class EventCreation2 extends Component {
+class CreateEventStep2 extends Component {
 
     constructor(props) {
         super(props);
@@ -66,6 +66,7 @@ class EventCreation2 extends Component {
                             type="button"
                             className="next"
                             href="/event3"
+                            onClick= {() => makeEvent()}
                             >Continue
                         </a>
                     </div>
@@ -84,4 +85,4 @@ function makeEvent() {
     Axios.post('http://localhost:9000/signUp', obj);
 }
 
-export default EventCreation2;
+export default CreateEventStep2;
