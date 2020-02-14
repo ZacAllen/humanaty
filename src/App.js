@@ -36,12 +36,14 @@ class App extends Component {
       return (
         <div className="App">
             <Router>
+                <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/search" component={SearchPage} />
                     <Route path="/create-event" component={CreateEventStep1} />
                     <Route path="/create-event2" component={CreateEventStep2} />
                     <Route path="/create-event3" component={CreateEventStep3} />
                     <Route component={Page404} />
+                    </Switch>
             </Router>    
         </div>      
       );

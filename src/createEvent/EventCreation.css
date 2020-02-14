@@ -13,6 +13,7 @@
 .progress {
     counter-reset: step;
     height: 30px;
+    background-color: white;
 
 }
 
