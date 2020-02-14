@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './EventCreation.css';
 import NavBar from '../navbar/NavBar.js';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Axios from 'axios';
 
 
 
@@ -24,7 +25,7 @@ class EventCreation3 extends Component {
                     <div className="header">
                         Create an Event
                     </div>
-                    <div class="thisContainer">
+                    <div class="progress-container">
                         <ul class="progress">
                             <li class="active"></li>
                             <li class="active"></li>
@@ -53,6 +54,7 @@ class EventCreation3 extends Component {
                         <button
                             type="button"
                             className="next"
+                            onClick= {() => makeEvent()}
                             >Create
                         </button>
                     </div>
@@ -61,4 +63,13 @@ class EventCreation3 extends Component {
         )
     }
 }
+
+function makeEvent() {
+    var allergy = document.getElementsByClassName("allergy-input");
+    var additional = document.getElementsByClassName("additional-input");
+
+    var obj = {allergy: allergy, additional: additional};
+    Axios.post('http://localhost:9000/signUp', obj);
+}
+
 export default EventCreation3;

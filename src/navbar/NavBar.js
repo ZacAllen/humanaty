@@ -27,13 +27,12 @@ const NavBar = () => {
               <a class="nav-link" id = "loginClick">Login</a>
             </li>
             <li class="nav-item">
-             <a class="nav-link" id = "signupClick" onClick= {() => testMakeUser()}>Sign Up</a>
+              <a class="nav-link" id = "signupClick" onClick= {() => testMakeUser()}>Sign Up</a>
             </li>
           </ul>
           </div>
         </div>
       </nav>
-
     </div>
   );
 };
