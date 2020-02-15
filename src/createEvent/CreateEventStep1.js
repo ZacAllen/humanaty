@@ -4,6 +4,7 @@ import './EventCreation.css';
 import NavBar from '../navbar/NavBar.js';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class CreateEventStep1 extends Component {
     constructor(props) {
@@ -123,7 +124,10 @@ function makeEvent() {
     var time = document.getElementsByClassName("time-input");
     var obj = {name: name, address: address, city: city, state: state,
                 zip: zip, date: date, time: time};
-    Axios.post('http://localhost:9000/create-event', obj);
+    this.props.history.push({
+        pathname: '/create-event2',
+        data: obj
+    });
 }
 
 export default CreateEventStep1;

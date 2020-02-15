@@ -18,6 +18,7 @@ class CreateEventStep2 extends Component {
     }
 
     render() {
+        const { data } = this.props.location;
         return (
             <div id="eventCreation2">
                 <NavBar/>
@@ -82,7 +83,10 @@ function makeEvent() {
     var description = document.getElementsByClassName("meal-input");
 
     var obj = {meal: meal, guest: guest, description: description};
-    Axios.post('http://localhost:9000/create-event', obj);
+    this.props.history.push({
+        pathname: '/create-event3',
+        data: obj
+    });
 }
 
 export default CreateEventStep2;

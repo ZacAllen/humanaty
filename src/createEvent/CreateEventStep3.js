@@ -68,7 +68,7 @@ class CreateEventStep3 extends Component {
 function makeEvent() {
     var allergy = document.getElementsByClassName("allergy-input");
     var additional = document.getElementsByClassName("additional-input");
-
+    console.log("3rd event page");
     var obj = {allergy: allergy, additional: additional};
     Axios.post('http://localhost:9000/create-event', obj);
 }

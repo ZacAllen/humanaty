@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import './App.css';
 import Home from './home/Home.js';
 import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import CreateEventStep1 from "./createEvent/CreateEventStep1.js";
-import CreateEventStep2 from "./createEvent/CreateEventStep2.js";
-import CreateEventStep3 from "./createEvent/CreateEventStep3.js";
+import CreateEvent from "./createEvent/CreateEvent.js";
 import SearchPage from "./searchPage/SearchPage.js";
+import { createEvent } from "@testing-library/react";
 
 class App extends Component {
   constructor(props) {
@@ -39,11 +38,9 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/search" component={SearchPage} />
-                    <Route path="/create-event" component={CreateEventStep1} />
-                    <Route path="/create-event2" component={CreateEventStep2} />
-                    <Route path="/create-event3" component={CreateEventStep3} />
+                    <Route path="/create-event" component={CreateEvent} />
                     <Route component={Page404} />
-                    </Switch>
+                </Switch>
             </Router>    
         </div>      
       );
