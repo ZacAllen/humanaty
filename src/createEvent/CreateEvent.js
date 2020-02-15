@@ -260,10 +260,10 @@ class CreateEvent extends React.Component {
             <label htmlFor="name">Meal Type</label>
           </div>
           <select className = "meals" onChange={props.handleChange}>
-            <option value="breakfast">Breakfast</option>
-            <option value="brunch">Brunch</option>
-            <option value="lunch">Lunch</option>
-            <option selected value="dinner">Dinner</option>
+            <option>Breakfast</option>
+            <option>Brunch</option>
+            <option>Lunch</option>
+            <option selected>Dinner</option>
           </select>
           <div className = "labels">
             <label htmlFor="name">Number of Guests</label>
