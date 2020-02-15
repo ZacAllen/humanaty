@@ -33,6 +33,12 @@ class CreateEvent extends React.Component {
   }
     
   handleSubmit = event => {
+    var obj = {name: this.state.name, address: this.state.address, city: this.state.city,
+              state: this.state.state, zip: this.state.zip, date: this.state.date,
+              time: this.state.time, meal: this.state.meal, guest: this.state.guest,
+              description: this.state.description, allergy: this.state.allergy, 
+              additional: this.state.additional};
+    Axios.post('http://localhost:9000/create-event', obj);
   }
   
   _next = () => {
@@ -93,38 +99,31 @@ class CreateEvent extends React.Component {
       {/* 
         render the form steps and pass required props in
       */}
-        <Step1 
-          currentStep={this.state.currentStep} 
-          handleChange={this.handleChange}
-          name={this.state.name}
-          address={this.state.address}
-          city={this.state.city}
-          state={this.state.state}
-          zip={this.state.zip}
-          date={this.state.date}
-          time={this.state.time}
-          _next={this._next}
-          nextButton={this.nextButton}
-        />
-        <Step2 
-          currentStep={this.state.currentStep} 
-          handleChange={this.handleChange}
-          meal={this.state.meal}
-          guest={this.state.guest}
-          description={this.state.description}
-          _next={this._next}
-          _prev={this._prev}
-          nextButton={this.nextButton}
-          previousButton={this.previousButton}
-        />
-        <Step3 
-          currentStep={this.state.currentStep} 
-          handleChange={this.handleChange}
-          allergy={this.state.allergy}
-          additional={this.state.additional}
-          _prev={this._prev}
-          previousButton={this.previousButton}
-        />
+      <Step1 
+        currentStep={this.state.currentStep} 
+        handleChange={this.handleChange}
+        name={this.state.name}
+        address={this.state.address}
+        city={this.state.city}
+        state={this.state.state}
+        zip={this.state.zip}
+        date={this.state.date}
+        time={this.state.time}
+      />
+      <Step2 
+        currentStep={this.state.currentStep} 
+        handleChange={this.handleChange}
+        meal={this.state.meal}
+        guest={this.state.guest}
+        description={this.state.description}
+      />
+      <Step3 
+        currentStep={this.state.currentStep} 
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+        allergy={this.state.allergy}
+        additional={this.state.additional}
+      />
       {this.previousButton()}
       {this.nextButton()}
       </form>
@@ -260,7 +259,7 @@ class CreateEvent extends React.Component {
           <div className = "labels">
             <label htmlFor="name">Meal Type</label>
           </div>
-          <select className = "meals" value={props.meal} onChange={props.handleChange}>
+          <select className = "meals" onChange={props.handleChange}>
             <option value="breakfast">Breakfast</option>
             <option value="brunch">Brunch</option>
             <option value="lunch">Lunch</option>
@@ -321,7 +320,7 @@ class CreateEvent extends React.Component {
               name="allergy"
               className="allergy-input"
               value={props.allergy}
-              onChange={props.onChange}>
+              onChange={props.handleChange}>
             </input>
           </div>
           <div className="labels">
@@ -333,9 +332,14 @@ class CreateEvent extends React.Component {
               name="additional"
               className="additional-input"
               value={props.additional}
-              onChange={props.onChange}>
+              onChange={props.handleChange}>
             </input>
           </div>
+          <button
+            className="submit"
+            type="button"
+            onClick={props.onSubmit}>Submit
+          </button>
         </div>
       </div>
     );

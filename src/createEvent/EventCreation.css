@@ -13,7 +13,6 @@
     counter-reset: step;
     height: 30px;
     background-color: white;
-
 }
 
 .progress li {
@@ -23,8 +22,8 @@
     position: relative;
     text-align: center;
     z-index: 4;
-
 }
+
 .progress li:before {
     content: ' ';
     counter-increment: step;
@@ -37,10 +36,8 @@
     text-align: center;
     border: 1px solid #ddd;
     z-index: 3;
-
- 
-
 }
+
 .progress li:after {
     content: '';
     position: absolute;
@@ -75,7 +72,6 @@
     font-size: smaller;
     text-align: center;
     margin-top: 1em;
-
 }
 
 
@@ -90,14 +86,11 @@
     border: 1px solid whitesmoke;
     border-radius: 25px;
     box-shadow:  3px 2px 5px 3px rgb(238, 237, 237);
-
-
 }
 
 .input-group {
     padding-left: 2em;
     margin-right: 2em;
-   
  } 
 
 .next {
@@ -139,4 +132,8 @@
 
 .additional-input {
     width: 96%;
+}
+
+.submit {
+    margin-top: 20px;
 }
