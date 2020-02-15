@@ -51,12 +51,13 @@ class CreateEventStep3 extends Component {
                                 name="name"
                                 className="additional-input"></input>
                         </div>
-                        <button
+                        <a
                             type="button"
                             className="next"
+                            href="/"
                             onClick= {() => makeEvent()}
                             >Create
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
