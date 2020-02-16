@@ -43,9 +43,8 @@ class App extends Component {
                     <Route path="/create-event" component={CreateEvent} />
                     <Route component={Page404} />
                 {/* </Switch> */}
-     
-        </div>  
-                </Router>       
+                </div>  
+            </Router>       
       );
   }
 }
