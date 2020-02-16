@@ -57,7 +57,7 @@ class NavBar extends Component {
                   <a class="nav-link js-scroll-trigger">About</a>
                 </li>
                 <li class="nav-item" id = "create">
-                  <a class="nav-link js-scroll-trigger">Create</a>
+                  <a class="nav-link js-scroll-trigger" id = "createEvent" href="/create-event" >Create</a>
                 </li>
                 <li class="nav-item" id = "account">
                  <Account isLoggedOut = {this.loggedOutHandler}/>
