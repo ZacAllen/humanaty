@@ -3,6 +3,7 @@ import './App.css';
 import Home from './home/Home.js';
 import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SearchPage from "./searchPage/SearchPage";
+import SignUp from "./signUp/SignUp";
 
 class App extends Component {
   constructor(props) {
@@ -33,17 +34,22 @@ class App extends Component {
      );
 
       return (
-        <div className="App">
-            <Router>
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/search" component={SearchPage} />
-                    <Route component={Page404} />
-                </Switch>
-            </Router>    
-        </div>      
+
+        <Router>
+            <div className="App">
+                <p className="App-intro">{this.state.apiResponse}</p>
+                <Route exact path="/" component={Home} />
+                <Route path="/search" component={SearchPage} />
+                <Route path="/test" component={Test} />
+                <Route path="/signup" component={SignUp}/>
+                <Route path="*" component={Page404} />
+            </div>
+        </Router>
+
       );
   }
 }
+
+
 
 export default App;

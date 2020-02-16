@@ -6,6 +6,7 @@ import NavBar from '../navbar/NavBar.js';
 import Header from '../header/Header.js';
 // import Footer from '../footer/Footer.js';
 
+
 class Home extends Component {
   
   constructor(props) {
@@ -39,9 +40,13 @@ class Home extends Component {
               </div>
             </div>
         </div>
+
         {/* <Footer/>       */}
 
+
+
       </div>
+      
     );
   }
 }
