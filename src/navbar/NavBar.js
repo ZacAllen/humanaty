@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import './NavBar.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import Login from '../login/Login.js';
 import Account from '../components/account/Account.js';
+import SignUp from '../signUp/SignUp.js';
 
 class NavBar extends Component {
   constructor(props) {
@@ -36,6 +36,19 @@ class NavBar extends Component {
         navbarComponent.setState({loggedIn: false})
       }
     })
+  }
+  componentDidUpdate() {
+    let navbarComponent  = this; //this is so we can reference the component inside the callback to the api
+    if (!this.state.loggedIn) { //if not logged in; this is to prevent infinite component update loop
+      axios.get('http://localhost:9000/isUserLoggedIn').then(function(response) {
+        if (response.data) {
+          navbarComponent.setState({loggedIn: true})
+        } else {
+          // navbarComponent.setState({loggedIn: false})
+        }
+      })
+    }
+
   }
 
   render() {

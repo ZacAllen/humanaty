@@ -25,6 +25,7 @@ function Login(props) {
         sending it as part of an object with all the other requisite parts to send to the db */
         var obj = {token: id_token, name: profile.getName(), email: profile.getEmail(), DOB: "---"};
         axios.post('http://localhost:9000/loginGoogle', obj);
+        props.isLoggedIn();
         setShow(false);
     }
     const responseGoogleFail = (response) => {
