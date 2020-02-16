@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './EventCreation.css';
 import NavBar from '../navbar/NavBar.js';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Axios from 'axios';
+import axios from 'axios';
 
 class CreateEvent extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class CreateEvent extends React.Component {
     this.state = {
       currentStep: 1,
       name:  '',
-      address: '',
+      address: '', 
       city: '',
       state: '',
       zip: '',
@@ -32,15 +32,21 @@ class CreateEvent extends React.Component {
     })    
   }
     
+  // Posts the different responses to the backend 
   handleSubmit = event => {
     var obj = {name: this.state.name, address: this.state.address, city: this.state.city,
               state: this.state.state, zip: this.state.zip, date: this.state.date,
               time: this.state.time, meal: this.state.meal, guest: this.state.guest,
               description: this.state.description, allergy: this.state.allergy, 
               additional: this.state.additional};
-    Axios.post('http://localhost:9000/create-event', obj);
+    axios.post('http://localhost:9000/create-event', obj).then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
+
+ 
   }
-  
+   
   _next = () => {
     let currentStep = this.state.currentStep
     currentStep = currentStep >= 2 ? 3: currentStep + 1
@@ -197,7 +203,7 @@ class CreateEvent extends React.Component {
               onChange={props.handleChange}
               placeholder=" ">
             </input>
-          </div>
+          </div> 
           <div className="labels">
             <label htmlFor="name">Postal Code</label>
           </div>
@@ -259,11 +265,11 @@ class CreateEvent extends React.Component {
           <div className = "labels">
             <label htmlFor="name">Meal Type</label>
           </div>
-          <select className = "meals" onChange={props.handleChange}>
+          <select className = "meals" defaultValue={'default'} onChange={props.handleChange}>
             <option>Breakfast</option>
             <option>Brunch</option>
             <option>Lunch</option>
-            <option selected>Dinner</option>
+            <option value='default'>Dinner</option>
           </select>
           <div className = "labels">
             <label htmlFor="name">Number of Guests</label>
@@ -337,7 +343,7 @@ class CreateEvent extends React.Component {
           </div>
           <button
             className="submit"
-            type="button"
+            type="submit"
             onClick={props.onSubmit}>Submit
           </button>
         </div>
