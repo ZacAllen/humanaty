@@ -47,7 +47,6 @@ class App extends Component {
                 <Route path="*" component={Page404} />
             </div>
         </Router>
-
       );
   }
 }

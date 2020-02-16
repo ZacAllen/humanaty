@@ -74,6 +74,9 @@
     margin-top: 1em;
 }
 
+.inner-container {
+    margin-top: 50px;
+}
 
 .box {
     width : 32em;
