@@ -21,12 +21,34 @@ class CreateEvent extends React.Component {
       guest: '',
       description: '',
       allergy: '',
-      additional: ''
-    }
+      additional: '',     
+      errors: {
+        name: '',
+        address: '',
+      }
+    };
   }
   
   handleChange = event => {
-    const {name, value} = event.target
+    const {name, value} = event.target;
+    let errors = this.state.errors;
+    switch (name) {
+      case 'name': 
+        errors.name = 
+          value.length < 5
+            ? 'Full Name must be 5 characters long!'
+            : '';
+        break;
+      case 'address': 
+        errors.address = value.toString().trim().length < 8;
+        break;
+      case 'city': 
+  
+        break;
+      default:
+        break;
+    }  
+
     this.setState({
       [name]: value
     })    

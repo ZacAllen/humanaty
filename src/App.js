@@ -4,7 +4,8 @@ import Home from './home/Home.js';
 import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CreateEvent from "./createEvent/CreateEvent.js";
 import SearchPage from "./searchPage/SearchPage.js";
-// import { createEvent } from "@testing-library/react";
+import SearchPage from "./searchPage/SearchPage";
+import SignUp from "./signUp/SignUp";
 
 class App extends Component {
   constructor(props) {
@@ -33,21 +34,22 @@ class App extends Component {
      );
 
       return (
-        
-            <Router>
-                <div className="App">
-                {/* <Switch> */}
+
+        <Router>
+            <div className="App">
                 <p className="App-intro">{this.state.apiResponse}</p>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/search" component={SearchPage} />
-                    <Route path="/create-event" component={CreateEvent} />
-                    <Route component={Page404} />
-                {/* </Switch> */}
-     
-        </div>  
-                </Router>       
+                <Route exact path="/" component={Home} />
+                <Route path="/search" component={SearchPage} />
+                <Route path="/test" component={Test} />
+                <Route path="/signup" component={SignUp}/>
+                <Route path="*" component={Page404} />
+            </div>
+        </Router>
+
       );
   }
 }
+
+
 
 export default App;
