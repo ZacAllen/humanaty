@@ -1,0 +1,19 @@
+#header {
+    /* Make an svg later - will load faster!*/
+    background-image: url('fine dining.jpg');
+    background-size: 100% 130%;
+    background-repeat: no-repeat; 
+    height: 350px;
+}
+#headerContainer {
+    padding-top: 50px;
+    color:  rgb(106, 224, 165);
+}
+#headerTitle {
+    font-family: verdana-header, sans-serif;
+    /* font-size: 30px; */
+}
+#subheader {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}

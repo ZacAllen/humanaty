@@ -3,7 +3,7 @@ import './signup.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
-const SignUp = () => {
+function SignUp(props) {
     return ( 
         <div>
             <div class = "signupContainer">
@@ -46,20 +46,20 @@ const SignUp = () => {
             </div>
         </div>
     );
+    function signUp() {
+        var email = document.getElementById("emailForm").value;
+        var password = document.getElementById("passwordForm").value;
+        var name = document.getElementById("firstNameForm").value + " " + document.getElementById("lastNameForm").value;
+        var DOB = document.getElementById("dateForm").value;
+      
+        var obj = {email: email, password: password, name: name, DOB: DOB};
+        axios.post('http://localhost:9000/signUp', obj);
+      
+        console.log(obj);
+        window.location.href='../';
+    }
+    
 };
 
-function signUp() {
-    var email = document.getElementById("emailForm").value;
-    var password = document.getElementById("passwordForm").value;
-    var name = document.getElementById("firstNameForm").value + " " + document.getElementById("lastNameForm").value;
-    var DOB = document.getElementById("dateForm").value;
-  
-    var obj = {email: email, password: password, name: name, DOB: DOB};
-    axios.post('http://localhost:9000/signUp', obj);
-  
-    console.log(obj);
-    
-    window.location.href='../';
-}
 
 export default SignUp;
