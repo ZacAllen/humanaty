@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import './App.css';
 import Home from './home/Home.js';
 import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import CreateEvent from "./createEvent/CreateEvent.js";
-import SearchPage from "./searchPage/SearchPage.js";
+import CreateEvent from "./createEvent/CreateEvent";
 import SearchPage from "./searchPage/SearchPage";
 import SignUp from "./signUp/SignUp";
 
@@ -27,6 +26,8 @@ class App extends Component {
   
 
   render() {
+
+    //404 error page
      const Page404 = ({ location }) => (
         <div>
            <h2>No match found for <code>{location.pathname}</code></h2>
@@ -40,7 +41,8 @@ class App extends Component {
                 <p className="App-intro">{this.state.apiResponse}</p>
                 <Route exact path="/" component={Home} />
                 <Route path="/search" component={SearchPage} />
-                <Route path="/test" component={Test} />
+                <Route path="/create-event" component={CreateEvent} />
+                {/* <Route path="/test" component={Test} /> */}
                 <Route path="/signup" component={SignUp}/>
                 <Route path="*" component={Page404} />
             </div>
