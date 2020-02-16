@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import './App.css';
 import Home from './home/Home.js';
-
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import Test from "./testComponent/Test";
+import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SearchPage from "./searchPage/SearchPage";
 import SignUp from "./signUp/SignUp";
 
@@ -36,6 +34,7 @@ class App extends Component {
      );
 
       return (
+
         <Router>
             <div className="App">
                 <p className="App-intro">{this.state.apiResponse}</p>
@@ -46,6 +45,7 @@ class App extends Component {
                 <Route path="*" component={Page404} />
             </div>
         </Router>
+
       );
   }
 }
