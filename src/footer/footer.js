@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import './Footer.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-class Footer extends Component {
+class Footer extends React.Component {
 
 
   constructor(props) {
@@ -16,7 +16,7 @@ class Footer extends Component {
   render() {
     return (
       <div>
-      <footer class="py-5 bg-dark"> 
+      <footer class="py-5 bg-dark">
           <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Humanaty 2020</p>
           </div>
