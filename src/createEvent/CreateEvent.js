@@ -344,6 +344,7 @@ class CreateEvent extends React.Component {
           <button
             className="submit"
             type="submit"
+            formAction="/"
             onClick={props.onSubmit}>Submit
           </button>
         </div>
