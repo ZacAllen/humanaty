@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './Home.css';
 import Script from 'react-load-script';
-import SearchBar from '../searchBar/SearchBar.js';
+import SearchBar from './searchBar/SearchBar.js';
 import NavBar from '../navbar/NavBar.js';
-import Header from '../header/Header.js';
+import Header from './header/Header.js';
 // import Footer from '../footer/Footer.js';
 
 
@@ -32,8 +32,8 @@ class Home extends Component {
                       onLoad={this.handleScriptLoad}/> 
                     <SearchBar
                       google={this.props.google}
-                      center={{lat: 18.5204, lng: 73.8567}}
-                      zoom={15}
+                      center={{lat: 33.7490, lng: -84.3880}}
+                      zoom={25}
                     />
                   </div>
                 </div>
