@@ -5,6 +5,7 @@ import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CreateEvent from "./createEvent/CreateEvent";
 import SearchPage from "./searchPage/SearchPage";
 import SignUp from "./signUp/SignUp";
+import NavBar from './navbar/NavBar.js';
 
 class App extends Component {
   constructor(props) {
@@ -38,11 +39,11 @@ class App extends Component {
 
         <Router>
             <div className="App">
-                <p className="App-intro">{this.state.apiResponse}</p>
+            <NavBar/>
+
                 <Route exact path="/" component={Home} />
                 <Route path="/search" component={SearchPage} />
                 <Route path="/create-event" component={CreateEvent} />
-                {/* <Route path="/test" component={Test} /> */}
                 <Route path="/signup" component={SignUp}/>
                 <Route path="*" component={Page404} />
             </div>
