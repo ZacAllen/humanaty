@@ -25,7 +25,7 @@ function Account(props) {
             //get user data object from backend
             setName(response.data.name)
             setEmail(response.data.email)
-            if (response.data.isHost) {
+            if (response.data.hostVerified) {
                 setMode("Host")
                 setChecked(true)
             } else { //Setting checked status of toggle switch so its remembered on reload
@@ -38,7 +38,7 @@ function Account(props) {
 
     const handleModeChange = () => {
         axios.get('http://localhost:9000/accountInfo').then(function(response) {
-            if (response.data.isHost) { //if host, change to guest
+            if (response.data.hostVerified) { //if host, change to guest
                 axios.get('http://localhost:9000/changeStatus').then(function(response) {
                     console.log(response.data);
                 })
