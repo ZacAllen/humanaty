@@ -23,15 +23,16 @@ class SearchPage extends Component {
       eventList: this.props.location.state.eventList,
       mapPosition: this.props.location.state.mapPosition,
       markerPosition: this.props.location.state.markerPosition,
-      showingInfoWindow: false, //Hides or the shows the infoWindow
+      zoom: 12, //Hides or the shows the infoWindow
       activeMarker: {}, //Shows the active marker upon click
-      selectedPlace: {} //Shows the infoWindow to the selected place upon a marker
+      selectedEvent: null //Shows the infoWindow to the selected place upon a marker
     }
 
     this.autocompleteInput = React.createRef();
     this.autocomplete = null;
     this.handlePlaceChanged = this.handlePlaceChanged.bind(this);
     this.getEventsByCity = this.getEventsByCity.bind(this);
+    this.handleMarkerClicked = this.handleMarkerClicked.bind(this);
   }
 
   componentDidMount() {
@@ -65,15 +66,15 @@ class SearchPage extends Component {
     let newEventList = [];
 
     eventList.forEach(event => {
-      Geocode.fromAddress(event.address + ', ' + event.city + ', ' + event.state)
+      let location = event.location;
+      Geocode.fromAddress(location.address + ', ' + location.city + ', ' + location.state)
       .then(res => {
-          let location = res.results[0].geometry.location;
-
-          event.location = location;
+          let geopoint = res.results[0].geometry.location;
+          event.location.geopoint = geopoint;
           newEventList.push(event);
-          this.setState({ mapPosition : location,
-                          markerPosition : location});
-          return location;
+          this.setState({ mapPosition : geopoint,
+                          markerPosition : geopoint});
+          return geopoint;
         },
         error => { console.error("Error occurs when getting lat long from address list: ",error);
         }
@@ -83,13 +84,12 @@ class SearchPage extends Component {
   }
 
   getEventsByCity(city) {    
-    let req = {city: city}; 
-    axios.post('http://localhost:9000/get-events-by-city', req).then(res => {
-              
-      this.setState({eventList: res.data});
-    }).then(res => {
-      this.setEventListLatLong();
-    })
+    axios.get('http://localhost:9000/events', { params: {city: city} })
+      .then(res => {    
+        this.setState({eventList: res.data});
+      }).then(res => {
+        this.setEventListLatLong();
+      })
   }
 
   /**
@@ -103,7 +103,7 @@ class SearchPage extends Component {
 
     this.getEventsByCity(city);
     this.setMarker(city, state);
-
+    this.setState({zoom: 12});
   }
 
   getCity = ( addressArray ) => {
@@ -138,12 +138,23 @@ class SearchPage extends Component {
   };
 
   getEventListForRendering() {
-    return this.state.eventList.map((item, idx) => 
+    var events = this.state.eventList.map((item, idx) => 
       <ul className="event-list-item">
-        <h5 key={idx}>{item.name}</h5>
-        <p>{item.description}</p>
+        <h5 key={idx}>{item.title}</h5>
+        <div className="event-list-description">{item.description}</div>
+        <a href="https://www.w3schools.com">** Redirect me to EventDetailPage **</a>
       </ul>
       );
+    return events;
+  }
+
+  handleMarkerClicked = (event) => {
+    console.log("Event ID:", event);
+    this.setState({  
+      mapPosition:  event.location.geopoint,
+      zoom: 16,
+      selectedEvent: event
+    });
   }
   
   render() {
@@ -166,7 +177,9 @@ class SearchPage extends Component {
             mapPosition= {this.state.mapPosition}
             markerPosition= {this.state.markerPosition}
             height='500px'
-            zoom={12}
+            zoom={this.state.zoom}
+            selectedEvent={this.state.selectedEvent}
+            handleMarkerClicked={this.handleMarkerClicked}
           />
         </div>
          

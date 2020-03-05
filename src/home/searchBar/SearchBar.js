@@ -65,19 +65,18 @@ class SearchBar extends React.Component{
     const city = this.getCity( addressArray );
     const state = this.getState( addressArray );
 
-    let req = {city: city};   
-    axios.post('http://localhost:9000/get-events-by-city', req).then(res => {
-
-      //navigate & send Events to SearchPage 
-      this.props.history.push({
-        pathname:"/search",
-        state: { 
-          mapPosition: this.state.mapPosition,
-          markerPosition: this.state.markerPosition,
-          eventList : res.data,
-          city : city,
-          state: state}
-      });  
+    axios.get('http://localhost:9000/events', { params: {city: city} })
+      .then(res => {
+        //navigate & send Events to SearchPage 
+        this.props.history.push({
+          pathname:"/search",
+          state: { 
+            mapPosition: this.state.mapPosition,
+            markerPosition: this.state.markerPosition,
+            eventList : res.data,
+            city : city,
+            state: state}
+        });  
 
     })
   }
