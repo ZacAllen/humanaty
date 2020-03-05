@@ -66,7 +66,8 @@ class RegisterEvent extends Component {
                     </div>
                     <button 
                         type="submit"  
-                        className="reservebutton">Go To Payment</button>
+                        className="reservebutton"
+                        href="/payment">Go To Payment</button>
                 </div>
                 <div className="event">
                     <label htmlFor="name">EventTitleHere</label>
