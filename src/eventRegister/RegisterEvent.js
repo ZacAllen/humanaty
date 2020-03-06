@@ -4,8 +4,6 @@ import './RegisterEvent.css';
 import NavBar from '../navbar/NavBar.js';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-
-
 class RegisterEvent extends Component {
 
     constructor(props) {
@@ -17,17 +15,10 @@ class RegisterEvent extends Component {
         };
     }
 
-
-    nextPage(e) {
-
-    }
-
     render() {
         return (
             <div id="registerevent">
                 <NavBar/>
-
-
             <div className="inner-container">
                 <div className="box">
                     <div className="modprice">
@@ -66,8 +57,7 @@ class RegisterEvent extends Component {
                     </div>
                     <button 
                         type="submit"  
-                        className="reservebutton"
-                        href="/payment">Go To Payment</button>
+                        className="reservebutton">Go To Payment</button>
                 </div>
                 <div className="event">
                     <label htmlFor="name">EventTitleHere</label>
@@ -139,14 +129,10 @@ class RegisterEvent extends Component {
                 <div className="detaildescriptions">
                     <p>*Note the exact location of this event will not be available to guests until 48 hours before the meal</p>
                 </div>
-                
-                
             </div>
-            
-            
             </div>
         );
     }
 }
 
-   export default RegisterEvent;
+export default RegisterEvent;
