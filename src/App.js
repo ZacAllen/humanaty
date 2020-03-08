@@ -5,6 +5,7 @@ import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CreateEvent from "./createEvent/CreateEvent";
 import SearchPage from "./searchPage/SearchPage";
 import SignUp from "./signUp/SignUp";
+import ProfilePage from "./profilePage/ProfilePage";
 import NavBar from './navbar/NavBar.js';
 
 class App extends Component {
@@ -40,11 +41,11 @@ class App extends Component {
         <Router>
             <div className="App">
             <NavBar/>
-
                 <Route exact path="/" component={Home} />
                 <Route path="/search" component={SearchPage} />
                 <Route path="/create-event" component={CreateEvent} />
                 <Route path="/signup" component={SignUp}/>
+                <Route path="/profile-page" component={ProfilePage}/>
                 <Route path="*" component={Page404} />
             </div>
         </Router>

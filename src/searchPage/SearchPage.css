@@ -57,15 +57,23 @@
 
 .event-list-item.h5 {
     color: #434544;
-    height: auto;
+
+}
+
+.event-list-item {
+    margin: 0; 
+    height: 150px;
     padding: 20px;
     list-style-type: none;
     text-align: left;
     border-bottom: 1px solid #c7c7c7;
 }
 
-.event-list-item {
-    margin: 0; 
+.event-list-description {
+    overflow: hidden;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 
 .event-list-item:hover {

@@ -46,15 +46,12 @@ class Map extends React.Component{
   onInfoWindowClose = ( event ) => {};
 
   handleChange = param => e => {
-    console.log("CLICKKKKKKK");
-    console.log(param);
-    // param is the argument you passed to the function
-    // e is the event object that returned
+    this.props.handleMarkerClicked(param);
+    console.log("aaaaaaaa", param);
   };
 
 render() {
   let eventList = this.props.eventList;
-  console.log("shouldComponentUpdate STATE FOR MAPPP", this.props.eventList);
   var AsyncMap = withScriptjs(
     withGoogleMap(
     props => (
@@ -66,11 +63,11 @@ render() {
         { //curly brace here lets you write javscript in JSX
           eventList.map((item, id) =>
               <Marker
-                onClick={() => console.log(id)}                
-                key={id}
+                onClick={this.handleChange(item)}                
+                key={item.id}
                 title={item.name}
                 name={item.address}
-                position={{ lat: item.location.lat, lng: item.location.lng }}
+                position={{ lat: item.location.geopoint.lat, lng: item.location.geopoint.lng }}
               />
           )
         }
@@ -78,7 +75,7 @@ render() {
         {/* InfoWindow on top of marker */}
         {/* <InfoWindow
               onClose={this.onInfoWindowClose}
-              position={{ lat: ( this.state.markerPosition.lat + 0.0018 ), lng: this.state.markerPosition.lng }}
+              position={{ lat: ( infoWindowLocation.lat + 0.0018 ), lng: infoWindowLocation.lng }}
               >
               <div>
                 <span style={{ padding: 0, margin: 0 }}>{ this.state.address }</span>
