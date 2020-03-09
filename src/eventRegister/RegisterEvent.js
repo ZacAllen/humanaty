@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './RegisterEvent.css';
+import Checkout from '../payment/Checkout.js';
 import NavBar from '../navbar/NavBar.js';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -55,9 +56,7 @@ class RegisterEvent extends Component {
                             max="40"
                             className="number-of-guests"></input>  */}
                     </div>
-                    <button 
-                        type="submit"  
-                        className="reservebutton">Go To Payment</button>
+                    <Checkout />
                 </div>
                 <div className="event">
                     <label htmlFor="name">EventTitleHere</label>
