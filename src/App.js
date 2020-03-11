@@ -4,13 +4,9 @@ import Home from './home/Home.js';
 import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CreateEvent from "./createEvent/CreateEvent";
 import SearchPage from "./searchPage/SearchPage";
-<<<<<<< HEAD
-import RegisterEvent from "./eventRegister/RegisterEvent";
-=======
 import SignUp from "./signUp/SignUp";
 import ProfilePage from "./profilePage/ProfilePage";
 import NavBar from './navbar/NavBar.js';
->>>>>>> c518bbfcf3ffa98c8800132fc420afad5368d1b3
 
 class App extends Component {
   constructor(props) {
