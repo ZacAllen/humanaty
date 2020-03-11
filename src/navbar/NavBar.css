@@ -1,3 +1,8 @@
 .navbar {
     height: 60px;
 }
+#humanatyTitle {
+    font-family: verdana-header, sans-serif;
+    font-weight: 1000;
+    color: #6EB892;
+}

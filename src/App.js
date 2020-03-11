@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import './App.css';
 import Home from './home/Home.js';
-
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import Test from "./testComponent/Test";
+import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import CreateEvent from "./createEvent/CreateEvent";
 import SearchPage from "./searchPage/SearchPage";
+<<<<<<< HEAD
 import RegisterEvent from "./eventRegister/RegisterEvent";
+=======
+import SignUp from "./signUp/SignUp";
+import ProfilePage from "./profilePage/ProfilePage";
+import NavBar from './navbar/NavBar.js';
+>>>>>>> c518bbfcf3ffa98c8800132fc420afad5368d1b3
 
 class App extends Component {
   constructor(props) {
@@ -29,19 +34,22 @@ class App extends Component {
   render() {
 
     //404 error page
-    const Page404 = ({ location }) => (
+     const Page404 = ({ location }) => (
         <div>
            <h2>No match found for <code>{location.pathname}</code></h2>
         </div>
      );
 
       return (
+
         <Router>
             <div className="App">
-                <p className="App-intro">{this.state.apiResponse}</p>
+            <NavBar/>
                 <Route exact path="/" component={Home} />
                 <Route path="/search" component={SearchPage} />
-                <Route path="/test" component={Test} />
+                <Route path="/create-event" component={CreateEvent} />
+                <Route path="/signup" component={SignUp}/>
+                <Route path="/profile-page" component={ProfilePage}/>
                 <Route path="*" component={Page404} />
                 <Route path="/register" component={RegisterEvent} />
             </div>
@@ -49,5 +57,7 @@ class App extends Component {
       );
   }
 }
+
+
 
 export default App;

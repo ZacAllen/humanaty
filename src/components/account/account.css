@@ -1,0 +1,12 @@
+#profilePic {
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+#toggleMode {
+    text-align:right;
+}
+#basicInfo {
+    text-align:left;
+}   
