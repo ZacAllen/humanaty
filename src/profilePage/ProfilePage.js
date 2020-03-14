@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './ProfilePage.css';
+import EventThumbnails from './eventThumbnails/EventThumbnails';
+import axios from 'axios';
+import BeautyStars from 'beauty-stars';
 
 class ProfilePage extends Component {
   
@@ -8,39 +11,122 @@ class ProfilePage extends Component {
 
     // Declare State
     this.state = {
-        user : {}
+        user : {},
+        eventsHosting : [],
+        eventsHosted : [],
+        eventsAttending: [],
+        eventsAttended: [],
+        selectedEvent: {}
     };
   }
 
   componentDidMount() {
-      //TODO pull user objct from backend
-      var user = {
-          name : "Bang",
-          aboutMe : "I am a cat",
-      }
+    this.getUser(this.props.location.state.user.id);
+  }
 
-      this.setState({ user: user});
-      console.log("user", this.state);
+  getUser = async (id) => {
+    var self = this;
+    const res = await axios.get('http://localhost:9000/user/' + id);
+    if (res) {
+
+      const user = JSON.parse(JSON.stringify(res.data))
+      self.setState({user: user});
+    }
+
+    console.log("HERRRR", this.state);
+
+
+    Promise.all(this.state.user.eventsAttending.map(event => this.getAttendingEvents(event)));
+    Promise.all(this.state.user.eventsAttended.map(event => this.getAttendedEvents(event)));
+    Promise.all(this.state.user.eventsHosting.map(event => this.getHostingEvents(event)));
+    Promise.all(this.state.user.eventsHosted.map(event => this.getHostedEvents(event)));
+
+  }
+
+  getAttendingEvents = async (e) => {
+    let eventsAttending = this.state.eventsAttending;
+    let res = await axios.get(`http://localhost:9000/event/${e}/`);
+    eventsAttending.push(res.data);
+    this.setState({ eventsAttending });
+    return res;
+  }
+
+  getAttendedEvents = async (e) => {
+    let eventsAttended = this.state.eventsAttended;
+    let res = await axios.get(`http://localhost:9000/event/${e}/`);
+    eventsAttended.push(res.data);
+    this.setState({ eventsAttended });
+    return res;
+  }
+
+  getHostingEvents = async (e) => {
+    let eventsHosting = this.state.eventsHosting;
+    let res = await axios.get(`http://localhost:9000/event/${e}/`);
+    eventsHosting.push(res.data);
+    this.setState({ eventsHosting });
+    return res;
+  }
+
+  getHostedEvents = async (e) => {
+    let eventsHosted = this.state.eventsHosted;
+    let res = await axios.get(`http://localhost:9000/event/${e}/`);
+    eventsHosted.push(res.data);
+    this.setState({ eventsHosted });
+    return res;
+  }
+
+  viewEventDetail = async (e) => {
+    console.log(e);
+    alert("//TODO: redirect me to event detail page, my eventID is: ", e);
   }
 
   render() {
+    let user = this.state.user;
+    console.log("USER", user);
     return (
       <div id="profile-page-container">
 
-        <div class="section" id="avatar">
-            <label>Host Name </label>
-            <div>{this.state.user.name}</div>
+        <div class="section" id="profile-header">
+            <img class="profile-img" src={user.photoURL}/>
+            
+            <div id="profile-name">
+              <div>{user.displayName}</div>
+              <div style={user.hostVerified ? {} : { display: 'none' }} id="rating"> <BeautyStars value={user.hostRating} size="12" activeColor="#ebb134"/></div>
+              <div style={!user.hostVerified ? {} : { display: 'none' }} id="rating"> <BeautyStars value={user.guestRating} size="16"activeColor="#ebb134"/></div>
+            </div>
+            
         </div>
+
+        <hr></hr>
 
         <div class="section" id="about-me">
             <label>About Me </label>
-            <div>{this.state.user.aboutMe}</div>
+            <div>{user.aboutMe}</div>
         </div>
 
-        <div class="section" id="past-experience">
-            <label>Past Experiences </label>
-            <div>Chau</div>
+        <hr></hr>
+
+        <div class="section" style={user.hostVerified ? {} : { display: 'none' }} id="eventsHosted">  
+            <label>{user.displayName}'s Hosted Events </label>
+            <EventThumbnails eventList={this.state.eventsHosted} viewEventDetail={this.viewEventDetail}/>
         </div>
+
+        <div class="section" style={user.hostVerified ? {} : { display: 'none' }} id="eventsHosting">  
+            <label>{user.displayName}'s Upcoming Events </label>
+            <EventThumbnails eventList={this.state.eventsHosting} viewEventDetail={this.viewEventDetail}/>
+        </div>
+
+        <div class="section" style={!user.hostVerified ? {} : { display: 'none' }} id="eventsAttending">  
+            <label>{user.displayName}'s Upcoming Experiences </label>
+            <EventThumbnails eventList={this.state.eventsAttending} viewEventDetail={this.viewEventDetail}/>
+        </div>
+
+        <div class="section" style={!user.hostVerified ? {} : { display: 'none' }} id="eventsAttended">  
+            <label>{user.displayName}'s Past Experiences </label>
+            <EventThumbnails eventList={this.state.eventsAttended} viewEventDetail={this.viewEventDetail}/>
+        </div>
+
+        <hr></hr>
 
         <div class="section"id="reviews">
             <label>Reviews </label>

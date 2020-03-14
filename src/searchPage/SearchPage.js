@@ -139,17 +139,22 @@ class SearchPage extends Component {
 
   getEventListForRendering() {
     var events = this.state.eventList.map((item, idx) => 
-      <ul className="event-list-item">
+      <div onClick={this.viewEventDetailPage} className="event-list-item">
         <h5 key={idx}>{item.title}</h5>
         <div className="event-list-description">{item.description}</div>
-        <a href="https://www.w3schools.com">** Redirect me to EventDetailPage **</a>
-      </ul>
+        <a>** //TODO: Redirect me to EventDetailPage **</a>
+      </div>
       );
     return events;
   }
 
+  viewEventDetailPage() {
+    alert("Go to event detail page, bring the event ID with you");
+  }
+
   handleMarkerClicked = (event) => {
-    console.log("Event ID:", event);
+    alert("//TODO: redirect me to event detail page");
+    console.log("//TODOOOOOOO",event.id);
     this.setState({  
       mapPosition:  event.location.geopoint,
       zoom: 16,

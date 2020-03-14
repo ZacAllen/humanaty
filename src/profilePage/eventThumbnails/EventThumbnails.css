@@ -1,0 +1,36 @@
+.events-image-container {
+    margin: 20px 0px 20px 0px;
+}
+
+.event-img {
+    height: 155px;
+    width: auto;
+    border-radius: 5% 5% 0% 0%;
+    opacity: 90%;
+}
+
+.card-title {
+    margin-bottom: .10px;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 5px;
+}
+
+.image-container {
+    margin-right: 15px;
+    margin-left: 15px;
+    border-radius: 5%;
+    display: flex;
+    height: 200px;
+    font-size: 12px;
+}
+/* 
+.react-multi-carousel-item--active {
+    width: 299px !important;
+}
+
+.react-multi-carousel-item {
+    width: 299px !important;
+} */

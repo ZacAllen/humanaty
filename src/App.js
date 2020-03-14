@@ -7,6 +7,7 @@ import SearchPage from "./searchPage/SearchPage";
 import SignUp from "./signUp/SignUp";
 import ProfilePage from "./profilePage/ProfilePage";
 import NavBar from './navbar/NavBar.js';
+import Footer from './footer/Footer.js';
 
 class App extends Component {
   constructor(props) {
@@ -14,16 +15,7 @@ class App extends Component {
       this.state = { apiResponse: "" };
   }
 
-  callAPI() {
-      fetch("http://localhost:9000/testAPI")
-          .then(res => res.text())
-          .then(res => this.setState({ apiResponse: res }))
-          .then(console.log(this.state.apiResponse))
-          .catch(err => err);
-  }
-
   componentDidMount() {
-      this.callAPI();
   }
   
 
@@ -46,8 +38,9 @@ class App extends Component {
                 <Route path="/create-event" component={CreateEvent} />
                 <Route path="/signup" component={SignUp}/>
                 <Route path="/profile-page" component={ProfilePage}/>
-                <Route path="*" component={Page404} />
+                {/* <Route path="*" component={Page404} /> */}
             </div>
+            <Footer/>
         </Router>
       );
   }
