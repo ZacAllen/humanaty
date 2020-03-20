@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './ProfilePage.css';
 import EventThumbnails from './eventThumbnails/EventThumbnails';
+import Reviews from './reviews/Reviews';
 import axios from 'axios';
 import BeautyStars from 'beauty-stars';
 
@@ -16,6 +17,7 @@ class ProfilePage extends Component {
         eventsHosted : [],
         eventsAttending: [],
         eventsAttended: [],
+        reviews: [],
         selectedEvent: {}
     };
   }
@@ -28,19 +30,28 @@ class ProfilePage extends Component {
     var self = this;
     const res = await axios.get('http://localhost:9000/user/' + id);
     if (res) {
-
+      console.log("did mount: ", res.data);
       const user = JSON.parse(JSON.stringify(res.data))
       self.setState({user: user});
     }
-
-    console.log("HERRRR", this.state);
-
 
     Promise.all(this.state.user.eventsAttending.map(event => this.getAttendingEvents(event)));
     Promise.all(this.state.user.eventsAttended.map(event => this.getAttendedEvents(event)));
     Promise.all(this.state.user.eventsHosting.map(event => this.getHostingEvents(event)));
     Promise.all(this.state.user.eventsHosted.map(event => this.getHostedEvents(event)));
+    Promise.all(this.state.user.reviews.map(review => this.getReviews(review)));
+    // Promise.all(this.state.reviews.map(review => this.getReviewers(review)));
+  }
 
+  getReviews = async (review) => {
+    let reviews = this.state.reviews;
+    let res = await axios.get(`http://localhost:9000/review/${review}/`);
+    let reviewerId = res.data.reviewer;
+    let reviewer = await axios.get(`http://localhost:9000/user/${reviewerId}/`);
+    res.data.reviewer = reviewer.data;
+    reviews.push(res.data);
+    this.setState({ reviews });
+    return res;
   }
 
   getAttendingEvents = async (e) => {
@@ -80,9 +91,22 @@ class ProfilePage extends Component {
     alert("//TODO: redirect me to event detail page, my eventID is: ", e);
   }
 
+  viewProfilePage = async (e) => {
+    console.log("BANG:  ", e);
+    this.setState({ 
+      user : {},
+      eventsHosting : [],
+      eventsHosted : [],
+      eventsAttending: [],
+      eventsAttended: [],
+      reviews: [],
+      selectedEvent: {}});
+    this.getUser(e.id);
+  }
+
   render() {
     let user = this.state.user;
-    console.log("USER", user);
+    console.log("STATE RENDER REVIEWS", this.state.reviews);
     return (
       <div id="profile-page-container">
 
@@ -130,9 +154,7 @@ class ProfilePage extends Component {
 
         <div class="section"id="reviews">
             <label>Reviews </label>
-            <div id="reviews-item">
-                <div>Chau</div>
-            </div>
+            <Reviews reviews={this.state.reviews} viewProfilePage={this.viewProfilePage}></Reviews>
         </div>
        
       </div>

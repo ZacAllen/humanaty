@@ -1,0 +1,20 @@
+.reviewer-profile-img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.review-container {
+    margin-bottom: 20px;
+}
+
+.review-header {
+    margin-bottom: 10px;
+}
+
+.reviewer-name {
+    cursor: pointer;
+    color: green;
+}
