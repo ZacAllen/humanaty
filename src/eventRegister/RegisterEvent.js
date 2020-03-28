@@ -10,9 +10,11 @@ class RegisterEvent extends Component {
     constructor(props) {
         super(props);
 
-        // Declare State
         this.state = {
-            value: null
+            name: '',
+            description: '',
+            amount: 0,
+            quantity: 0
         };
     }
 
