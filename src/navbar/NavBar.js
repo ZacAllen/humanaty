@@ -64,13 +64,13 @@ class NavBar extends Component {
               <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger">Explore</a>
+                  <a class="nav-link js-scroll-trigger" href="/">Explore</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link js-scroll-trigger">About</a>
                 </li>
                 <li class="nav-item" id = "create">
-                  <a class="nav-link js-scroll-trigger" id = "createEvent" href="/create-event" >Create</a>
+                  <a class="nav-link js-scroll-trigger" id = "createEvent" href="/create-event">Create</a>
                 </li>
                 <li class="nav-item" id = "account">
                  <Account isLoggedOut = {this.loggedOutHandler}/>
