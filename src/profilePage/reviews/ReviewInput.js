@@ -31,7 +31,7 @@ class ReviewInput extends React.Component {
         const {showing} = this.state;
         const submitReview = () => {
             var day = new Date().getDate();
-            var month = new Date().getMonth();
+            var month = new Date().getMonth() + 1;
             var year = new Date().getFullYear();
             var date = month + '/' + day + '/' + year; 
             
