@@ -7,7 +7,7 @@ import SearchPage from "./searchPage/SearchPage";
 import SignUp from "./signUp/SignUp";
 import ProfilePage from "./profilePage/ProfilePage";
 import NavBar from './navbar/NavBar.js';
-import Footer from './footer/Footer.js';
+import Footer from './footer/footer.js';
 
 class App extends Component {
   constructor(props) {

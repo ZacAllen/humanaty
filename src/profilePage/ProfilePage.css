@@ -42,3 +42,16 @@ label {
 .section {
     margin: 20px 0px 0px 20px;
 }
+#reviewButton {
+    float: right;
+}
+/* .btn-primary :active {
+    background-color: burlywood !important;
+    color: burlywood;
+} */
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    color: white;
+    background-color: #85e9a7;
+    /* border-color: #285e8e; set the color you want here */
+}
