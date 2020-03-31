@@ -8,10 +8,49 @@ import axios from 'axios';
 
 class ReviewInput extends React.Component {
 
-    state = {showing: false, value: 0}
+    constructor(props) {
+        super(props);
+        this.state = {showing: false, value: 0, user : null}
+    }
+   
+    componentDidMount() {
+        this.getUser();
+    }
+
+    getUser = async () => {
+        var self = this;
+        const res = await axios.get('http://localhost:9000/current');
+        if (res) {
+          console.log("current user ", res.data);
+          const user = JSON.parse(JSON.stringify(res.data.id))
+          self.setState({user: user})
+        }
+      }
 
     render() {
         const {showing} = this.state;
+        const submitReview = () => {
+            var day = new Date().getDate();
+            var month = new Date().getMonth();
+            var year = new Date().getFullYear();
+            var date = month + '/' + day + '/' + year; 
+            
+            var rating = this.state.value;
+
+            //body = getelementbyid "reviewBody" value
+            
+            var profileuser = this.props.profileUser.id;
+            var currentuser = this.state.user;
+            
+             
+
+            // var obj = {};
+            // axios.post('http://localhost:9000/create-review', obj)
+            console.log(date);
+            console.log(rating);
+            console.log(profileuser); 
+            console.log(currentuser);
+        }
         return (
             <div class="review-input-container">
                 <div class = "review-input-button">
@@ -29,11 +68,14 @@ class ReviewInput extends React.Component {
                 
                         </BeautyStars>
                         <Form>
-                        <Form.Control type = "text"/>    
+                        <Form.Control type = "text" id = "reviewBody"/>    
                         </Form>
                         <Button variant = "secondary" onClick={() => this.setState({showing: !showing, value: 0})}>
                             Cancel
                         </Button>
+                        <Button 
+                        onClick = {() => submitReview()}
+                        >Submit</Button>
                     </div>
                     :null
                 }

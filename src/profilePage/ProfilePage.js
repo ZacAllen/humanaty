@@ -154,10 +154,10 @@ class ProfilePage extends Component {
         </div>
 
         <hr></hr>
-
+        <ReviewInput profileUser = {this.state.user}></ReviewInput>
         <div class="section"id="reviews">
             <label>Reviews </label>
-            <ReviewInput style={{display: 'inline'}}></ReviewInput>
+            
             
             <Reviews reviews={this.state.reviews} viewProfilePage={this.viewProfilePage}></Reviews>
 
