@@ -22,7 +22,7 @@ class ReviewInput extends React.Component {
         const res = await axios.get('http://localhost:9000/current');
         if (res) {
           console.log("current user ", res.data);
-          const user = JSON.parse(JSON.stringify(res.data.id))
+          const user = JSON.parse(JSON.stringify(res.data))
           self.setState({user: user})
         }
       }
@@ -37,19 +37,31 @@ class ReviewInput extends React.Component {
             
             var rating = this.state.value;
 
-            //body = getelementbyid "reviewBody" value
-            
-            var profileuser = this.props.profileUser.id;
-            var currentuser = this.state.user;
-            
-             
+            var body = document.getElementById("reviewBody").value;
 
-            // var obj = {};
+            var profileuser = this.props.profileUser.id;
+            var currentuser = this.state.user.id;
+
+            var reviewedAsHost = this.state.user.hostVerified;
+            
             // axios.post('http://localhost:9000/create-review', obj)
             console.log(date);
             console.log(rating);
+            console.log(body);
             console.log(profileuser); 
             console.log(currentuser);
+            console.log(reviewedAsHost);
+
+            var obj = {date: date, rating: rating, reviewBody: body, reviewedAsHost: reviewedAsHost, 
+                reviewee: profileuser, reviewer: currentuser};
+
+            axios.post('http://localhost:9000/review/', obj).then(function(response) {
+                if (response) {
+                    console.log(response);
+                } else {
+                    console.log("No response? NANI!?");
+                }
+            });    
         }
         return (
             <div class="review-input-container">
