@@ -140,19 +140,28 @@ class SearchPage extends Component {
   getEventListForRendering() {
     
     var events = this.state.eventList.map((item, idx) => 
+<<<<<<< HEAD
       <div  onClick={() => this.viewEventDetailPage(item) } className="event-list-item">
+=======
+      <div onClick={this.viewEventDetailPage} className="event-list-item">
+>>>>>>> cbeecb5d88b29ee7abd26c957987f322cf82d4a0
         <h5 key={idx}>{item.title}</h5>
         
         <div className="event-list-description">{item.description}</div>
+<<<<<<< HEAD
         {/* <a>** //TODO: Redirect me to EventDetailPage **</a> */}
         <a class="EventDetail" id = "eventDetailPage" href="/EventDetailPage" >Event Detail Page</a>
         
+=======
+        <a>** //TODO: Redirect me to EventDetailPage **</a>
+>>>>>>> cbeecb5d88b29ee7abd26c957987f322cf82d4a0
       </div>
       );
    
     return events;
   }
 
+<<<<<<< HEAD
    viewEventDetailPage(item) {
     //alert("Go to event detail page, bring the event ID with you");
   // axios.get('http://localhost:9000/event/', item).then(res => {
@@ -175,9 +184,15 @@ class SearchPage extends Component {
 
 
 
+=======
+  viewEventDetailPage() {
+    alert("Go to event detail page, bring the event ID with you");
+  }
+>>>>>>> cbeecb5d88b29ee7abd26c957987f322cf82d4a0
 
   handleMarkerClicked = (event) => {
-    console.log("Event ID:", event);
+    alert("//TODO: redirect me to event detail page");
+    console.log("//TODOOOOOOO",event.id);
     this.setState({  
       mapPosition:  event.location.geopoint,
       zoom: 16,

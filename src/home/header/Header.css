@@ -1,14 +1,22 @@
-#header {
+.header-container {
+    text-align: center;
+}
+
+.header-image {
     /* Make an svg later - will load faster!*/
-    background-image: url('fine dining.jpg');
-    background-size: 100% 130%;
+    background-image: url('fine_dining2.jpg');
+    background-size: 100%;
     background-repeat: no-repeat; 
+    background-position: center;
     height: 350px;
 }
-#headerContainer {
-    padding-top: 50px;
+
+#text-container {
+    padding-top: 150px;
     color:  rgb(106, 224, 165);
+    text-shadow: 2px 2px 8px black;
 }
+
 #headerTitle {
     font-family: verdana-header, sans-serif;
     /* font-size: 30px; */

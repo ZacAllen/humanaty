@@ -78,6 +78,7 @@
 
 .event-list-item:hover {
     background-color: #EEE;
+    cursor: pointer;
 }
 
 .event-list-container {
