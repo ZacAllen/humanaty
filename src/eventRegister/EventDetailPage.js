@@ -12,7 +12,6 @@ class RegisterEvent extends Component {
     constructor(props) {
         super(props);
 
-        // Declare State
         this.state = {
             value: null,
             title: this.props.location.state.title,
@@ -27,8 +26,12 @@ class RegisterEvent extends Component {
             description:this.props.location.state.description,
             allergies: this.props.location.state.allergies,
             additionalInfo: this.props.location.state.additionalInfo,
-            id: this.props.location.state.id
+            id: this.props.location.state.id,
 
+            name: '',
+            description: '',
+            amount: 0,
+            quantity: 0
         };
         console.log(this.state.title)
     }
