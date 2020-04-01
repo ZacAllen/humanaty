@@ -7,11 +7,8 @@ import SearchPage from "./searchPage/SearchPage";
 import SignUp from "./signUp/SignUp";
 import ProfilePage from "./profilePage/ProfilePage";
 import NavBar from './navbar/NavBar.js';
-<<<<<<< HEAD
 import RegisterEvent from './eventRegister/EventDetailPage';
-=======
 import Footer from './footer/footer.js';
->>>>>>> cbeecb5d88b29ee7abd26c957987f322cf82d4a0
 
 class App extends Component {
   constructor(props) {
@@ -42,12 +39,9 @@ class App extends Component {
                 <Route path="/create-event" component={CreateEvent} />
                 <Route path="/signup" component={SignUp}/>
                 <Route path="/profile-page" component={ProfilePage}/>
-<<<<<<< HEAD
-                <Route path="*" component={Page404} />
+
                 <Route path="/EventDetailPage" component={RegisterEvent} />
-=======
                 {/* <Route path="*" component={Page404} /> */}
->>>>>>> cbeecb5d88b29ee7abd26c957987f322cf82d4a0
             </div>
             <Footer/>
         </Router>
