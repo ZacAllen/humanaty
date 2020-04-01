@@ -1,4 +1,4 @@
-.header {
+.this-header {
     font-weight: bold;
     font-size: xx-large;
     color: rgb(99, 109, 109);
@@ -12,7 +12,7 @@ padding: 1em;
 
 }
 
-.box {
+.detail-box {
     width : 17em;
     background-color: white;
     position: fixed;
@@ -65,12 +65,12 @@ padding: 1em;
    
  } 
 
-.next {
+.detail-next {
     position: relative;
     margin-top: 1em;
     text-align: right;
-}
-.labels {
+} 
+ .detail-labels {
     text-align: left;
     font-weight: bold;
     color: rgb(99, 109, 109);
@@ -81,7 +81,7 @@ padding: 1em;
     float: left;
     position: relative;
 }
-
+ 
 .details {
     position: relative;
     text-align: left;
@@ -90,7 +90,7 @@ padding: 1em;
     margin-right: 21em;
     margin-top: 2em;
     margin-left: 10em;
-}
+} 
 
 .event {
   position: relative;

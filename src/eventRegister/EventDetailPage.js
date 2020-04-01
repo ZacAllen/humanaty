@@ -50,7 +50,7 @@ class RegisterEvent extends Component {
 
 
             <div className="inner-container">
-                <div className="box">
+                <div className="detail-box">
                     <div className="modprice">
                         <label htmlFor="name">$ {this.state.cost}l</label> 
                     </div>
@@ -96,7 +96,7 @@ class RegisterEvent extends Component {
                     <img 
                         src="https://getdrawings.com/free-icon/google-account-icon-65.png"
                         className="acctimg"></img>
-                    <label htmlFor="name">{this.state.hostId.displayName}</label>  
+                    {/* <label htmlFor="name">{this.state.hostId.displayName}</label>   */}
                 </div>
                 <div className="detaildescriptions">
                     <label htmlFor="name"></label> 
