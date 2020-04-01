@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 import './ProfilePage.css';
 import EventThumbnails from './eventThumbnails/EventThumbnails';
 import Reviews from './reviews/Reviews';
+import ReviewInput from './reviews/ReviewInput';
 import axios from 'axios';
 import BeautyStars from 'beauty-stars';
 
@@ -151,10 +154,13 @@ class ProfilePage extends Component {
         </div>
 
         <hr></hr>
-
+        <ReviewInput profileUser = {this.state.user}></ReviewInput>
         <div class="section"id="reviews">
             <label>Reviews </label>
+            
+            
             <Reviews reviews={this.state.reviews} viewProfilePage={this.viewProfilePage}></Reviews>
+
         </div>
        
       </div>
