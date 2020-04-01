@@ -1,0 +1,29 @@
+.event {
+    position: relative;
+    text-align: left;
+    font-weight: bold;
+    font-size: x-large;
+    color: rgb(99, 109, 109);
+    margin-right: 21em;
+    margin-top: 2em;
+    margin-left: 7.5em;
+}
+
+.sectionheader {
+    text-align: left;
+    font-weight: bold;
+    font-size: large;
+    color: rgb(99, 109, 109);
+}
+
+.sectionseparate {
+    content: '';
+    position: relative;
+    width: 90%;
+    height: 1px;
+    color: black;
+    border: 1px solid #ddd;
+    margin: left;
+    margin-left: 15em;
+    z-index: 2;
+}

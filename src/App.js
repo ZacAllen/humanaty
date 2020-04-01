@@ -3,6 +3,7 @@ import './App.css';
 import Home from './home/Home.js';
 
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import CheckoutPage from "./checkout/CheckoutPage";
 import RegisterEvent from "./eventRegister/RegisterEvent";
 import SearchPage from "./searchPage/SearchPage";
 import Test from "./testComponent/Test";
@@ -27,7 +28,6 @@ class App extends Component {
   
 
   render() {
-
     //404 error page
     const Page404 = ({ location }) => (
         <div>
@@ -38,12 +38,12 @@ class App extends Component {
       return (
         <Router>
             <div className="App">
-                <p className="App-intro">{this.state.apiResponse}</p>
                 <Route exact path="/" component={Home} />
                 <Route path="/search" component={SearchPage} />
                 <Route path="/test" component={Test} />
                 <Route path="*" component={Page404} />
                 <Route path="/register" component={RegisterEvent} />
+                <Route path="/checkout" component={CheckoutPage} />
             </div>
         </Router>
       );

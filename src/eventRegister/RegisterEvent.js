@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './RegisterEvent.css';
-import Checkout from '../payment/Checkout.js';
+import Checkout from '../checkout/Checkout.js';
 import NavBar from '../navbar/NavBar.js';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -18,6 +18,15 @@ class RegisterEvent extends Component {
         };
     }
 
+    /*
+    handleClick() {
+        this.props.history.push({
+            pathname: "/checkout",
+            state: {amount: this.state.amount, quantity: this.state.quantity}
+        });
+    }
+    */
+    
     render() {
         return (
             <div id="registerevent">
@@ -58,7 +67,7 @@ class RegisterEvent extends Component {
                             max="40"
                             className="number-of-guests"></input>  */}
                     </div>
-                    <Checkout />
+                    <button>Go to Checkout</button>
                 </div>
                 <div className="event">
                     <label htmlFor="name">EventTitleHere</label>
