@@ -30,21 +30,22 @@ class ReviewInput extends React.Component {
     render() {
         const {showing} = this.state;
         const submitReview = () => {
+            //get date
             var day = new Date().getDate();
             var month = new Date().getMonth() + 1;
             var year = new Date().getFullYear();
             var date = month + '/' + day + '/' + year; 
-            
+            //rating
             var rating = this.state.value;
-
+            //reviewbody
             var body = document.getElementById("reviewBody").value;
-
+            //reviewee
             var profileuser = this.props.profileUser.id;
+            //reviewer
             var currentuser = this.state.user.id;
-
+            //is reviewer host
             var reviewedAsHost = this.state.user.hostVerified;
-            
-            // axios.post('http://localhost:9000/create-review', obj)
+
             console.log(date);
             console.log(rating);
             console.log(body);
@@ -52,16 +53,33 @@ class ReviewInput extends React.Component {
             console.log(currentuser);
             console.log(reviewedAsHost);
 
+            //object containing data necessary for review creation
             var obj = {date: date, rating: rating, reviewBody: body, reviewedAsHost: reviewedAsHost, 
                 reviewee: profileuser, reviewer: currentuser};
+            
+            //get both users' events so we can check if they've actually attended an event together
+            var currentUserEvents = this.state.user.eventsAttended.concat(this.state.user.eventsHosted);
+            var profileUserEvents = this.props.profileUser.eventsAttended.concat(this.state.user.eventsHosted);
 
-            axios.post('http://localhost:9000/review/', obj).then(function(response) {
-                if (response) {
-                    console.log(response);
-                } else {
-                    console.log("No response? NANI!?");
-                }
-            });    
+            //Check if both users have at least one shared event
+            var sharesAnEvent =  currentUserEvents.some(item => profileUserEvents.includes(item));
+
+            // Using alerts for now to check edge cases, feel free to comment out for testing
+            if (profileuser == currentuser) {
+                alert("You cannot leave a review of yourself!")
+            } else if (!sharesAnEvent) {
+                alert("You cannot review someone you have not shared an event with!")
+            } else {
+                    axios.post('http://localhost:9000/review/', obj).then(function(response) {
+                    if (response) {
+                        console.log(response);
+                    } else {
+                        console.log("No res");
+                    }
+                });  
+            }   
+
+              
         }
         return (
             <div class="review-input-container">
