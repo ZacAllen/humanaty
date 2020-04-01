@@ -25,7 +25,8 @@ class SearchPage extends Component {
       markerPosition: this.props.location.state.markerPosition,
       zoom: 12, //Hides or the shows the infoWindow
       activeMarker: {}, //Shows the active marker upon click
-      selectedEvent: null //Shows the infoWindow to the selected place upon a marker
+      selectedEvent: null, 
+//Shows the infoWindow to the selected place upon a marker
     }
 
     this.autocompleteInput = React.createRef();
@@ -136,17 +137,44 @@ class SearchPage extends Component {
   onChange = ( event ) => {
     this.setState({ [event.target.name]: event.target.value });
   };
-
   getEventListForRendering() {
+    
     var events = this.state.eventList.map((item, idx) => 
-      <ul className="event-list-item">
+      <div  onClick={() => this.viewEventDetailPage(item) } className="event-list-item">
         <h5 key={idx}>{item.title}</h5>
+        
         <div className="event-list-description">{item.description}</div>
-        <a href="https://www.w3schools.com">** Redirect me to EventDetailPage **</a>
-      </ul>
+        {/* <a>** //TODO: Redirect me to EventDetailPage **</a> */}
+        <a class="EventDetail" id = "eventDetailPage" href="/EventDetailPage" >Event Detail Page</a>
+        
+      </div>
       );
+   
     return events;
   }
+
+   viewEventDetailPage(item) {
+    //alert("Go to event detail page, bring the event ID with you");
+  // axios.get('http://localhost:9000/event/', item).then(res => {
+
+  //   console.log(item);
+
+ 
+  this.props.history.push({
+    pathname: '/EventDetailPage', 
+    state: {  title: item.title,location: item.location, date: item.date,
+      cost: item.costPerSeat, meal: item.meal, guest: item.guestNum, hostId: item.hostId,
+      accessibility: item.accessibilityAccommodations, attendees: item.attendees,
+       description: item.description, allergies: item.allergies, 
+       additionalInfo: item.additionalInfo, id: item.id}
+    
+  })
+  // console.log(pathname)
+}
+    
+
+
+
 
   handleMarkerClicked = (event) => {
     console.log("Event ID:", event);

@@ -7,6 +7,7 @@ import SearchPage from "./searchPage/SearchPage";
 import SignUp from "./signUp/SignUp";
 import ProfilePage from "./profilePage/ProfilePage";
 import NavBar from './navbar/NavBar.js';
+import RegisterEvent from './eventRegister/EventDetailPage';
 
 class App extends Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class App extends Component {
                 <Route path="/signup" component={SignUp}/>
                 <Route path="/profile-page" component={ProfilePage}/>
                 <Route path="*" component={Page404} />
-                <Route path="/register" component={RegisterEvent} />
+                <Route path="/EventDetailPage" component={RegisterEvent} />
             </div>
         </Router>
       );

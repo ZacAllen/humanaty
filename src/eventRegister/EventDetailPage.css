@@ -23,6 +23,7 @@ padding: 1em;
     border: 1px solid whitesmoke;
     border-radius: 25px;
     box-shadow:  3px 2px 5px 3px rgb(238, 237, 237);
+    z-index: 3;
     
 }
 
@@ -218,6 +219,7 @@ padding: 1em;
 
   .gmap_canvas {
       overflow:hidden;
+
       background:none!important;
       height:500px;
       width:700px;
