@@ -84,8 +84,8 @@ class ReviewInput extends React.Component {
         return (
             <div class="review-input-container">
                 <div class = "review-input-button">
-                    {/* Later, replace onclick with a method that includes user checking etc */}
-                    <Button variant="primary" id = "reviewButton" onClick={() => this.setState({showing : true})}> 
+                    <Button variant="primary" id = "reviewButton" onClick={() => this.setState({showing : true})}
+                        className="mb-2"> 
                     Leave a Review
                     </Button>
                 </div>
@@ -94,18 +94,20 @@ class ReviewInput extends React.Component {
                         <div>
                             
                         </div>
-                        <BeautyStars value = {this.state.value} onChange={value => this.setState({value})}>
+                        <BeautyStars value = {this.state.value} onChange={value => this.setState({value})}
+                            size = {20}>
                 
                         </BeautyStars>
                         <Form>
-                        <Form.Control type = "text" id = "reviewBody"/>    
+                        <Form.Control type = "text" id = "reviewBody" as="textarea" rows="3" />    
                         </Form>
-                        <Button variant = "secondary" onClick={() => this.setState({showing: !showing, value: 0})}>
+                        <Button variant = "secondary" onClick={() => this.setState({showing: !showing, value: 0})}
+                            className = "mt-1">
                             Cancel
                         </Button>
-                        <Button 
-                        onClick = {() => submitReview()}
-                        >Submit</Button>
+                        <Button onClick = {() => submitReview()} className = "mt-1 ml-2">
+                            Submit
+                        </Button>
                     </div>
                     :null
                 }
