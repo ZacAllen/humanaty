@@ -19,12 +19,11 @@ class CheckoutPage extends Component {
                 <div className="event">
                     <label htmlFor="name">Billing Information</label>
                     <div className="sectionheader">
+                        <span class="numberCircle"><span>1</span></span>
                         <label htmlFor="name">Billing Address</label>
                     </div>
-                    <div>
-                        <ul class = "sectionseparate"></ul>
-                    </div>
                     <div className="sectionheader">
+                        <span class="numberCircle"><span>2</span></span>
                         <label htmlFor="name">Payment Details</label>
                     </div>
                     <CheckoutForm />

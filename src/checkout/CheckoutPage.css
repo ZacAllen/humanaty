@@ -16,6 +16,28 @@
     color: rgb(99, 109, 109);
 }
 
+.numberCircle {
+    display:inline-block;
+    line-height:0px;
+  
+    border-radius:50%;
+    border:2px solid;
+  
+    font-size:18px;
+
+    margin-right: 2px;
+  }
+  
+.numberCircle span {
+    display:inline-block;
+
+    padding-top:50%;
+    padding-bottom:50%;
+
+    margin-left:6px;
+    margin-right:6px;
+}
+
 .sectionseparate {
     content: '';
     position: relative;
