@@ -27,6 +27,7 @@ class CheckoutPage extends Component {
                     <div className="sectionheader">
                         <label htmlFor="name">Payment Details</label>
                     </div>
+                    <CheckoutForm />
                 </div>
             </div>
             </Elements>

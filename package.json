@@ -27,7 +27,7 @@
     "react-places-autocomplete": "^7.2.1",
     "react-responsive-carousel": "^3.1.51",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0",
+    "react-scripts": "^3.4.1",
     "yarn": "^1.22.0"
   },
   "scripts": {
@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^9.4.0",
-    "jsdom": "^16.1.0",
+    "jsdom": "^16.2.2",
     "jsdom-global": "^3.0.2"
   }
 }
