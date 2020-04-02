@@ -1,0 +1,57 @@
+#profile-page-container {
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 49%;
+    padding: 10px;
+    /* background-color: hotpink; */
+    text-align: left;
+}
+
+#profile-header div {
+    display: inline-flex;
+}
+
+.profile-img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+#profile-name {
+    font-size: 28px;
+    font-weight: 500;
+    vertical-align: middle;
+    display: grid !important;
+}
+
+#rating {
+    font-weight: normal !important;
+    font-size: 16px;
+}
+
+#profile-header {
+    display: flex;
+}
+
+label {
+    font-weight: bold;
+}
+
+.section {
+    margin: 20px 0px 0px 20px;
+}
+#reviewButton {
+    float: right;
+}
+/* .btn-primary :active {
+    background-color: burlywood !important;
+    color: burlywood;
+} */
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    color: white;
+    background-color: #85e9a7;
+    /* border-color: #285e8e; set the color you want here */
+}

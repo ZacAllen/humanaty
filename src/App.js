@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import './App.css';
 import Home from './home/Home.js';
-
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CheckoutPage from "./checkout/CheckoutPage";
-import RegisterEvent from "./eventRegister/RegisterEvent";
+import CreateEvent from "./createEvent/CreateEvent";
 import SearchPage from "./searchPage/SearchPage";
-import Test from "./testComponent/Test";
+import SignUp from "./signUp/SignUp";
+import ProfilePage from "./profilePage/ProfilePage";
+import NavBar from './navbar/NavBar.js';
+import RegisterEvent from './eventRegister/EventDetailPage';
+import Footer from './footer/footer.js';
 
 class App extends Component {
   constructor(props) {
@@ -14,40 +17,38 @@ class App extends Component {
       this.state = { apiResponse: "" };
   }
 
-  callAPI() {
-      fetch("http://localhost:9000/testAPI")
-          .then(res => res.text())
-          .then(res => this.setState({ apiResponse: res }))
-          .then(console.log(this.state.apiResponse))
-          .catch(err => err);
-  }
-
   componentDidMount() {
-      this.callAPI();
   }
   
 
   render() {
     //404 error page
-    const Page404 = ({ location }) => (
+     const Page404 = ({ location }) => (
         <div>
            <h2>No match found for <code>{location.pathname}</code></h2>
         </div>
      );
 
       return (
+
         <Router>
             <div className="App">
+            <NavBar/>
                 <Route exact path="/" component={Home} />
                 <Route path="/search" component={SearchPage} />
-                <Route path="/test" component={Test} />
-                <Route path="*" component={Page404} />
-                <Route path="/register" component={RegisterEvent} />
+                <Route path="/create-event" component={CreateEvent} />
+                <Route path="/signup" component={SignUp}/>
+                <Route path="/profile-page" component={ProfilePage}/>
                 <Route path="/checkout" component={CheckoutPage} />
+                <Route path="/EventDetailPage" component={RegisterEvent} />
+                {/* <Route path="*" component={Page404} /> */}
             </div>
+            <Footer/>
         </Router>
       );
   }
 }
+
+
 
 export default App;
