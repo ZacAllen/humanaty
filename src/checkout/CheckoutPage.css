@@ -9,13 +9,6 @@
     margin-left: 7.5em;
 }
 
-.sectionheader {
-    text-align: left;
-    font-weight: bold;
-    font-size: large;
-    color: rgb(99, 109, 109);
-}
-
 .numberCircle {
     display:inline-block;
     line-height:0px;
@@ -25,7 +18,7 @@
   
     font-size:18px;
 
-    margin-right: 2px;
+    margin-right: 4px;
   }
   
 .numberCircle span {
@@ -36,6 +29,20 @@
 
     margin-left:6px;
     margin-right:6px;
+}
+
+.sectionheader {
+    text-align: left;
+    font-weight: bold;
+    font-size: large;
+    color: rgb(99, 109, 109);
+}
+
+.inputheader {
+    text-align: left;
+    font-weight: bold;
+    font-size: medium;
+    color: rgb(99, 109, 109);
 }
 
 .sectionseparate {

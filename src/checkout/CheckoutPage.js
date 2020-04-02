@@ -11,6 +11,19 @@ import axios from 'axios';
 const stripePromise = loadStripe('pk_test_KsSBLHsah3N55vJsAQ7a8YDO00qx7rn3an');
 
 class CheckoutPage extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            full_name: '',
+            address: '',
+            city: '',
+            state: '',
+            zip: '',
+            name_on_card: ''
+        }
+    }
+
     render() {
         return (
             <Elements stripe={stripePromise}>
@@ -21,12 +34,21 @@ class CheckoutPage extends Component {
                     <div className="sectionheader">
                         <span class="numberCircle"><span>1</span></span>
                         <label htmlFor="name">Billing Address</label>
+                        <div className="inputheader">
+                            <label htmlFor="name">Full Name</label>
+                            <input
+                                type="text"
+                                name="full-name"
+                                className="name-input"/>
+                        </div>
                     </div>
                     <div className="sectionheader">
                         <span class="numberCircle"><span>2</span></span>
                         <label htmlFor="name">Payment Details</label>
+                        <div className="inputheader">
+                            <CheckoutForm />
+                        </div>
                     </div>
-                    <CheckoutForm />
                 </div>
             </div>
             </Elements>
