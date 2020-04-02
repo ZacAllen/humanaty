@@ -43,6 +43,7 @@
     font-weight: bold;
     font-size: medium;
     color: rgb(99, 109, 109);
+    position: relative;
 }
 
 .sectionseparate {
@@ -55,4 +56,13 @@
     margin: left;
     margin-left: 15em;
     z-index: 2;
+}
+
+.name-address-zip-input {
+    width: 120%;
+}
+
+.city-state-input {
+    width: 55%;
+    margin-right: 10px;
 }

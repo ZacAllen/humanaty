@@ -10,7 +10,7 @@ import axios from 'axios';
 class RegisterEvent extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
             value: null,
@@ -33,7 +33,6 @@ class RegisterEvent extends Component {
             amount: 0,
             quantity: 0
         };
-        console.log(this.state.title)
     }
 
 

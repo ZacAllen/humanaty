@@ -66,8 +66,6 @@ class CreateEvent extends React.Component {
       console.log(res);
       console.log(res.data);
     })
-
- 
   }
    
   _next = () => {

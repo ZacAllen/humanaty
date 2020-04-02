@@ -24,6 +24,13 @@ class CheckoutPage extends Component {
         }
     }
 
+    handleChange = event => {
+        const {name, value} = event.target;
+        this.setState({
+            [name]: value
+        })
+    }
+
     render() {
         return (
             <Elements stripe={stripePromise}>
@@ -36,10 +43,51 @@ class CheckoutPage extends Component {
                         <label htmlFor="name">Billing Address</label>
                         <div className="inputheader">
                             <label htmlFor="name">Full Name</label>
+                        </div>
+                        <div className="input-box">
                             <input
                                 type="text"
                                 name="full-name"
-                                className="name-input"/>
+                                className="name-address-zip-input"
+                                onChange={this.handleChange}/>
+                        </div>
+                        <div className="inputheader">
+                            <label htmlFor="name">Street Address</label>
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                name="address"
+                                className="name-address-zip-input"
+                                onChange={this.handleChange}/>
+                        </div>
+                        <div className="inputheader">
+                            <label htmlFor="name">City</label>
+                        </div>
+                        <div className="inputheader">
+                            <label htmlFor="name">State</label>
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                name="city"
+                                className="city-state-input"
+                                onChange={this.handleChange}/>
+                            <input
+                                type="text"
+                                name="state"
+                                className="city-state-input"
+                                onChange={this.handleChange}/>
+                        </div>
+                        <div className="inputheader">
+                            <label htmlFor="name">Postal Code</label>
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                name="zip"
+                                className="name-address-zip-input"
+                                onChange={this.handleChange}/>
                         </div>
                     </div>
                     <div className="sectionheader">
