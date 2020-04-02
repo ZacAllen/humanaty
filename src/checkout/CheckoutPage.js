@@ -47,8 +47,9 @@ class CheckoutPage extends Component {
                         <div className="input-box">
                             <input
                                 type="text"
-                                name="full-name"
+                                name="full_name"
                                 className="name-address-zip-input"
+                                value={this.state.full_name}
                                 onChange={this.handleChange}/>
                         </div>
                         <div className="inputheader">
@@ -59,12 +60,11 @@ class CheckoutPage extends Component {
                                 type="text"
                                 name="address"
                                 className="name-address-zip-input"
+                                value={this.state.address}
                                 onChange={this.handleChange}/>
                         </div>
                         <div className="inputheader">
                             <label htmlFor="name">City</label>
-                        </div>
-                        <div className="inputheader">
                             <label htmlFor="name">State</label>
                         </div>
                         <div className="input-box">
@@ -72,11 +72,13 @@ class CheckoutPage extends Component {
                                 type="text"
                                 name="city"
                                 className="city-state-input"
+                                value={this.state.city}
                                 onChange={this.handleChange}/>
                             <input
                                 type="text"
                                 name="state"
                                 className="city-state-input"
+                                value={this.state.state}
                                 onChange={this.handleChange}/>
                         </div>
                         <div className="inputheader">
@@ -87,6 +89,7 @@ class CheckoutPage extends Component {
                                 type="text"
                                 name="zip"
                                 className="name-address-zip-input"
+                                value={this.state.zip}
                                 onChange={this.handleChange}/>
                         </div>
                     </div>
@@ -95,6 +98,17 @@ class CheckoutPage extends Component {
                         <label htmlFor="name">Payment Details</label>
                         <div className="inputheader">
                             <CheckoutForm />
+                        </div>
+                        <div className="inputheader">
+                            <label htmlFor="name">Name on Card</label>
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                name="name-on-card"
+                                className="name-address-zip-input"
+                                value={this.state.name_on_card}
+                                onChange={this.handleChange}/>
                         </div>
                     </div>
                 </div>
