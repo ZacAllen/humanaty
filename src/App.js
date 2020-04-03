@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './App.css';
 import Home from './home/Home.js';
 import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import CheckoutPage from "./checkout/CheckoutPage";
 import CreateEvent from "./createEvent/CreateEvent";
 import SearchPage from "./searchPage/SearchPage";
 import SignUp from "./signUp/SignUp";
@@ -22,7 +23,6 @@ class App extends Component {
   
 
   render() {
-
     //404 error page
      const Page404 = ({ location }) => (
         <div>
@@ -40,7 +40,7 @@ class App extends Component {
                 <Route path="/create-event" component={CreateEvent} />
                 <Route path="/signup" component={SignUp}/>
                 <Route path="/profile-page" component={ProfilePage}/>
-
+                <Route path="/checkout" component={CheckoutPage} />
                 <Route path="/EventDetailPage" component={RegisterEvent} />
                 <Route path="/payment" component={Checkout} />
                 {/* <Route path="*" component={Page404} /> */}

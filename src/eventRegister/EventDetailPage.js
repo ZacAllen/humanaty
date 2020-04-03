@@ -10,7 +10,7 @@ import axios from 'axios';
 class RegisterEvent extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
    
@@ -56,6 +56,15 @@ class RegisterEvent extends Component {
           })
     }
 
+    /*
+    handleClick() {
+        this.props.history.push({
+            pathname: "/checkout",
+            state: {amount: this.state.amount, quantity: this.state.quantity}
+        });
+    }
+    */
+    
     render() {
         return (
             <div id="registerevent">

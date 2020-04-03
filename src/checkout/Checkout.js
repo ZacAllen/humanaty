@@ -15,7 +15,7 @@ class Checkout extends Component{
     }
 
     onToken = (token, addresses) => {
-        var obj = {token: token, addresses: addresses, amount: this.props.location.state.amount}
+        var obj = {token: token, addresses: addresses}
         axios.post('https://localhost:9000/receive-payment', obj);
     }
 
