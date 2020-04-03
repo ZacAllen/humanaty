@@ -70,11 +70,11 @@ class RegisterEvent extends Component {
     goToPayment() {
         this.state.attendees = this.state.value;
         this.props.history.push({
-            pathname: '/Checkout', 
+            pathname: '/checkout', 
             state: {  title: this.state.title,
               cost: this.state.cost,  guest: this.state.guestNum, hostID: this.state.hostID,
              attendees: this.state.attendees,  description:this.state.description, 
-             id: this.state.id, amount: this.state.amount, qunaity: this.state.qunaity}
+             id: this.state.id, amount: this.state.amount, quantity: this.state.quantity}
             
           })
     }

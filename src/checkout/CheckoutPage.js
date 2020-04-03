@@ -15,6 +15,15 @@ class CheckoutPage extends Component {
         super(props);
 
         this.state = {
+            title: this.props.location.state.title,
+            cost: this.props.location.state.cost,
+            guest: this.props.location.state.cost,
+            hostID: this.props.location.state.hostID,
+            attendees: this.props.location.state.attendees,
+            description: this.props.location.state.description,
+            id: this.props.location.state.id,
+            amount: this.props.location.state.amount,
+            quantity: this.props.location.state.quantity,
             full_name: '',
             address: '',
             city: '',
@@ -44,7 +53,7 @@ class CheckoutPage extends Component {
                     <label className="cancellation">Free cancellation up to 48 hours before event. </label>
                     <label htmlFor="name">Billing Information</label>
                     <div className="sectionheader">
-                        <span class="numberCircle"><span>1</span></span>
+                        <span className="numberCircle"><span>1</span></span>
                         <label htmlFor="name">Billing Address</label>
                         <div className="inputheader">
                             <label htmlFor="name">Full Name</label>
@@ -112,7 +121,8 @@ class CheckoutPage extends Component {
                         <span class="numberCircle"><span>2</span></span>
                         <label htmlFor="name">Payment Details</label>
                         <div className="inputheader">
-                            <CheckoutForm />
+                            <CheckoutForm 
+                            name={this.state.name_on_card}/>
                         </div>
                     </div>
                 </div>
