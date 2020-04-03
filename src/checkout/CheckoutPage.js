@@ -37,6 +37,11 @@ class CheckoutPage extends Component {
             <div id="registerevent">
                 <NavBar/>
                 <div className="event">
+                    <div className="summarybox">
+                        <label htmlFor="name" className="reservationHeader">Reservation Summary</label>
+                        
+                    </div>
+                    <label className="cancellation">Free cancellation up to 48 hours before event. </label>
                     <label htmlFor="name">Billing Information</label>
                     <div className="sectionheader">
                         <span class="numberCircle"><span>1</span></span>
