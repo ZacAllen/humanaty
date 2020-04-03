@@ -25,10 +25,10 @@ const CARD_ELEMENT_OPTIONS = {
 
 function CardSection() {
   return (
-    <label>
-      Card details
+    <div style={{maxWidth:102}}>
+      Card Details
       <CardElement options={CARD_ELEMENT_OPTIONS} />
-    </label>
+    </div>
   );
 };
 

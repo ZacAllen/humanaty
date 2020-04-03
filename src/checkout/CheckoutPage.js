@@ -48,7 +48,7 @@ class CheckoutPage extends Component {
                             <input
                                 type="text"
                                 name="full_name"
-                                className="name-address-zip-input"
+                                className="name-address-input"
                                 value={this.state.full_name}
                                 onChange={this.handleChange}/>
                         </div>
@@ -59,27 +59,37 @@ class CheckoutPage extends Component {
                             <input
                                 type="text"
                                 name="address"
-                                className="name-address-zip-input"
+                                className="name-address-input"
                                 value={this.state.address}
                                 onChange={this.handleChange}/>
                         </div>
-                        <div className="inputheader">
-                            <label htmlFor="name">City</label>
-                            <label htmlFor="name">State</label>
-                        </div>
-                        <div className="input-box">
-                            <input
-                                type="text"
-                                name="city"
-                                className="city-state-input"
-                                value={this.state.city}
-                                onChange={this.handleChange}/>
-                            <input
-                                type="text"
-                                name="state"
-                                className="city-state-input"
-                                value={this.state.state}
-                                onChange={this.handleChange}/>
+                        <div id="block-container">
+                            <div id="bloc1">
+                            <div className="inputheader">
+                                <label htmlFor="name">City</label>
+                            </div>
+                            <div className="input-box">
+                                <input
+                                    type="text"
+                                    name="city"
+                                    className="city-state-input"
+                                    value={this.state.city}
+                                    onChange={this.handleChange}/>
+                            </div>
+                            </div>
+                            <div id="bloc2">
+                            <div className="inputheader">
+                                <label htmlFor="name">State</label>
+                            </div>
+                            <div className="input-box">
+                                <input
+                                    type="text"
+                                    name="state"
+                                    className="city-state-input"
+                                    value={this.state.state}
+                                    onChange={this.handleChange}/>
+                            </div>
+                            </div>
                         </div>
                         <div className="inputheader">
                             <label htmlFor="name">Postal Code</label>
@@ -88,7 +98,7 @@ class CheckoutPage extends Component {
                             <input
                                 type="text"
                                 name="zip"
-                                className="name-address-zip-input"
+                                className="zip-input"
                                 value={this.state.zip}
                                 onChange={this.handleChange}/>
                         </div>
@@ -98,17 +108,6 @@ class CheckoutPage extends Component {
                         <label htmlFor="name">Payment Details</label>
                         <div className="inputheader">
                             <CheckoutForm />
-                        </div>
-                        <div className="inputheader">
-                            <label htmlFor="name">Name on Card</label>
-                        </div>
-                        <div className="input-box">
-                            <input
-                                type="text"
-                                name="name-on-card"
-                                className="name-address-zip-input"
-                                value={this.state.name_on_card}
-                                onChange={this.handleChange}/>
                         </div>
                     </div>
                 </div>

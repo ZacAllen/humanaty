@@ -51,7 +51,19 @@ class CheckoutForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <CardSection />
-        <button disabled={!this.props.stripe}>Complete order</button>
+        <label className="inputheader">Name on Card</label>
+        <div className="input-box">
+          <input
+            type="text"
+            name="name-on-card"
+            className="zip-input"
+            value={this.state.name_on_card}
+            onChange={this.handleChange}/>
+        </div>
+        <button 
+          disabled={!this.props.stripe}
+          className="paynowbutton"
+          >Pay Now</button>
       </form>
     );
   }

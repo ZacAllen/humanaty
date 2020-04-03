@@ -5,7 +5,7 @@
     font-size: x-large;
     color: rgb(99, 109, 109);
     margin-right: 21em;
-    margin-top: 2em;
+    margin-top: 10em;
     margin-left: 7.5em;
 }
 
@@ -44,6 +44,7 @@
     font-size: medium;
     color: rgb(99, 109, 109);
     position: relative;
+    margin-top: 1em;
 }
 
 .sectionseparate {
@@ -58,11 +59,60 @@
     z-index: 2;
 }
 
-.name-address-zip-input {
-    width: 120%;
+.name-address-input {
+    width: 80%;
+}
+
+.zip-input {
+    width: 80%;
+    margin-bottom: 2em;
 }
 
 .city-state-input {
-    width: 55%;
-    margin-right: 10px;
+    width: 115%;
+}
+
+.paynowbutton {
+    background-color: #00674B;
+    width: 14em;
+    border-radius: 10ch;
+    border: #00674B;
+    border-style: solid;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 8em;
+    transition-duration: 0.4s;
+    font-weight: 600;
+}
+
+.paynowbutton:hover {
+    background-color: rgb(0, 75, 55);
+    width: 14em;
+    border-radius: 10ch;
+    border: #00674B;
+    border-style: solid;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 8em;
+    transition-duration: 0.5s;
+    font-weight: 600;
+}
+
+#block-container {
+    text-align: left;
+}
+
+#bloc1, #bloc2 {
+    display: inline-block;
+    margin-right: 3em;
 }
