@@ -60,16 +60,16 @@
 }
 
 .name-address-input {
-    width: 80%;
+    width: 55%;
 }
 
 .zip-input {
-    width: 80%;
+    width: 55%;
     margin-bottom: 2em;
 }
 
 .city-state-input {
-    width: 115%;
+    width: 117%;
 }
 
 .paynowbutton {
