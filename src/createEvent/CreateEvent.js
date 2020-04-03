@@ -4,34 +4,65 @@ import './EventCreation.css';
 import NavBar from '../navbar/NavBar.js';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import MultiSelect from "@khanacademy/react-multi-select";
+import ImageUploader from 'react-images-upload';
+
+const allergyOptions = [
+  {label: "fish", value: "fish"},
+  {label: "peanut", value: "peanut"},
+  {label: "eggs", value: "eggs"},
+  {label: "milks", value: "milks"},
+  {label: "shellfish", value: "shellfish"},
+  {label: "soybean", value: "soybean"},
+  {label: "tree nuts", value: "tree Nuts"},
+  {label: "wheats", value: "wheats"},
+];
+
 
 class CreateEvent extends React.Component {
   constructor(props) {
     super(props)
+    this.onDrop = this.onDrop.bind(this);
     this.state = {
       currentStep: 1,
-      name:  '',
+      costPerSeat: 0.0,
+      attendees: {},
+      allergies: [],
+      accessibilityAccommodations: false,
+      location: {},
       address: '', 
-      city: '',
-      state: '',
-      zip: '',
+      city: 'Atlanta',
+      state: 'GA',
+      zip: '30318',
       date: '',
-      time: '',
-      meal: '',
-      guest: '',
+      time: "10:00",
+      meal: 'Dinner',
+      guestNum: 0,
       description: '',
-      allergy: '',
-      additional: '',     
+      allergies: '',
+      additionalInfo: '',   
+      title: '',
+      photoGallery: [],  
       errors: {
         name: '',
         address: '',
       }
     };
   }
+
+  onDrop = picture => {
+    this.setState({
+        photoGallery: this.state.photoGallery.concat(picture),
+    });
+  }
+
   
   handleChange = event => {
-    const {name, value} = event.target;
+    console.log(this.state);
+    const {name} = event.target;
+    const value = event.target.name === 'accessibilityAccommodations' ? event.target.checked : event.target.value;
     let errors = this.state.errors;
+
     switch (name) {
       case 'name': 
         errors.name = 
@@ -43,7 +74,6 @@ class CreateEvent extends React.Component {
         errors.address = value.toString().trim().length < 8;
         break;
       case 'city': 
-  
         break;
       default:
         break;
@@ -53,20 +83,41 @@ class CreateEvent extends React.Component {
       [name]: value
     })    
   }
+
+  setAllergies = allergies => {
+    this.setState({allergies: allergies})
+  }
     
   // Posts the different responses to the backend 
   handleSubmit = event => {
-    var obj = {name: this.state.name, address: this.state.address, city: this.state.city,
-              state: this.state.state, zip: this.state.zip, date: this.state.date,
-              time: this.state.time, meal: this.state.meal, guest: this.state.guest,
-              description: this.state.description, allergy: this.state.allergy, 
-              additional: this.state.additional};
-    axios.post('http://localhost:9000/create-event', obj).then(res => {
-      console.log(res);
-      console.log(res.data);
-    })
+    event.preventDefault();
 
- 
+    let date =  this.state.date + " "  + this.state.time;
+    let allergies = this.state.allergies === "" ? [] : this.state.allergies;
+    let photoGallery = this.state.photoGallery === [] ? [] : this.state.photoGallery;
+    var obj = { title: this.state.title, 
+                location: {
+                  address: this.state.address, 
+                  city: this.state.city,
+                  state: this.state.state, 
+                  zip: this.state.zip,
+                  geopoint: {}
+                },
+                accessibilityAccommodations: this.state.accessibilityAccommodations,
+                date: date,
+                meal: this.state.meal, 
+                guestNum: this.state.guestNum,
+                description: this.state.description,
+                allergies: allergies, 
+                costPerSeat: this.state.costPerSeat,
+                additionalInfo: this.state.additionalInfo,
+                photoGallery: photoGallery}
+
+                console.log("Event",obj);
+
+    axios.post('http://localhost:9000/event', obj).then(res => {
+      console.log(res.data, "Response");
+    })
   }
    
   _next = () => {
@@ -130,7 +181,7 @@ class CreateEvent extends React.Component {
       <Step1 
         currentStep={this.state.currentStep} 
         handleChange={this.handleChange}
-        name={this.state.name}
+        title={this.state.title}
         address={this.state.address}
         city={this.state.city}
         state={this.state.state}
@@ -148,9 +199,12 @@ class CreateEvent extends React.Component {
       <Step3 
         currentStep={this.state.currentStep} 
         handleChange={this.handleChange}
+        setAllergies={this.setAllergies}
         handleSubmit={this.handleSubmit}
-        allergy={this.state.allergy}
-        additional={this.state.additional}
+        allergies={this.state.allergies}
+        additionalInfo={this.state.additionalInfo}
+        accessibilityAccommodations={this.state.accessibilityAccommodations}
+        onDrop={this.onDrop}
       />
       {this.previousButton()}
       {this.nextButton()}
@@ -178,14 +232,14 @@ class CreateEvent extends React.Component {
         </div>
         <div className = "box">
           <div className="labels">
-            <label htmlFor="name">Event Title</label>
+            <label htmlFor="title">Event Title</label>
           </div>
           <div className="input-group">
             <input
               type="text"
-              name="name"
+              name="title"
               className="name-input"
-              value={props.name}
+              value={props.title}
               onChange={props.handleChange}
               placeholder="My Event"/>
           </div>
@@ -217,14 +271,59 @@ class CreateEvent extends React.Component {
               onChange={props.handleChange}
               placeholder=" ">
             </input>
-            <input
-              type="text"
-              name="state"
-              className="state-input"
-              value={props.state}
-              onChange={props.handleChange}
-              placeholder=" ">
-            </input>
+            <select className="states" name='state' defaultValue={'GA'} onChange={props.handleChange}>
+            <option value="AL">AL</option>
+            <option value="AK">AK</option>
+            <option value="AR">AR</option>	
+            <option value="AZ">AZ</option>
+            <option value="CA">CA</option>
+            <option value="CO">CO</option>
+            <option value="CT">CT</option>
+            <option value="DC">DC</option>
+            <option value="DE">DE</option>
+            <option value="FL">FL</option>
+            <option value="GA">GA</option>
+            <option value="HI">HI</option>
+            <option value="IA">IA</option>	
+            <option value="ID">ID</option>
+            <option value="IL">IL</option>
+            <option value="IN">IN</option>
+            <option value="KS">KS</option>
+            <option value="KY">KY</option>
+            <option value="LA">LA</option>
+            <option value="MA">MA</option>
+            <option value="MD">MD</option>
+            <option value="ME">ME</option>
+            <option value="MI">MI</option>
+            <option value="MN">MN</option>
+            <option value="MO">MO</option>	
+            <option value="MS">MS</option>
+            <option value="MT">MT</option>
+            <option value="NC">NC</option>	
+            <option value="NE">NE</option>
+            <option value="NH">NH</option>
+            <option value="NJ">NJ</option>
+            <option value="NM">NM</option>			
+            <option value="NV">NV</option>
+            <option value="NY">NY</option>
+            <option value="ND">ND</option>
+            <option value="OH">OH</option>
+            <option value="OK">OK</option>
+            <option value="OR">OR</option>
+            <option value="PA">PA</option>
+            <option value="RI">RI</option>
+            <option value="SC">SC</option>
+            <option value="SD">SD</option>
+            <option value="TN">TN</option>
+            <option value="TX">TX</option>
+            <option value="UT">UT</option>
+            <option value="VT">VT</option>
+            <option value="VA">VA</option>
+            <option value="WA">WA</option>
+            <option value="WI">WI</option>	
+            <option value="WV">WV</option>
+            <option value="WY">WY</option>
+            </select>
           </div> 
           <div className="labels">
             <label htmlFor="name">Postal Code</label>
@@ -258,8 +357,7 @@ class CreateEvent extends React.Component {
               name="time"
               className="time-input"
               value={props.time}
-              onChange={props.handleChange}
-              placeholder=" ">
+              onChange={props.handleChange}>
             </input>
           </div>
         </div>
@@ -287,7 +385,7 @@ class CreateEvent extends React.Component {
           <div className = "labels">
             <label htmlFor="name">Meal Type</label>
           </div>
-          <select className = "meals" defaultValue={'default'} onChange={props.handleChange}>
+          <select className="meals" name='meal' defaultValue={'default'} onChange={props.handleChange}>
             <option>Breakfast</option>
             <option>Brunch</option>
             <option>Lunch</option>
@@ -298,10 +396,27 @@ class CreateEvent extends React.Component {
           </div>
           <div className = "input-group">
             <input
-              type="text"
+              type="number"
+              min="1" max="10"
               name="guest"
               className="guests"
-              value={props.guest}
+              value={props.guestNum}
+              placeholder="0"
+              onChange={props.handleChange}>
+            </input>
+          </div>
+          <div className = "labels">
+            <label htmlFor="name">Cost per seat</label>
+          </div>
+          <div className = "input-group">
+            <input
+              type="number"
+              min="0" max="200"
+              name="guest"
+              step="any"
+              className="costPerSeat"
+              placeholder="0.0"
+              value={props.costPerSeat}
               onChange={props.handleChange}>
             </input>
           </div>
@@ -309,13 +424,13 @@ class CreateEvent extends React.Component {
             <label htmlFor="name">Meal Description</label>
           </div>
           <div className = "input-group">
-            <input
+            <textarea
               type="text"
-              name="meal"
-              className="meal-input"
-              value={props.meal}
+              name="description"
+              className="description-input"
+              value={props.description}
               onChange={props.handleChange}>
-            </input>
+            </textarea>
           </div>
         </div>
       </div>
@@ -323,6 +438,7 @@ class CreateEvent extends React.Component {
   }
   
   function Step3(props) {
+    const {allergies} = props;
     if (props.currentStep !== 3) {
       return null
     } 
@@ -342,27 +458,47 @@ class CreateEvent extends React.Component {
           <div className="labels">
             <label htmlFor="name">Dietary Restrictions</label>
           </div>
-          <div className="input-group">
-            <input
-              type="text"
-              name="allergy"
-              className="allergy-input"
-              value={props.allergy}
-              onChange={props.handleChange}>
-            </input>
-          </div>
+          <MultiSelect
+                  options={allergyOptions}
+                  selected={allergies}
+                  onSelectedChanged={allergies => props.setAllergies(allergies)}/>
           <div className="labels">
             <label htmlFor="name">Additional Information</label>
           </div>
           <div className="input-group">
             <input
               type="text"
-              name="additional"
+              name="additionalInfo"
               className="additional-input"
-              value={props.additional}
+              value={props.additionalInfo}
               onChange={props.handleChange}>
             </input>
           </div>
+          <div className="labels">
+            <label htmlFor="name">Accessibility Accommodations</label>
+          </div>
+          <div className="input-group">
+            <label class="switch">
+              <input
+                type="checkbox" 
+                checked={props.accessibilityAccommodations}
+                onChange={props.handleChange}
+                name="accessibilityAccommodations"/>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          {/* <div className="labels">
+            <label htmlFor="name">Event Image</label>
+          </div>
+          <ImageUploader
+                withIcon={true}
+                buttonText='Choose images'
+                onChange={props.onDrop}
+                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+            /> */}
+          
           <button
             className="submit"
             type="submit"
