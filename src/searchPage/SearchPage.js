@@ -16,14 +16,14 @@ Geocode.setApiKey("AIzaSyDKNJ1TI_zJnzqBEmMzjlpw3tUBdoCK66g");
 Geocode.enableDebug();
 
 const allergyOptions = [
-  {label: "Fish", value: "Fish"},
-  {label: "Penuts", value: "Penuts"},
-  {label: "Eggs", value: "Eggs"},
-  {label: "Milks", value: "Milks"},
-  {label: "Shellfish", value: "Shellfish"},
-  {label: "Soybean", value: "Soybean"},
-  {label: "Tree Nuts", value: "Tree Nuts"},
-  {label: "Wheats", value: "Wheats"},
+  {label: "fish", value: "fish"},
+  {label: "penut", value: "penut"},
+  {label: "eggs", value: "eggs"},
+  {label: "milks", value: "milks"},
+  {label: "shellfish", value: "shellfish"},
+  {label: "soybean", value: "soybean"},
+  {label: "tree nuts", value: "tree Nuts"},
+  {label: "wheats", value: "wheats"},
 ];
 
 class SearchPage extends Component {
