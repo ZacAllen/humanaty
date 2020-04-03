@@ -9,6 +9,7 @@ import ProfilePage from "./profilePage/ProfilePage";
 import NavBar from './navbar/NavBar.js';
 import RegisterEvent from './eventRegister/EventDetailPage';
 import Footer from './footer/footer.js';
+import Checkout from './payment/Checkout.js';
 
 class App extends Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class App extends Component {
                 <Route path="/profile-page" component={ProfilePage}/>
 
                 <Route path="/EventDetailPage" component={RegisterEvent} />
+                <Route path="/payment" component={Checkout} />
                 {/* <Route path="*" component={Page404} /> */}
             </div>
             <Footer/>

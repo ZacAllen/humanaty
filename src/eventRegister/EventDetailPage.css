@@ -213,7 +213,7 @@ padding: 1em;
     position:relative;
     text-align:right;
     height:500px;
-    width:700px;
+    width:500px;
     margin-left: 15em;
   }
 
@@ -222,9 +222,12 @@ padding: 1em;
 
       background:none!important;
       height:500px;
-      width:700px;
+      width:500px;
       border-radius: 3ch;
       margin-top: 1em;
   }
 
-  
+  .dateFormat {
+    text-align: left;
+
+  }

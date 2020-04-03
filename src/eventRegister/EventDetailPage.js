@@ -13,7 +13,7 @@ class RegisterEvent extends Component {
         super(props);
 
         this.state = {
-            value: null,
+   
             title: this.props.location.state.title,
             location: this.props.location.state.location,
             date: this.props.location.state.date,
@@ -27,20 +27,33 @@ class RegisterEvent extends Component {
             allergies: this.props.location.state.allergies,
             additionalInfo: this.props.location.state.additionalInfo,
             id: this.props.location.state.id,
+            value: 1,
 
             name: '',
             description: '',
             amount: 0,
-            quantity: 0
+            quantity: 0,
+           
         };
+        this.handleChange = this.handleChange.bind(this)
         console.log(this.state.title)
     }
 
 
-    componentDidMount() {
+    handleChange(event) {
+        this.setState({value: event.target.value})
  
-
-
+    }
+    goToPayment() {
+        this.state.amount = this.state.value;
+        this.props.history.push({
+            pathname: '/Checkout', 
+            state: {  title: this.state.title,
+              cost: this.state.cost,  guest: this.state.guestNum, hostId: this.state.hostId,
+             attendees: this.state.attendees,  description:this.state.description, 
+             id: this.state.id, amount: this.state.amount, qunaity: this.state.qunaity}
+            
+          })
     }
 
     render() {
@@ -58,14 +71,15 @@ class RegisterEvent extends Component {
                         <ul class = "modseparate"></ul>
                     </div>
                     <div className="moddetails">
-                        <label htmlFor="name">Dates</label> {this.state.date}
+                        <label htmlFor="name">Date</label> 
+                        <p className="dateFormat">{this.state.date}</p>
                         <input 
                         type="date"
                         className="number-of-guests"></input>
                     </div>
                     <div className="moddetails">
                         <label htmlFor="name">Guests</label>
-                        <select id="guests" className="number-of-guests"> num value set at max event.guestNum? 
+                        <select id="guests" className="number-of-guests" value={this.state.value} onChange = {this.handleChange}> num value set at max event.guestNum? 
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -85,7 +99,7 @@ class RegisterEvent extends Component {
                             max="40"
                             className="number-of-guests"></input>  */}
                     </div>
-                    <button 
+                    <button onClick={() => this.goToPayment() }
                         type="submit"  
                         className="reservebutton">Reserve</button>
                 </div>
