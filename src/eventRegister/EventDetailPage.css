@@ -98,7 +98,7 @@ padding: 1em;
   font-weight: bold;
   font-size: xx-large;
   color: rgb(99, 109, 109);
-  margin-right: 21em;
+  margin-right: 12em;
   margin-top: 2em;
   margin-left: 7.5em;
 }
@@ -213,7 +213,7 @@ padding: 1em;
     position:relative;
     text-align:right;
     height:500px;
-    width:700px;
+    width:500px;
     margin-left: 15em;
   }
 
@@ -222,9 +222,18 @@ padding: 1em;
 
       background:none!important;
       height:500px;
-      width:700px;
+      width:500px;
       border-radius: 3ch;
       margin-top: 1em;
   }
 
-  
+ .dateFormat {
+  position: relative;
+  text-align: left;
+  font-weight: bold;
+  color: rgb(99, 109, 109);
+
+  margin-top: 1em;
+  margin-left: 1em;
+
+ }

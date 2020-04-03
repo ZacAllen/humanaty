@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 
 import './EventCreation.css';
@@ -11,18 +10,20 @@ class CreateEvent extends React.Component {
     super(props)
     this.state = {
       currentStep: 1,
-      name:  '',
+      title:  '',
       address: '', 
       city: '',
       state: '',
       zip: '',
       date: '',
-      time: '',
       meal: '',
-      guest: '',
+      guestNum: '',
       description: '',
-      allergy: '',
-      additional: '',     
+      allergies: '',
+      additionalInfo: '', 
+      costPerSeat: '',
+      hostId: '' ,
+      accessibilityAccommodations: '',   
       errors: {
         name: '',
         address: '',
@@ -57,15 +58,18 @@ class CreateEvent extends React.Component {
     
   // Posts the different responses to the backend 
   handleSubmit = event => {
-    var obj = {name: this.state.name, address: this.state.address, city: this.state.city,
-              state: this.state.state, zip: this.state.zip, date: this.state.date,
-              time: this.state.time, meal: this.state.meal, guest: this.state.guest,
-              description: this.state.description, allergy: this.state.allergy, 
-              additional: this.state.additional};
+    var obj = {title: this.state.title,location: this.state.location, date: this.state.date,
+      costPerSeat: this.state.costPerSeat, meal: this.state.meal, guestNum: this.state.guestNum, hostId:this.state.hostId,
+      accessibilityAccommodations: this.state.accessibilityAccommodations, attendees: this.state.attendees,
+       description: this.state.description, allergies: this.state.allergies, 
+       additionalInfo: this.state.additionalInfo, id: this.state.id, address: this.address, state: this.state.state,
+      city: this.state.city, zip: this.state.zip}
     axios.post('http://localhost:9000/create-event', obj).then(res => {
       console.log(res);
       console.log(res.data);
     })
+
+ 
   }
    
   _next = () => {
@@ -129,27 +133,27 @@ class CreateEvent extends React.Component {
       <Step1 
         currentStep={this.state.currentStep} 
         handleChange={this.handleChange}
-        name={this.state.name}
+        title={this.state.title}
         address={this.state.address}
         city={this.state.city}
         state={this.state.state}
         zip={this.state.zip}
         date={this.state.date}
-        time={this.state.time}
+        // time={this.state.time}
       />
       <Step2 
         currentStep={this.state.currentStep} 
         handleChange={this.handleChange}
         meal={this.state.meal}
-        guest={this.state.guest}
+        guestNum={this.state.guestNum}
         description={this.state.description}
       />
       <Step3 
         currentStep={this.state.currentStep} 
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
-        allergy={this.state.allergy}
-        additional={this.state.additional}
+        allergies={this.state.allergies}
+        additionalInfo={this.state.additionalInfo}
       />
       {this.previousButton()}
       {this.nextButton()}
@@ -298,9 +302,9 @@ class CreateEvent extends React.Component {
           <div className = "input-group">
             <input
               type="text"
-              name="guest"
+              name="guestNum"
               className="guests"
-              value={props.guest}
+              value={props.guestNum}
               onChange={props.handleChange}>
             </input>
           </div>
@@ -344,9 +348,9 @@ class CreateEvent extends React.Component {
           <div className="input-group">
             <input
               type="text"
-              name="allergy"
+              name="allergies"
               className="allergy-input"
-              value={props.allergy}
+              value={props.allergies}
               onChange={props.handleChange}>
             </input>
           </div>
@@ -356,9 +360,9 @@ class CreateEvent extends React.Component {
           <div className="input-group">
             <input
               type="text"
-              name="additional"
+              name="additionalInfo"
               className="additional-input"
-              value={props.additional}
+              value={props.additionalInfo}
               onChange={props.handleChange}>
             </input>
           </div>

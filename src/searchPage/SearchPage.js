@@ -163,7 +163,7 @@ class SearchPage extends Component {
   this.props.history.push({
     pathname: '/EventDetailPage', 
     state: {  title: item.title,location: item.location, date: item.date,
-      cost: item.costPerSeat, meal: item.meal, guest: item.guestNum, hostId: item.hostId,
+      cost: item.costPerSeat, meal: item.meal, guest: item.guestNum, hostID: item.hostID,
       accessibility: item.accessibilityAccommodations, attendees: item.attendees,
        description: item.description, allergies: item.allergies, 
        additionalInfo: item.additionalInfo, id: item.id}

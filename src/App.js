@@ -11,6 +11,7 @@ import NavBar from './navbar/NavBar.js';
 import RegisterEvent from './eventRegister/EventDetailPage';
 import Footer from './footer/footer.js';
 
+
 class App extends Component {
   constructor(props) {
       super(props);
