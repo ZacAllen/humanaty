@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
 import './ProfilePage.css';
 import EventThumbnails from './eventThumbnails/EventThumbnails';
 import Reviews from './reviews/Reviews';

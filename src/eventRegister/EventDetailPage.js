@@ -54,8 +54,6 @@ class RegisterEvent extends Component {
             this.setState({access: "No"})
         }
 
-        // this.setState()
-
     }
 
     handleChange(event) {
@@ -63,7 +61,8 @@ class RegisterEvent extends Component {
  
     }
     goToPayment() {
-        var obj = {id: this.state.id, amount: this.state.cost * this.state.value};
+        var obj = {id: this.state.id, amount: this.state.cost * this.state.value,
+                    guest_num: this.state.value};
         axios.post('http://localhost:9000/receive-payment/', obj);
         this.props.history.push({
             pathname: '/checkout', 
@@ -90,7 +89,7 @@ class RegisterEvent extends Component {
                         <label htmlFor="name">$ {this.state.cost}</label> 
                     </div>
                     <div>
-                        <ul class = "modseparate"></ul>
+                        <ul className = "modseparate"></ul>
                     </div>
                     <div className="dateFormat">
                         <label htmlFor="name">Date</label> 
@@ -139,7 +138,7 @@ class RegisterEvent extends Component {
                     <label htmlFor="name">{this.state.meal}</label>
                 </div>
                 <div>
-                    <ul class = "detailseparate"></ul>
+                    <ul className = "detailseparate"></ul>
                 </div>
                 <div className="detailheaders">
                     <label htmlFor="name">Menu Overview</label> 
@@ -149,7 +148,7 @@ class RegisterEvent extends Component {
                     <label htmlFor="name">{this.state.description}</label> 
                 </div>
                 <div>
-                    <ul class = "detailseparate"></ul>
+                    <ul className = "detailseparate"></ul>
                 </div>
                 <div className="detailheaders">
                     <label htmlFor="name">Accessibility Accommodations?</label> 
@@ -159,7 +158,7 @@ class RegisterEvent extends Component {
                     <label htmlFor="name">{this.state.access}</label>
                 </div>
                 <div>
-                    <ul class = "detailseparate"></ul>
+                    <ul className = "detailseparate"></ul>
                 </div>
                 <div className="detailheaders">
                     <label htmlFor="name">Cancellation Policy</label>
@@ -169,15 +168,15 @@ class RegisterEvent extends Component {
                     <label htmlFor="name">Free cancellations provided up to 48 hours before event. </label>
                 </div>
                 <div>
-                    <ul class = "detailseparate"></ul>
+                    <ul className = "detailseparate"></ul>
                 </div>
                 <div className="detailheaders">
                     <label htmlFor="name">Additional Info</label>  
                 </div>
-                <div class = "detaildescriptions"> <label htmlFor="name">{this.state.additionalInfo} </label>
+                <div className = "detaildescriptions"> <label htmlFor="name">{this.state.additionalInfo} </label>
                 </div>
                 <div>
-                    <ul class = "detailseparate"></ul>
+                    <ul className = "detailseparate"></ul>
                 </div>
                 <div className="detailheaders">
                     <label htmlFor="name"></label>  {}

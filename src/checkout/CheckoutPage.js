@@ -52,7 +52,7 @@ class CheckoutPage extends Component {
                     <div className="summarybox">
                         <label htmlFor="name" className="reservationHeader">Reservation Summary</label>
                         <div>
-                            <ul class = "modseparate"></ul>
+                            <ul className = "modseparate"></ul>
                         </div>
                         <div className="summaryboxdetails">
                             <label className="summaryboxdetails">{this.state.meal} with {this.state.hostID}</label>
@@ -64,19 +64,19 @@ class CheckoutPage extends Component {
                             <label className="summaryboxdetails">{this.state.location.city}, {this.state.location.state}</label>
                         </div>
                         <div>
-                            <ul class = "modseparate"></ul>
+                            <ul className = "modseparate"></ul>
                         </div>
                         <div className="summaryboxdetails">
                             <label className="summaryboxdetails">{this.state.date}</label>
                         </div>
                         <div>
-                            <ul class = "modseparate"></ul>
+                            <ul className = "modseparate"></ul>
                         </div>
                         <div className="summaryboxdetails">
                             <label className="summaryboxdetails">{this.state.guest_num} guests x {this.state.cost}</label>
                         </div>
                         <div>
-                            <ul class = "modseparate"></ul>
+                            <ul className = "modseparate"></ul>
                         </div>
                         <div className="reservationHeader">
                             <label className="reservationHeader">Total</label>
@@ -151,7 +151,7 @@ class CheckoutPage extends Component {
                         </div>
                     </div>
                     <div className="sectionheader">
-                        <span class="numberCircle"><span>2</span></span>
+                        <span className="numberCircle"><span>2</span></span>
                         <label htmlFor="name">Payment Details</label>
                         <div className="inputheader">
                             <CheckoutForm />
