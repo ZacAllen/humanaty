@@ -30,6 +30,24 @@
     margin-left: 1em;
 }
 
+.modseparate {
+    content: '';
+    position: relative;
+    width: 90%;
+    height: 1px;
+    color: black;
+    border: 1px solid #ddd;
+    margin: auto;
+    z-index: 2;
+}
+
+.summaryboxdetails {
+    font-weight: lighter;
+    font-size: 70%;
+    left: 5%;
+    position: relative;
+}
+
 .cancellation {
     font-weight: lighter;
     position: absolute;

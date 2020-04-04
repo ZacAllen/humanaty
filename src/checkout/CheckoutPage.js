@@ -7,6 +7,8 @@ import NavBar from '../navbar/NavBar.js';
 import './CheckoutPage.css';
 
 import axios from 'axios';
+import RegisterEvent from '../eventRegister/EventDetailPage';
+import { registerVersion } from 'firebase';
 
 const stripePromise = loadStripe('pk_test_KsSBLHsah3N55vJsAQ7a8YDO00qx7rn3an');
 
@@ -47,8 +49,38 @@ class CheckoutPage extends Component {
                 <div className="event">
                     <div className="summarybox">
                         <label htmlFor="name" className="reservationHeader">Reservation Summary</label>
-                        
+                        <div>
+                            <ul class = "modseparate"></ul>
+                        </div>
+                        <div className="summaryboxdetails">
+                            <label className="summaryboxdetails">{RegisterEvent.meal} with {RegisterEvent.hostID}</label>
+                        </div>
+                        <div className="reservationHeader">
+                            <label className="reservationHeader">{RegisterEvent.title}</label>
+                        </div>
+                        <div className="summaryboxdetails">
+                            <label className="summaryboxdetails">{RegisterEvent.location}</label>
+                        </div>
+                        <div>
+                            <ul class = "modseparate"></ul>
+                        </div>
+                        <div className="summaryboxdetails">
+                            <label className="summaryboxdetails">{RegisterEvent.date}</label>
+                        </div>
+                        <div>
+                            <ul class = "modseparate"></ul>
+                        </div>
+                        <div className="summaryboxdetails">
+                            <label className="summaryboxdetails">{RegisterEvent.attendees} guests x {RegisterEvent.cost}</label>
+                        </div>
+                        <div>
+                            <ul class = "modseparate"></ul>
+                        </div>
+                        <div className="reservationHeader">
+                            <label className="reservationHeader">Total</label>
+                        </div>
                     </div>
+                    
                     <label className="cancellation">Free cancellation up to 48 hours before event. </label>
                     <label htmlFor="name">Billing Information</label>
                     <div className="sectionheader">
