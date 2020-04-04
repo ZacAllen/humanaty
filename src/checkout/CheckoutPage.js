@@ -27,6 +27,7 @@ class CheckoutPage extends Component {
             description: this.props.location.state.description,
             id: this.props.location.state.id,
             meal: this.props.location.state.meal,
+            guest_num: this.props.location.state.guest_num,
             full_name: '',
             address: '',
             city: '',
@@ -72,7 +73,7 @@ class CheckoutPage extends Component {
                             <ul class = "modseparate"></ul>
                         </div>
                         <div className="summaryboxdetails">
-                            <label className="summaryboxdetails">{this.state.attendees} guests x {this.state.cost}</label>
+                            <label className="summaryboxdetails">{this.state.guest_num} guests x {this.state.cost}</label>
                         </div>
                         <div>
                             <ul class = "modseparate"></ul>

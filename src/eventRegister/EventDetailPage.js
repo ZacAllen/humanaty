@@ -63,16 +63,15 @@ class RegisterEvent extends Component {
  
     }
     goToPayment() {
-        this.state.attendees = this.state.value;
-        var obj = {id: this.state.id, quantity: this.state.cost * this.state.attendees};
+        var obj = {id: this.state.id, amount: this.state.cost * this.state.value};
         axios.post('http://localhost:9000/receive-payment/', obj);
         this.props.history.push({
             pathname: '/checkout', 
             state: {  title: this.state.title,
-             cost: this.state.cost,  guest: this.state.guestNum, hostID: this.state.hostID,
-             attendees: this.state.attendees,  description:this.state.description, 
+             cost: this.state.cost, guest: this.state.guestNum, hostID: this.state.hostID,
+             attendees: this.state.attendees, description:this.state.description, 
              id: this.state.id, meal: this.state.meal, date: this.state.date, 
-             location: this.state.location}
+             location: this.state.location, guest_num: this.state.value}
             
           })
     }
@@ -103,6 +102,7 @@ class RegisterEvent extends Component {
                     <div className="moddetails">
                         <label htmlFor="name">Guests</label>
                         <select id="guests" className="number-of-guests" value={this.state.value} onChange = {this.handleChange}> num value set at max event.guestNum? 
+                            <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
