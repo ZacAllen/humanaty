@@ -18,14 +18,15 @@ class CheckoutPage extends Component {
 
         this.state = {
             title: this.props.location.state.title,
+            date: this.props.location.state.date,
+            location: this.props.location.state.location,
             cost: this.props.location.state.cost,
             guest: this.props.location.state.cost,
             hostID: this.props.location.state.hostID,
             attendees: this.props.location.state.attendees,
             description: this.props.location.state.description,
             id: this.props.location.state.id,
-            amount: this.props.location.state.amount,
-            quantity: this.props.location.state.quantity,
+            meal: this.props.location.state.meal,
             full_name: '',
             address: '',
             city: '',
@@ -53,25 +54,25 @@ class CheckoutPage extends Component {
                             <ul class = "modseparate"></ul>
                         </div>
                         <div className="summaryboxdetails">
-                            <label className="summaryboxdetails">{RegisterEvent.meal} with {RegisterEvent.hostID}</label>
+                            <label className="summaryboxdetails">{this.state.meal} with {this.state.hostID}</label>
                         </div>
                         <div className="reservationHeader">
-                            <label className="reservationHeader">{RegisterEvent.title}</label>
+                            <label className="reservationHeader">{this.state.title}</label>
                         </div>
                         <div className="summaryboxdetails">
-                            <label className="summaryboxdetails">{RegisterEvent.location}</label>
+                            <label className="summaryboxdetails">{this.state.location.city}, {this.state.location.state}</label>
                         </div>
                         <div>
                             <ul class = "modseparate"></ul>
                         </div>
                         <div className="summaryboxdetails">
-                            <label className="summaryboxdetails">{RegisterEvent.date}</label>
+                            <label className="summaryboxdetails">{this.state.date}</label>
                         </div>
                         <div>
                             <ul class = "modseparate"></ul>
                         </div>
                         <div className="summaryboxdetails">
-                            <label className="summaryboxdetails">{RegisterEvent.attendees} guests x {RegisterEvent.cost}</label>
+                            <label className="summaryboxdetails">{this.state.attendees} guests x {this.state.cost}</label>
                         </div>
                         <div>
                             <ul class = "modseparate"></ul>
@@ -152,8 +153,7 @@ class CheckoutPage extends Component {
                         <span class="numberCircle"><span>2</span></span>
                         <label htmlFor="name">Payment Details</label>
                         <div className="inputheader">
-                            <CheckoutForm 
-                            price={this.state.cost * this.state.amount}/>
+                            <CheckoutForm />
                         </div>
                     </div>
                 </div>

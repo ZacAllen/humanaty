@@ -36,11 +36,6 @@ class RegisterEvent extends Component {
             displayName: "",
             access: "",
             value: 0,
-
-            name: '',
-            amount: 0,
-            quantity: 0,
-           
         };
         this.handleChange = this.handleChange.bind(this)
        
@@ -69,12 +64,15 @@ class RegisterEvent extends Component {
     }
     goToPayment() {
         this.state.attendees = this.state.value;
+        var obj = {id: this.state.id, quantity: this.state.cost * this.state.attendees};
+        axios.post('http://localhost:9000/receive-payment/', obj);
         this.props.history.push({
             pathname: '/checkout', 
             state: {  title: this.state.title,
-              cost: this.state.cost,  guest: this.state.guestNum, hostID: this.state.hostID,
+             cost: this.state.cost,  guest: this.state.guestNum, hostID: this.state.hostID,
              attendees: this.state.attendees,  description:this.state.description, 
-             id: this.state.id, amount: this.state.amount, quantity: this.state.quantity}
+             id: this.state.id, meal: this.state.meal, date: this.state.date, 
+             location: this.state.location}
             
           })
     }
