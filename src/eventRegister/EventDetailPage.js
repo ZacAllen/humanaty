@@ -35,7 +35,7 @@ class RegisterEvent extends Component {
             id: this.props.location.state.id,
             displayName: "",
             access: "",
-            value: 0,
+            value: 1,
         };
         this.handleChange = this.handleChange.bind(this)
        

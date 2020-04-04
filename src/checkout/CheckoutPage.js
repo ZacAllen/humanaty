@@ -73,7 +73,7 @@ class CheckoutPage extends Component {
                             <ul className = "modseparate"></ul>
                         </div>
                         <div className="summaryboxdetails">
-                            <label className="summaryboxdetails">{this.state.guest_num} guests x {this.state.cost}</label>
+                            <label className="summaryboxdetails">{this.state.guest_num} guest(s) x {this.state.cost}</label>
                         </div>
                         <div>
                             <ul className = "modseparate"></ul>
