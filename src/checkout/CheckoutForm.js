@@ -7,7 +7,6 @@ import CardSection from './CardSection';
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   handleSubmit = async (event) => {
@@ -27,7 +26,7 @@ class CheckoutForm extends Component {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
-          name: 'Jenny Rosen',
+          name: this.props.name_on_card,
         },
       }
     });
@@ -51,7 +50,19 @@ class CheckoutForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <CardSection />
-        <button disabled={!this.props.stripe}>Complete order</button>
+        <label className="inputheader">Name on Card</label>
+        <div className="input-box">
+          <input
+            type="text"
+            name="name-on-card"
+            className="zip-input"
+            value={this.props.name_on_card}
+            onChange={this.handleChange}/>
+        </div>
+        <button 
+          disabled={!this.props.stripe}
+          className="paynowbutton"
+          >Pay Now</button>
       </form>
     );
   }

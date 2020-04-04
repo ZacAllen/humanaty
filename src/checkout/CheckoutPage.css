@@ -5,8 +5,57 @@
     font-size: x-large;
     color: rgb(99, 109, 109);
     margin-right: 21em;
-    margin-top: 2em;
+    margin-top: 10em;
     margin-left: 7.5em;
+}
+
+.summarybox {
+    width : 13em;
+    background-color: white;
+    position: absolute;
+    top: 5%;
+    left: 60%;
+    height: 15em;
+    border: 1px solid whitesmoke;
+    border-radius: 25px;
+    box-shadow:  3px 2px 5px 3px rgb(238, 237, 237);
+    z-index: 3;
+}
+
+.reservationHeader {
+    text-align: left;
+    font-weight: bold;
+    font-size: large;
+    color: rgb(99, 109, 109);
+    margin-left: 1em;
+}
+
+.modseparate {
+    content: '';
+    position: relative;
+    width: 90%;
+    height: 1px;
+    color: black;
+    border: 1px solid #ddd;
+    margin: auto;
+    z-index: 2;
+}
+
+.summaryboxdetails {
+    font-weight: lighter;
+    font-size: 70%;
+    left: 5%;
+    position: relative;
+}
+
+.cancellation {
+    font-weight: lighter;
+    position: absolute;
+    top: 41em;
+    left: 45em;
+    width: 25em;
+
+    font-size: small;
 }
 
 .numberCircle {
@@ -44,6 +93,7 @@
     font-size: medium;
     color: rgb(99, 109, 109);
     position: relative;
+    margin-top: 1em;
 }
 
 .sectionseparate {
@@ -58,11 +108,60 @@
     z-index: 2;
 }
 
-.name-address-zip-input {
-    width: 120%;
+.name-address-input {
+    width: 55%;
+}
+
+.zip-input {
+    width: 55%;
+    margin-bottom: 2em;
 }
 
 .city-state-input {
-    width: 55%;
-    margin-right: 10px;
+    width: 117%;
+}
+
+.paynowbutton {
+    background-color: #00674B;
+    width: 14em;
+    border-radius: 10ch;
+    border: #00674B;
+    border-style: solid;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 8em;
+    transition-duration: 0.4s;
+    font-weight: 600;
+}
+
+.paynowbutton:hover {
+    background-color: rgb(0, 75, 55);
+    width: 14em;
+    border-radius: 10ch;
+    border: #00674B;
+    border-style: solid;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 8em;
+    transition-duration: 0.5s;
+    font-weight: 600;
+}
+
+#block-container {
+    text-align: left;
+}
+
+#bloc1, #bloc2 {
+    display: inline-block;
+    margin-right: 3em;
 }
