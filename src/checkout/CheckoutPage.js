@@ -101,6 +101,7 @@ class CheckoutPage extends Component {
                                 type="text"
                                 name="full_name"
                                 className="name-address-input"
+                                class="form-control"
                                 value={this.state.full_name}
                                 onChange={this.handleChange}/>
                         </div>
@@ -112,6 +113,7 @@ class CheckoutPage extends Component {
                                 type="text"
                                 name="address"
                                 className="name-address-input"
+                                class="form-control"
                                 value={this.state.address}
                                 onChange={this.handleChange}/>
                         </div>
@@ -125,6 +127,7 @@ class CheckoutPage extends Component {
                                     type="text"
                                     name="city"
                                     className="city-state-input"
+                                    class="form-control"
                                     value={this.state.city}
                                     onChange={this.handleChange}/>
                             </div>
@@ -138,6 +141,7 @@ class CheckoutPage extends Component {
                                     type="text"
                                     name="state"
                                     className="city-state-input"
+                                    class="form-control"
                                     value={this.state.state}
                                     onChange={this.handleChange}/>
                             </div>
@@ -151,6 +155,7 @@ class CheckoutPage extends Component {
                                 type="text"
                                 name="zip"
                                 className="zip-input"
+                                class="form-control"
                                 value={this.state.zip}
                                 onChange={this.handleChange}/>
                         </div>
