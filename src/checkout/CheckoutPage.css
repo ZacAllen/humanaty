@@ -42,13 +42,73 @@
 }
 
 .summaryboxdetails {
-    font-weight: lighter;
+    font-weight: 400;
     font-size: 70%;
     left: 5%;
     position: relative;
 }
 
-.cancellation {
+.date1 {
+    font-weight: 400;
+    font-size: 55%;
+    left: 11%;
+    position: relative;
+}
+
+.dateimg {
+    position: relative;
+    left: 10%;
+    height: 0.75em;
+    width: 0.75em;
+    bottom: 5%;
+}
+
+.guestdetails1 {
+    font-weight: bold;
+    font-size: 70%;
+    left: 5%;
+    position: relative;
+}
+
+.guestdetails2 {
+    font-weight: lighter;
+    font-size: 70%;
+    left: 8%;
+    position: relative;
+    color: rgb(161, 161, 161);
+}
+
+.total1 {
+    font-weight: bold;
+    font-size: 70%;
+    position: relative;
+    left: 60%;
+}
+
+.total2 {
+    text-align: left;
+    font-weight: bold;
+    font-size: 90%;
+    color: rgb(99, 109, 109);
+    margin-left: 3%;
+}
+
+.total3 {
+    font-weight: bold;
+    font-size: 90%;
+    position: relative;
+    left: 65%;
+}
+
+.cancellation1 {
+    position: absolute;
+    top: 16.75em;
+    left: 17.75em;
+    width: 0.5em;
+    height: 0.5em;
+}
+
+.cancellation2 {
     font-weight: lighter;
     position: absolute;
     top: 41em;
@@ -109,6 +169,10 @@
 }
 
 .name-address-input {
+    width: 55%;
+}
+
+.form-control {
     width: 55%;
 }
 
