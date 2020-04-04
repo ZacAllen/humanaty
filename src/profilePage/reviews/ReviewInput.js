@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -6,7 +6,7 @@ import BeautyStars from 'beauty-stars';
 import './Reviews.css';
 import axios from 'axios';
 
-class ReviewInput extends React.Component {
+class ReviewInput extends Component {
 
     constructor(props) {
         super(props);
@@ -65,7 +65,7 @@ class ReviewInput extends React.Component {
             var sharesAnEvent =  currentUserEvents.some(item => profileUserEvents.includes(item));
 
             // Using alerts for now to check edge cases, feel free to comment out for testing
-            if (profileuser == currentuser) {
+            if (profileuser === currentuser) {
                 alert("You cannot leave a review of yourself!")
             } else if (!sharesAnEvent) {
                 alert("You cannot review someone you have not shared an event with!")
