@@ -28,8 +28,7 @@ class CheckoutPage extends Component {
             address: '',
             city: '',
             state: '',
-            zip: '',
-            name_on_card: ''
+            zip: ''
         }
     }
 
@@ -122,7 +121,7 @@ class CheckoutPage extends Component {
                         <label htmlFor="name">Payment Details</label>
                         <div className="inputheader">
                             <CheckoutForm 
-                            name={this.state.name_on_card}/>
+                            price={this.state.cost * this.state.amount}/>
                         </div>
                     </div>
                 </div>
