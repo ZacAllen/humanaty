@@ -7,6 +7,17 @@ import CardSection from './CardSection';
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      name_on_card: ''
+    }
+  }
+
+  handleChange = event => {
+    const {name, value} = event.target;
+    this.setState({
+      [name]: value
+    })
   }
 
   handleSubmit = async (event) => {
@@ -56,7 +67,7 @@ class CheckoutForm extends Component {
             type="text"
             name="name-on-card"
             className="zip-input"
-            value={this.props.name_on_card}
+            value={this.state.name_on_card}
             onChange={this.handleChange}/>
         </div>
         <button 
