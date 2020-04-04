@@ -27,6 +27,7 @@ class CheckoutPage extends Component {
             description: this.props.location.state.description,
             id: this.props.location.state.id,
             meal: this.props.location.state.meal,
+            guest_num: this.props.location.state.guest_num,
             full_name: '',
             address: '',
             city: '',
@@ -51,7 +52,7 @@ class CheckoutPage extends Component {
                     <div className="summarybox">
                         <label htmlFor="name" className="reservationHeader">Reservation Summary</label>
                         <div>
-                            <ul class = "modseparate"></ul>
+                            <ul className = "modseparate"></ul>
                             {/* This will be replaced with a photo of the meal if we decide to implement that, otherwise this is just for visual separation */}
                         </div>
                         <div className="summaryboxdetails">
@@ -64,14 +65,14 @@ class CheckoutPage extends Component {
                             <label className="summaryboxdetails">{this.state.location.city}, {this.state.location.state}</label>
                         </div>
                         <div>
-                            <ul class = "modseparate"></ul>
+                            <ul className = "modseparate"></ul>
                         </div>
                         <div>
                             <img src="https://www.iconsdb.com/icons/preview/green/calendar-10-xxl.png" className="dateimg"></img>
                             <label className="date1">{this.state.date}</label>
                         </div>
                         <div>
-                            <ul class = "modseparate"></ul>
+                            <ul className = "modseparate"></ul>
                         </div>
                         <div className="guestdetails1">
                             <label className="guestdetails1">{this.state.attendees} guests </label>
@@ -79,7 +80,7 @@ class CheckoutPage extends Component {
                             <label className="total1">${this.state.cost * this.state.attendees}</label>
                         </div>
                         <div>
-                            <ul class = "modseparate"></ul>
+                            <ul className = "modseparate"></ul>
                         </div>
                         <div className="total2">
                             <label className="total2">Total</label>
@@ -155,7 +156,7 @@ class CheckoutPage extends Component {
                         </div>
                     </div>
                     <div className="sectionheader">
-                        <span class="numberCircle"><span>2</span></span>
+                        <span className="numberCircle"><span>2</span></span>
                         <label htmlFor="name">Payment Details</label>
                         <div className="inputheader">
                             <CheckoutForm />
