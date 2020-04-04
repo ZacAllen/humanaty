@@ -77,14 +77,14 @@ class CheckoutPage extends Component {
                         <div className="guestdetails1">
                             <label className="guestdetails1">{this.state.guest_num} guests </label>
                             <label className="guestdetails2"> x ${this.state.cost}</label>
-                            <label className="total1">${this.state.cost * this.state.attendees}</label>
+                            <label className="total1">${this.state.cost * this.state.guest_num}</label>
                         </div>
                         <div>
                             <ul className = "modseparate"></ul>
                         </div>
                         <div className="total2">
                             <label className="total2">Total</label>
-                            <label className="total3">${this.state.cost * this.state.attendees}</label>
+                            <label className="total3">${this.state.cost * this.state.guest_num}</label>
                         </div>
                     </div>
                     <img src="https://images.vexels.com/media/users/3/157931/isolated/preview/604a0cadf94914c7ee6c6e552e9b4487-curved-check-mark-circle-icon-by-vexels.png" className="cancellation1"></img>
