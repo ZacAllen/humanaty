@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { Component } from 'react';
 
 import './EventCreation.css';
@@ -18,11 +20,15 @@ const allergyOptions = [
   {label: "wheats", value: "wheats"},
 ];
 
+const defaultPhoto = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/220px-Good_Food_Display_-_NCI_Visuals_Online.jpg";
+
 
 class CreateEvent extends React.Component {
   constructor(props) {
     super(props)
     this.onDrop = this.onDrop.bind(this);
+    this.validated = this.validated.bind(this);
+    this.handleChangePhoto = this.handleChangePhoto.bind(this);
     this.state = {
       currentStep: 1,
       costPerSeat: 0.0,
@@ -31,9 +37,9 @@ class CreateEvent extends React.Component {
       accessibilityAccommodations: false,
       location: {},
       address: '', 
-      city: 'Atlanta',
-      state: 'GA',
-      zip: '30318',
+      city: '',
+      state: '',
+      zip: '',
       date: '',
       time: "10:00",
       meal: 'Dinner',
@@ -42,7 +48,7 @@ class CreateEvent extends React.Component {
       allergies: '',
       additionalInfo: '',   
       title: '',
-      photoGallery: [],  
+      photoGallery: [defaultPhoto],  
       errors: {
         name: '',
         address: '',
@@ -56,68 +62,121 @@ class CreateEvent extends React.Component {
     });
   }
 
-  
+  handleChangePhoto = event => {
+    if (event.target.name === 'photoGallery') {
+      let picture = event.target.value;
+      this.setState({
+        photoGallery: this.state.photoGallery.concat(picture),
+      });
+    } 
+  }
+
   handleChange = event => {
-    console.log(this.state);
-    const {name} = event.target;
-    const value = event.target.name === 'accessibilityAccommodations' ? event.target.checked : event.target.value;
-    let errors = this.state.errors;
+    console.log("STATE", this.state);
+    
+      const {name} = event.target;
+      const value = event.target.name === 'accessibilityAccommodations' ? event.target.checked : event.target.value;
+      let errors = this.state.errors;
 
-    switch (name) {
-      case 'name': 
-        errors.name = 
-          value.length < 5
-            ? 'Full Name must be 5 characters long!'
-            : '';
-        break;
-      case 'address': 
-        errors.address = value.toString().trim().length < 8;
-        break;
-      case 'city': 
-        break;
-      default:
-        break;
-    }  
-
-    this.setState({
-      [name]: value
-    })    
+      if (event.target.name === 'photoGallery') {
+        let picture = event.target.value;
+        console.log("photo", value);
+        this.setState({
+          photoGallery: [picture],
+        });
+      } else {
+        switch (name) {
+          case 'name': 
+            errors.name = 
+              value.length < 5
+                ? 'Full Name must be 5 characters long!'
+                : '';
+            break;
+          case 'address': 
+            errors.address = value.toString().trim().length < 8;
+            break;
+          case 'city': 
+            break;
+          default:
+            break;
+        }  
+    
+        this.setState({
+          [name]: value
+        })  
+      }
+        
   }
 
   setAllergies = allergies => {
     this.setState({allergies: allergies})
   }
+
+  validated = () => {
+    console.log("HEEERRR");
+    var event = this.state;
+    if (event.title === "" || event.address === "" || event.city === "" || event.zip === "" || event.zip.length < 5 || event.state === "") {
+      return false;
+    }
+    return true;
+  }
     
   // Posts the different responses to the backend 
   handleSubmit = event => {
     event.preventDefault();
+    if (this.validated()) {   
+      let date =  this.state.date + " "  + this.state.time;
+      let allergies = this.state.allergies === "" ? [] : this.state.allergies;
+      let photoGallery = (this.state.photoGallery[0] === "") ? [defaultPhoto] : this.state.photoGallery;
+      var obj = { title: this.state.title, 
+                  location: {
+                    address: this.state.address, 
+                    city: this.state.city,
+                    state: this.state.state, 
+                    zip: this.state.zip,
+                    geopoint: {}
+                  },
+                  accessibilityAccommodations: this.state.accessibilityAccommodations,
+                  date: date,
+                  meal: this.state.meal, 
+                  guestNum: this.state.guestNum,
+                  description: this.state.description,
+                  allergies: allergies, 
+                  costPerSeat: this.state.costPerSeat,
+                  additionalInfo: this.state.additionalInfo,
+                  photoGallery: photoGallery}
 
-    let date =  this.state.date + " "  + this.state.time;
-    let allergies = this.state.allergies === "" ? [] : this.state.allergies;
-    let photoGallery = this.state.photoGallery === [] ? [] : this.state.photoGallery;
-    var obj = { title: this.state.title, 
-                location: {
-                  address: this.state.address, 
-                  city: this.state.city,
-                  state: this.state.state, 
-                  zip: this.state.zip,
-                  geopoint: {}
-                },
-                accessibilityAccommodations: this.state.accessibilityAccommodations,
-                date: date,
-                meal: this.state.meal, 
-                guestNum: this.state.guestNum,
-                description: this.state.description,
-                allergies: allergies, 
-                costPerSeat: this.state.costPerSeat,
-                additionalInfo: this.state.additionalInfo,
-                photoGallery: photoGallery}
+                  console.log("Event",obj);
 
-                console.log("Event",obj);
-
-    axios.post('http://localhost:9000/event', obj).then(res => {
-      console.log(res.data, "Response");
-    })
+      axios.post('http://localhost:9000/event', obj).then(res => {
+        if (res.data) {
+          console.log(res.data);
+          let eventId = res.data.eventId;
+          let hostId = res.data.hostId;
+          var event = this.state;
+          this.props.history.push({
+            pathname: '/event-detail',
+            state: {
+              title: event.title,
+              location: event.location,
+              date: event.date,
+              cost: event.costPerSeat,
+              meal: event.meal,
+              guest: event.guestNum,
+              hostID: hostId,
+              accessibility: event.accessibilityAccommodations, 
+              attendees: event.attendees,
+              description: event.description,
+              allergies: event.allergies,
+              additionalInfo: event.additionalInfo,
+              id: eventId,
+            }
+          });
+        }  
+      })
+    } else {
+      alert("please fill out all required fields");
+    }
   }
    
   _next = () => {
@@ -144,7 +203,7 @@ class CreateEvent extends React.Component {
     if(currentStep !== 1){
       return (
         <button 
-          className="btn btn-secondary" 
+          className="btn btn-secondary buttons" 
           type="button" onClick={this._prev}>
         Previous
         </button>
@@ -158,10 +217,25 @@ class CreateEvent extends React.Component {
     if(currentStep < 3){
       return (
         <button 
-          className="btn btn-primary" 
+          className="btn btn-primary buttons" 
           type="button" onClick={this._next}>
         Next
         </button>        
+      )
+    }
+    return null;
+  }
+
+  submitButton() {
+    let currentStep = this.state.currentStep;
+    if(currentStep === 3){
+      return (
+        <button
+            className="submit btn btn-primary buttons"
+            type="submit"
+            formAction="/"
+            onClick={this.onSubmit}>Submit
+          </button>    
       )
     }
     return null;
@@ -194,7 +268,7 @@ class CreateEvent extends React.Component {
         handleChange={this.handleChange}
         meal={this.state.meal}
         guest={this.state.guest}
-        description={this.state.description}
+        accessibilityAccommodations={this.state.accessibilityAccommodations}
       />
       <Step3 
         currentStep={this.state.currentStep} 
@@ -202,12 +276,15 @@ class CreateEvent extends React.Component {
         setAllergies={this.setAllergies}
         handleSubmit={this.handleSubmit}
         allergies={this.state.allergies}
+        description={this.state.description}
         additionalInfo={this.state.additionalInfo}
-        accessibilityAccommodations={this.state.accessibilityAccommodations}
+        photoGallery={this.state.photoGallery}
+        handleChangePhoto={this.state.handleChangePhoto}
         onDrop={this.onDrop}
       />
       {this.previousButton()}
       {this.nextButton()}
+      {this.submitButton()}
       </form>
       </React.Fragment>
     );
@@ -232,130 +309,134 @@ class CreateEvent extends React.Component {
         </div>
         <div className = "box">
           <div className="labels">
-            <label htmlFor="title">Event Title</label>
+            <label htmlFor="title">Event Title*</label>
           </div>
           <div className="input-group">
             <input
               type="text"
               name="title"
-              className="name-input"
+              className="name-input form-control"
               value={props.title}
               onChange={props.handleChange}
-              placeholder="My Event"/>
+              placeholder="required"/>
           </div>
           <div className="labels">
-            <label htmlFor="name">Street Address*</label>
+            <label htmlFor="name">Street Address</label>
           </div>
           <div className="input-group">
             <input
               type="text"
               name="address"
-              className="address-input"
+              className="address-input form-control"
               value={props.address}
               onChange={props.handleChange}
-              placeholder=" ">
+              placeholder="required">
             </input>
           </div>
+
+          {/* city zip state */}
+          <div className="city-state-zip">
+            <div className="labels">
+              <label htmlFor="name">City/State/Zip</label>
+            </div>
+
+            <div className="input-group">
+              <input
+                type="text"
+                name="city"
+                className="city-input form-control"
+                value={props.city}
+                onChange={props.handleChange}
+                placeholder="City">
+              </input>
+              <select className="states" name='state' onChange={props.handleChange}>
+                <option value="default">State</option>
+                <option value="AL">AL</option>
+                <option value="AK">AK</option>
+                <option value="AR">AR</option>	
+                <option value="AZ">AZ</option>
+                <option value="CA">CA</option>
+                <option value="CO">CO</option>
+                <option value="CT">CT</option>
+                <option value="DC">DC</option>
+                <option value="DE">DE</option>
+                <option value="FL">FL</option>
+                <option value="GA">GA</option>
+                <option value="HI">HI</option>
+                <option value="IA">IA</option>	
+                <option value="ID">ID</option>
+                <option value="IL">IL</option>
+                <option value="IN">IN</option>
+                <option value="KS">KS</option>
+                <option value="KY">KY</option>
+                <option value="LA">LA</option>
+                <option value="MA">MA</option>
+                <option value="MD">MD</option>
+                <option value="ME">ME</option>
+                <option value="MI">MI</option>
+                <option value="MN">MN</option>
+                <option value="MO">MO</option>	
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="NC">NC</option>	
+                <option value="NE">NE</option>
+                <option value="NH">NH</option>
+                <option value="NJ">NJ</option>
+                <option value="NM">NM</option>			
+                <option value="NV">NV</option>
+                <option value="NY">NY</option>
+                <option value="ND">ND</option>
+                <option value="OH">OH</option>
+                <option value="OK">OK</option>
+                <option value="OR">OR</option>
+                <option value="PA">PA</option>
+                <option value="RI">RI</option>
+                <option value="SC">SC</option>
+                <option value="SD">SD</option>
+                <option value="TN">TN</option>
+                <option value="TX">TX</option>
+                <option value="UT">UT</option>
+                <option value="VT">VT</option>
+                <option value="VA">VA</option>
+                <option value="WA">WA</option>
+                <option value="WI">WI</option>	
+                <option value="WV">WV</option>
+                <option value="WY">WY</option>
+              </select>
+              <input
+                type="text"
+                name="zip"
+                pattern="[0-9]*"
+                maxLength="5"
+                minLength="5"
+                className="zip-input form-control"
+                value={props.zip}
+                onChange={props.handleChange}
+                placeholder="Zipcode"/>
+            </div> 
+
+          </div> {/* city zip state */}
+          
+          
+
+
+
           <div className="labels">
-            <label htmlFor="name">City</label>
-          </div>
-          <div className="labels">
-            <label htmlFor="name">State</label>
-          </div>
-          <div className="input-group">
-            <input
-              type="text"
-              name="city"
-              className="city-input"
-              value={props.city}
-              onChange={props.handleChange}
-              placeholder=" ">
-            </input>
-            <select className="states" name='state' defaultValue={'GA'} onChange={props.handleChange}>
-            <option value="AL">AL</option>
-            <option value="AK">AK</option>
-            <option value="AR">AR</option>	
-            <option value="AZ">AZ</option>
-            <option value="CA">CA</option>
-            <option value="CO">CO</option>
-            <option value="CT">CT</option>
-            <option value="DC">DC</option>
-            <option value="DE">DE</option>
-            <option value="FL">FL</option>
-            <option value="GA">GA</option>
-            <option value="HI">HI</option>
-            <option value="IA">IA</option>	
-            <option value="ID">ID</option>
-            <option value="IL">IL</option>
-            <option value="IN">IN</option>
-            <option value="KS">KS</option>
-            <option value="KY">KY</option>
-            <option value="LA">LA</option>
-            <option value="MA">MA</option>
-            <option value="MD">MD</option>
-            <option value="ME">ME</option>
-            <option value="MI">MI</option>
-            <option value="MN">MN</option>
-            <option value="MO">MO</option>	
-            <option value="MS">MS</option>
-            <option value="MT">MT</option>
-            <option value="NC">NC</option>	
-            <option value="NE">NE</option>
-            <option value="NH">NH</option>
-            <option value="NJ">NJ</option>
-            <option value="NM">NM</option>			
-            <option value="NV">NV</option>
-            <option value="NY">NY</option>
-            <option value="ND">ND</option>
-            <option value="OH">OH</option>
-            <option value="OK">OK</option>
-            <option value="OR">OR</option>
-            <option value="PA">PA</option>
-            <option value="RI">RI</option>
-            <option value="SC">SC</option>
-            <option value="SD">SD</option>
-            <option value="TN">TN</option>
-            <option value="TX">TX</option>
-            <option value="UT">UT</option>
-            <option value="VT">VT</option>
-            <option value="VA">VA</option>
-            <option value="WA">WA</option>
-            <option value="WI">WI</option>	
-            <option value="WV">WV</option>
-            <option value="WY">WY</option>
-            </select>
-          </div> 
-          <div className="labels">
-            <label htmlFor="name">Postal Code</label>
-          </div>
-          <div className="input-group">
-            <input
-              type="text"
-              name="zip"
-              className="zip-input"
-              value={props.zip}
-              onChange={props.handleChange}
-              placeholder=" "/>
-          </div>
-          <div className="labels">
-            <label htmlFor="name">Date</label>
-          </div>
-          <div className="labels">
-            <label htmlFor="name">Time</label>
+            <label htmlFor="name">Date/Time</label>
           </div>
           <div className="input-group">
             <input
               type="date"
               name="date"
-              className="date-input"
+              className="date-input form-control"
               value={props.date}
               onChange={props.handleChange}
-              placeholder=" ">
+              placeholder="">
             </input>
             <input
               type="time"
               name="time"
-              className="time-input"
+              className="time-input form-control"
               value={props.time}
               onChange={props.handleChange}>
             </input>
@@ -385,7 +466,7 @@ class CreateEvent extends React.Component {
           <div className = "labels">
             <label htmlFor="name">Meal Type</label>
           </div>
-          <select className="meals" name='meal' defaultValue={'default'} onChange={props.handleChange}>
+          <select className="meals form-control" name='meal' defaultValue={'default'} onChange={props.handleChange}>
             <option>Breakfast</option>
             <option>Brunch</option>
             <option>Lunch</option>
@@ -399,7 +480,7 @@ class CreateEvent extends React.Component {
               type="number"
               min="1" max="10"
               name="guest"
-              className="guests"
+              className="guests form-control"
               value={props.guestNum}
               placeholder="0"
               onChange={props.handleChange}>
@@ -414,24 +495,30 @@ class CreateEvent extends React.Component {
               min="0" max="200"
               name="guest"
               step="any"
-              className="costPerSeat"
+              className="costPerSeat form-control"
               placeholder="0.0"
               value={props.costPerSeat}
               onChange={props.handleChange}>
             </input>
           </div>
-          <div className = "labels">
-            <label htmlFor="name">Meal Description</label>
+
+
+          <div className="labels">
+            <label htmlFor="name">Accessibility Accommodations</label>
           </div>
-          <div className = "input-group">
-            <textarea
-              type="text"
-              name="description"
-              className="description-input"
-              value={props.description}
-              onChange={props.handleChange}>
-            </textarea>
+          <div className="input-group">
+            <label class="switch">
+              <input
+                type="checkbox" 
+                checked={props.accessibilityAccommodations}
+                onChange={props.handleChange}
+                name="accessibilityAccommodations"/>
+              <span class="slider round"></span>
+            </label>
           </div>
+
+
+
         </div>
       </div>
     );
@@ -459,9 +546,24 @@ class CreateEvent extends React.Component {
             <label htmlFor="name">Dietary Restrictions</label>
           </div>
           <MultiSelect
+                  className="allergies"
                   options={allergyOptions}
                   selected={allergies}
                   onSelectedChanged={allergies => props.setAllergies(allergies)}/>
+
+          <div className = "labels">
+            <label htmlFor="name">Meal Description</label>
+          </div>
+          <div className = "input-group">
+            <textarea
+              type="text"
+              name="description"
+              className="description-input form-control"
+              value={props.description}
+              onChange={props.handleChange}>
+            </textarea>
+          </div>
+
           <div className="labels">
             <label htmlFor="name">Additional Information</label>
           </div>
@@ -469,25 +571,26 @@ class CreateEvent extends React.Component {
             <input
               type="text"
               name="additionalInfo"
-              className="additional-input"
+              className="additional-input form-control"
               value={props.additionalInfo}
               onChange={props.handleChange}>
             </input>
           </div>
+
           <div className="labels">
-            <label htmlFor="name">Accessibility Accommodations</label>
+            <label htmlFor="name">Photo</label>
           </div>
           <div className="input-group">
-            <label class="switch">
-              <input
-                type="checkbox" 
-                checked={props.accessibilityAccommodations}
-                onChange={props.handleChange}
-                name="accessibilityAccommodations"/>
-              <span class="slider round"></span>
-            </label>
+            <input
+              type="text"
+              name="photoGallery"
+              className="photoGallery form-control"
+              value={props.photoGallery[0]}
+              onChange={props.handleChange}
+              placeholder="photoURL">
+            </input>
           </div>
-
+          
           {/* <div className="labels">
             <label htmlFor="name">Event Image</label>
           </div>
@@ -498,13 +601,6 @@ class CreateEvent extends React.Component {
                 imgExtension={['.jpg', '.gif', '.png', '.gif']}
                 maxFileSize={5242880}
             /> */}
-          
-          <button
-            className="submit"
-            type="submit"
-            formAction="/"
-            onClick={props.onSubmit}>Submit
-          </button>
         </div>
       </div>
     );
