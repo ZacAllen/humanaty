@@ -71,15 +71,24 @@ function Login(props) {
           <Modal.Body>Your password</Modal.Body>
           <input class = "emailpassword" type="password" placeholder="password"
                   id = "passwordLogin"></input>  
-          {/* Google Sign in */}
+          {/* Google Sign in */}  
           <Modal.Body>Sign in with Google</Modal.Body>  
-          <GoogleLogin
+          <GoogleLogin 
+            
             clientId="129035646582-a4ttt51j5jt7iqfur98kdr214cmc5p1r.apps.googleusercontent.com"
             buttonText="G-Sign in"
             onSuccess={responseGoogle}
             onFailure={responseGoogleFail}
             cookiePolicy={'single_host_origin'}
-            />
+            isSignedIn={true}
+
+            // render={renderProps => (
+            //   <button onClick={renderProps.onClick} disabled={renderProps.disabled}>This is my custom Google button</button>
+            // )}
+
+            >
+
+            </GoogleLogin>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
