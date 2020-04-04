@@ -170,6 +170,7 @@ class CreateEvent extends React.Component {
               allergies: event.allergies,
               additionalInfo: event.additionalInfo,
               id: eventId,
+              photoGallery: event.photoGallery,
             }
           });
         }  
