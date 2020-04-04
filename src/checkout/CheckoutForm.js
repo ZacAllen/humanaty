@@ -67,6 +67,7 @@ class CheckoutForm extends Component {
             type="text"
             name="name-on-card"
             className="zip-input"
+            class="form-control"
             value={this.state.name_on_card}
             onChange={this.handleChange}/>
         </div>
