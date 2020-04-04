@@ -33,7 +33,7 @@ class RegisterEvent extends Component {
             allergies: this.props.location.state.allergies,
             additionalInfo: this.props.location.state.additionalInfo,
             id: this.props.location.state.id,
-            displayName: "",
+            hostName: "",
             access: "",
             value: 1,
         };
@@ -45,7 +45,7 @@ class RegisterEvent extends Component {
     }
     componentDidMount() {
         axios.get('http://localhost:9000/user/' + this.state.hostID).then(res => 
-            this.setState({displayName: res.data.displayName})
+            this.setState({hostName: res.data.displayName})
     
         )
         if (this.state.accessibility) {
@@ -71,7 +71,7 @@ class RegisterEvent extends Component {
              cost: this.state.cost, guest: this.state.guestNum, hostID: this.state.hostID,
              attendees: this.state.attendees, description:this.state.description, 
              id: this.state.id, meal: this.state.meal, date: this.state.date, 
-             location: this.state.location, guest_num: this.state.value}
+             location: this.state.location, guest_num: this.state.value, hostName: this.state.hostName}
             
           })
     }
@@ -125,7 +125,7 @@ class RegisterEvent extends Component {
                         type="submit"  
                         className="reservebutton">Reserve</button>
                 </div>
-                <div className="event">
+                <div className="myEvent">
                     <label htmlFor="name">{this.state.title} </label>  
                 </div>    
                 <div className="host">

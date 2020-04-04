@@ -29,6 +29,7 @@ class CheckoutPage extends Component {
             meal: this.props.location.state.meal,
             guest_num: this.props.location.state.guest_num,
             full_name: '',
+            hostName: this.props.location.state.hostName,
             address: '',
             city: '',
             state: '',
@@ -56,7 +57,7 @@ class CheckoutPage extends Component {
                             {/* This will be replaced with a photo of the meal if we decide to implement that, otherwise this is just for visual separation */}
                         </div>
                         <div className="summaryboxdetails">
-                            <label className="summaryboxdetails">{this.state.meal} with {this.state.hostID}</label>
+                            <label className="summaryboxdetails">{this.state.meal} with {this.state.hostName}</label>
                         </div>
                         <div className="reservationHeader">
                             <label className="reservationHeader">{this.state.title}</label>
