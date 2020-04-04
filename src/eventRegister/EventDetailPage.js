@@ -100,9 +100,8 @@ class RegisterEvent extends Component {
                         className="number-of-guests">{this.state.date}</div>
                     </div>
                     <div className="moddetails">
-                        <label htmlFor="name">Guests</label>
-                        <select id="guests" className="number-of-guests" value={this.state.value} onChange = {this.handleChange}> num value set at max event.guestNum? 
-                            <option value="0">0</option>
+                        <label htmlFor="name">Attendees</label>
+                        <select id="guests" className="number-of-guests" value={this.state.value} onChange = {this.handleChange}> num value set at max event.guestNum?
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
