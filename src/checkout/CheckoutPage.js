@@ -52,6 +52,7 @@ class CheckoutPage extends Component {
                         <label htmlFor="name" className="reservationHeader">Reservation Summary</label>
                         <div>
                             <ul class = "modseparate"></ul>
+                            {/* This will be replaced with a photo of the meal if we decide to implement that, otherwise this is just for visual separation */}
                         </div>
                         <div className="summaryboxdetails">
                             <label className="summaryboxdetails">{this.state.meal} with {this.state.hostID}</label>
@@ -65,24 +66,28 @@ class CheckoutPage extends Component {
                         <div>
                             <ul class = "modseparate"></ul>
                         </div>
-                        <div className="summaryboxdetails">
-                            <label className="summaryboxdetails">{this.state.date}</label>
+                        <div>
+                            <img src="https://www.iconsdb.com/icons/preview/green/calendar-10-xxl.png" className="dateimg"></img>
+                            <label className="date1">{this.state.date}</label>
                         </div>
                         <div>
                             <ul class = "modseparate"></ul>
                         </div>
-                        <div className="summaryboxdetails">
-                            <label className="summaryboxdetails">{this.state.attendees} guests x {this.state.cost}</label>
+                        <div className="guestdetails1">
+                            <label className="guestdetails1">{this.state.attendees} guests </label>
+                            <label className="guestdetails2"> x ${this.state.cost}</label>
+                            <label className="total1">${this.state.cost * this.state.attendees}</label>
                         </div>
                         <div>
                             <ul class = "modseparate"></ul>
                         </div>
-                        <div className="reservationHeader">
-                            <label className="reservationHeader">Total</label>
+                        <div className="total2">
+                            <label className="total2">Total</label>
+                            <label className="total3">${this.state.cost * this.state.attendees}</label>
                         </div>
                     </div>
-                    
-                    <label className="cancellation">Free cancellation up to 48 hours before event. </label>
+                    <img src="https://images.vexels.com/media/users/3/157931/isolated/preview/604a0cadf94914c7ee6c6e552e9b4487-curved-check-mark-circle-icon-by-vexels.png" className="cancellation1"></img>
+                    <label className="cancellation2">Free cancellation up to 48 hours before event. </label>
                     <label htmlFor="name">Billing Information</label>
                     <div className="sectionheader">
                         <span className="numberCircle"><span>1</span></span>
