@@ -33,21 +33,32 @@ class RegisterEvent extends Component {
             allergies: this.props.location.state.allergies,
             additionalInfo: this.props.location.state.additionalInfo,
             id: this.props.location.state.id,
+            loggedIn: false,
+            user:"",
             hostName: "",
             access: "",
             value: 1,
         };
         this.handleChange = this.handleChange.bind(this)
        
-       
+   
  
  
     }
     componentDidMount() {
+        axios.get('http://localhost:9000/isUserLoggedIn').then(res => {
+        const loggedIn = res.data;
+        this.setState({loggedIn});
+    })
+    //this does not currently acocunt for if the user logs in after the fact
+
+
+
         axios.get('http://localhost:9000/user/' + this.state.hostID).then(res => 
             this.setState({hostName: res.data.displayName})
     
         )
+
         if (this.state.accessibility) {
             this.setState({access: "Yes!"})
         } else {
@@ -61,7 +72,7 @@ class RegisterEvent extends Component {
  
     }
     goToPayment() {
-        this.state.quantity = this.state.value;
+   
         var obj = {id: this.state.id, amount: this.state.cost * this.state.value,
                     guest_num: this.state.value};
         axios.post('http://localhost:9000/receive-payment/', obj);
@@ -121,9 +132,11 @@ class RegisterEvent extends Component {
                             max="40"
                             className="number-of-guests"></input>  */}
                     </div>
+                
                     <button onClick={() => this.goToPayment() }
                         type="submit"  
-                        className="reservebutton">Reserve</button>
+                        className="reservebutton" disabled={!this.state.loggedIn}>Reserve</button>
+            
                 </div>
                 <div className="myEvent">
                     <label htmlFor="name">{this.state.title} </label>  

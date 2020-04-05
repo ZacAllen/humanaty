@@ -91,6 +91,15 @@ class ProfilePage extends Component {
   viewEventDetail = async (e) => {
     console.log(e);
     alert("//TODO: redirect me to event detail page, my eventID is: ", e);
+    this.props.history.push({
+    pathname: '/EventDetailPage', 
+    state: {  title: e.title, location: e.location, date: e.date,
+      cost: e.costPerSeat, meal: e.meal, guest: e.guestNum, hostID: e.hostID,
+      accessibility: e.accessibilityAccommodations, attendees: e.attendees,
+       description: e.description, allergies: e.allergies, 
+       additionalInfo: e.additionalInfo, id: e.id}
+    
+  })
   }
 
   viewProfilePage = async (e) => {
