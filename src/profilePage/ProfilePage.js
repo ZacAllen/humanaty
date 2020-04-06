@@ -105,7 +105,6 @@ class ProfilePage extends Component {
 }
 
   viewProfilePage = async (e) => {
-    console.log("BANG:  ", e);
     this.setState({ 
       user : {},
       eventsHosting : [],

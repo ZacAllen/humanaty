@@ -34,29 +34,23 @@ class EventDetailPage extends Component {
             additionalInfo: this.props.location.state.additionalInfo,
             id: this.props.location.state.id,
             loggedIn: false,
-            user:"",
+            user: {},
             hostName: "",
             access: "",
             value: 1,
         };
+        this.viewProfile = this.viewProfile.bind(this);
         this.handleChange = this.handleChange.bind(this)
-       
-   
- 
- 
+
     }
     componentDidMount() {
         axios.get('http://localhost:9000/isUserLoggedIn').then(res => {
-        const loggedIn = res.data;
-        this.setState({loggedIn});
-    })
-    //this does not currently acocunt for if the user logs in after the fact
-
-
-
+            const loggedIn = res.data;
+            this.setState({loggedIn});
+        })
+        //this does not currently acocunt for if the user logs in after the fact
         axios.get('http://localhost:9000/user/' + this.state.hostID).then(res => 
-            this.setState({hostName: res.data.displayName})
-    
+            this.setState({hostName: res.data.displayName, user:res.data}) 
         )
 
         if (this.state.accessibility) {
@@ -64,15 +58,13 @@ class EventDetailPage extends Component {
         } else {
             this.setState({access: "No"})
         }
-
     }
 
     handleChange(event) {
         this.setState({value: event.target.value})
- 
     }
+
     goToPayment() {
-   
         var obj = {id: this.state.id, amount: this.state.cost * this.state.value,
                     guest_num: this.state.value};
         axios.post('http://localhost:9000/receive-payment/', obj);
@@ -82,13 +74,17 @@ class EventDetailPage extends Component {
              cost: this.state.cost, guest: this.state.guestNum, hostID: this.state.hostID,
              attendees: this.state.attendees, description:this.state.description, 
              id: this.state.id, meal: this.state.meal, date: this.state.date, 
-             location: this.state.location, guest_num: this.state.value, hostName: this.state.hostName}
-            
+             location: this.state.location, guest_num: this.state.value, hostName: this.state.hostName}          
           })
     }
-    
-  
-    
+
+    viewProfile() {
+        this.props.history.push({
+            pathname: '/profile-page',
+            state: { user : this.state.user }       
+        })
+    }
+      
     render() {
         return (
             <div id="registerevent">
@@ -141,11 +137,10 @@ class EventDetailPage extends Component {
                 <div className="myEvent">
                     <label htmlFor="name">{this.state.title} </label>  
                 </div>    
-                <div className="host">
-                    <img 
-                        src="https://getdrawings.com/free-icon/google-account-icon-65.png"
+                <div className="host" onClick={this.viewProfile}>
+                    <img src="https://getdrawings.com/free-icon/google-account-icon-65.png"
                         className="acctimg"></img>
-                    <label htmlFor="name">{this.state.displayName}</label>  
+                    <label htmlFor="name">{this.state.user.displayName}</label>  
                 </div>
                 
                 <div className="mealdescriptions">

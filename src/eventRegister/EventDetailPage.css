@@ -6,10 +6,7 @@
 
 .thisContainer {
     width: 100%;
-padding: 1em;
-
-
-
+    padding: 1em;
 }
 
 .detail-box {
@@ -104,6 +101,7 @@ padding: 1em;
 }
 
 .host {
+    cursor: pointer;
     position: relative;
     text-align: left;
     font-size: x-large;
