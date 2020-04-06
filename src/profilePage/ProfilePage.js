@@ -92,7 +92,7 @@ class ProfilePage extends Component {
     console.log(e);
      
     this.props.history.push({
-    pathname: '/EventDetailPage', 
+    pathname: '/event-detail', 
     state: {  title: e.title, location: e.location, date: e.date,
       cost: e.costPerSeat, meal: e.meal, guest: e.guestNum, hostID: e.hostID,
       accessibility: e.accessibilityAccommodations, attendees: e.attendees,
@@ -144,25 +144,25 @@ class ProfilePage extends Component {
         <div class="section" style={user.hostVerified ? {} : { display: 'none' }} id="eventsHosted">  
             <label>{user.displayName}'s Hosted Events </label>
             <EventThumbnails eventList={this.state.eventsHosted} viewEventDetail={this.viewEventDetail}/>
-            <a class="EventDetail" id = "eventDetailPage" href="/EventDetailPage" />
+            <a class="EventDetail" id = "eventDetailPage" href="/event-detail" />
         </div>
 
         <div class="section" style={user.hostVerified ? {} : { display: 'none' }} id="eventsHosting">  
             <label>{user.displayName}'s Upcoming Events </label>
             <EventThumbnails eventList={this.state.eventsHosting} viewEventDetail={this.viewEventDetail}/>
-            <a class="EventDetail" id = "eventDetailPage" href="/EventDetailPage" />
+            <a class="EventDetail" id = "eventDetailPage" href="/event-detail" />
         </div>
 
         <div class="section" style={!user.hostVerified ? {} : { display: 'none' }} id="eventsAttending">  
             <label>{user.displayName}'s Upcoming Experiences </label>
             <EventThumbnails eventList={this.state.eventsAttending} viewEventDetail={this.viewEventDetail}/>
-            <a class="EventDetail" id = "eventDetailPage" href="/EventDetailPage" />
+            <a class="EventDetail" id = "eventDetailPage" href="/event-detail" />
         </div>
 
         <div class="section" style={!user.hostVerified ? {} : { display: 'none' }} id="eventsAttended">  
             <label>{user.displayName}'s Past Experiences </label>
             <EventThumbnails eventList={this.state.eventsAttended} viewEventDetail={this.viewEventDetail}/>
-            <a class="EventDetail" id = "eventDetailPage" href="/EventDetailPage" />
+            <a class="EventDetail" id = "eventDetailPage" href="/event-detail" />
         </div>
 
         <hr></hr>

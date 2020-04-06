@@ -8,7 +8,7 @@ import SearchPage from "./searchPage/SearchPage";
 import SignUp from "./signUp/SignUp";
 import ProfilePage from "./profilePage/ProfilePage";
 import NavBar from './navbar/NavBar.js';
-import RegisterEvent from './eventRegister/EventDetailPage';
+import EventDetailPage from './eventRegister/EventDetailPage';
 import Footer from './footer/footer.js';
 
 
@@ -41,7 +41,7 @@ class App extends Component {
                 <Route path="/signup" component={SignUp}/>
                 <Route path="/profile-page" component={ProfilePage}/>
                 <Route path="/checkout" component={CheckoutPage} />
-                <Route path="/EventDetailPage" component={RegisterEvent} />
+                <Route path="/event-detail" component={EventDetailPage} />
                 {/* <Route path="*" component={Page404} /> */}
             </div>
             <Footer/>

@@ -7,7 +7,7 @@ import NavBar from '../navbar/NavBar.js';
 import './CheckoutPage.css';
 
 import axios from 'axios';
-import RegisterEvent from '../eventRegister/EventDetailPage';
+import EventDetailPage from '../eventRegister/EventDetailPage';
 import { registerVersion } from 'firebase';
 
 const stripePromise = loadStripe('pk_test_KsSBLHsah3N55vJsAQ7a8YDO00qx7rn3an');

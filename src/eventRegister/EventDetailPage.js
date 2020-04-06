@@ -13,7 +13,7 @@ import Map from '../searchPage/map/Map.js';
 Geocode.setApiKey("AIzaSyDKNJ1TI_zJnzqBEmMzjlpw3tUBdoCK66g");
 Geocode.enableDebug();
 
-class RegisterEvent extends Component {
+class EventDetailPage extends Component {
 
     constructor(props) {
         super(props)
@@ -238,4 +238,4 @@ class RegisterEvent extends Component {
     }
 }
 
-   export default RegisterEvent;
+   export default EventDetailPage;

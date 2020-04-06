@@ -145,7 +145,7 @@ class SearchPage extends Component {
         
         <div className="event-list-description">{item.description}</div>
         {/* <a>** //TODO: Redirect me to EventDetailPage **</a> */}
-        <a class="EventDetail" id = "eventDetailPage" href="/EventDetailPage" >Event Detail Page</a>
+        <a class="EventDetail" id = "eventDetailPage" href="/event-detail" >Event Detail Page</a>
         
       </div>
       );
@@ -161,7 +161,7 @@ class SearchPage extends Component {
 
  
   this.props.history.push({
-    pathname: '/EventDetailPage', 
+    pathname: '/event-detail', 
     state: {  title: item.title, location: item.location, date: item.date,
       cost: item.costPerSeat, meal: item.meal, guest: item.guestNum, hostID: item.hostID,
       accessibility: item.accessibilityAccommodations, attendees: item.attendees,
