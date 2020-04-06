@@ -90,7 +90,7 @@ class ProfilePage extends Component {
 
   viewEventDetail = async (e) => {
     console.log(e);
-    alert("//TODO: redirect me to event detail page, my eventID is: ", e);
+     
     this.props.history.push({
     pathname: '/EventDetailPage', 
     state: {  title: e.title, location: e.location, date: e.date,
@@ -144,21 +144,25 @@ class ProfilePage extends Component {
         <div class="section" style={user.hostVerified ? {} : { display: 'none' }} id="eventsHosted">  
             <label>{user.displayName}'s Hosted Events </label>
             <EventThumbnails eventList={this.state.eventsHosted} viewEventDetail={this.viewEventDetail}/>
+            <a class="EventDetail" id = "eventDetailPage" href="/EventDetailPage" />
         </div>
 
         <div class="section" style={user.hostVerified ? {} : { display: 'none' }} id="eventsHosting">  
             <label>{user.displayName}'s Upcoming Events </label>
             <EventThumbnails eventList={this.state.eventsHosting} viewEventDetail={this.viewEventDetail}/>
+            <a class="EventDetail" id = "eventDetailPage" href="/EventDetailPage" />
         </div>
 
         <div class="section" style={!user.hostVerified ? {} : { display: 'none' }} id="eventsAttending">  
             <label>{user.displayName}'s Upcoming Experiences </label>
             <EventThumbnails eventList={this.state.eventsAttending} viewEventDetail={this.viewEventDetail}/>
+            <a class="EventDetail" id = "eventDetailPage" href="/EventDetailPage" />
         </div>
 
         <div class="section" style={!user.hostVerified ? {} : { display: 'none' }} id="eventsAttended">  
             <label>{user.displayName}'s Past Experiences </label>
             <EventThumbnails eventList={this.state.eventsAttended} viewEventDetail={this.viewEventDetail}/>
+            <a class="EventDetail" id = "eventDetailPage" href="/EventDetailPage" />
         </div>
 
         <hr></hr>

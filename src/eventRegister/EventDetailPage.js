@@ -209,7 +209,12 @@ class RegisterEvent extends Component {
                         location= {this.state.location}
                         ></iframe>
                     </div> */}
-                    <div id="map-container">
+                            <div className="detailheaders">
+                    <label htmlFor="name">Location</label>  
+                </div>
+                <div className = "detaildescriptions"> <label htmlFor="name">{this.state.location.city}, {this.state.location.state} </label>
+                </div>
+                    {/* <div id="map-container">
           <Map
             google={this.state.google}
             mapPosition= {this.state.location}
@@ -218,7 +223,7 @@ class RegisterEvent extends Component {
             zoom={12}
             selectedEvent={this.state.title}
           />
-        </div>
+        </div> */}
                 {/* </div> */}
                 <div className="detaildescriptions">
                     <p>*Note the exact location of this event will not be available to guests until 48 hours before the meal</p>
