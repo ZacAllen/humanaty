@@ -61,7 +61,9 @@ function Login(props) {
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Welcome to huMANAty!</Modal.Title>
+            <Modal.Title>
+              <h3 class = "loginTitle">Welcome to huMANAty!</h3>
+            </Modal.Title>
           </Modal.Header>
           {/* Email */}
           <Modal.Body>Your email</Modal.Body>
@@ -71,24 +73,49 @@ function Login(props) {
           <Modal.Body>Your password</Modal.Body>
           <input class = "emailpassword" type="password" placeholder="password"
                   id = "passwordLogin"></input>  
-          {/* Google Sign in */}
-          <Modal.Body>Sign in with Google</Modal.Body>  
-          <GoogleLogin
+          {/* Google Sign in */}  
+          <Modal.Body><p class = "or">OR</p></Modal.Body>  
+          <div class = "googleButton">
+          <GoogleLogin 
+            
             clientId="129035646582-a4ttt51j5jt7iqfur98kdr214cmc5p1r.apps.googleusercontent.com"
-            buttonText="G-Sign in"
+            buttonText="Log in with Google"
             onSuccess={responseGoogle}
             onFailure={responseGoogleFail}
             cookiePolicy={'single_host_origin'}
-            />
+            isSignedIn={true}
+
+            render={renderProps => (
+              <div class = "buttonContainer">
+                <img src = {'G.png'} class = "gLogo"></img>
+              <button onClick={renderProps.onClick} disabled={renderProps.disabled}
+              style={{backgroundColor: '#5989FF',
+                      height: '40px',
+                      width: '70%',
+                      borderRadius: '5px',
+                      border: 'none',
+                      color: 'white',
+                      fontWeight: 'bold',
+                      paddingLeft: '10%'}}
+              >Sign in with Google</button>
+
+              </div>
+            )}
+
+            >
+
+            </GoogleLogin>
+          </div>
+          
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
+            <Button variant="primary" block onClick={handleCloseLogin} style = {{
+              fontWeight: 'bold'
+            }}>
+            Log In
             </Button>
-            <Button variant="primary" onClick={handleCloseLogin}>
-              Log In
-            </Button>
-            <p>Don't have an account?</p>
-            <p>Create one here!</p>
+            
+            <p class = "noAcc">Don't have an account?</p>
+            <p class = "createAcc" onClick= {event => window.location.href='../signup'}>Create one here!</p>
           </Modal.Footer>
         </Modal>
       </>
