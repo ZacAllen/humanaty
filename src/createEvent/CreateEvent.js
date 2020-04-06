@@ -262,7 +262,7 @@ class CreateEvent extends React.Component {
         state={this.state.state}
         zip={this.state.zip}
         date={this.state.date}
-        // time={this.state.time}
+        time={this.state.time}
       />
       <Step2 
         currentStep={this.state.currentStep} 
