@@ -103,7 +103,15 @@ class CreateEvent extends React.Component {
     
         this.setState({
           [name]: value
-        })  
+        })
+
+        this.setState({
+          location: {
+            city: this.state.city,
+            address: this.state.address,
+            state: this.state.state
+          }
+        });
       }
         
   }
@@ -262,7 +270,7 @@ class CreateEvent extends React.Component {
         state={this.state.state}
         zip={this.state.zip}
         date={this.state.date}
-        // time={this.state.time}
+        time={this.state.time}
       />
       <Step2 
         currentStep={this.state.currentStep} 
