@@ -37,7 +37,6 @@ class SearchPage extends Component {
       markerPosition: this.props.location.state.markerPosition,
       zoom: 12, //Hides or the shows the infoWindow
       activeMarker: {}, //Shows the active marker upon click
-//Shows the infoWindow to the selected place upon a marker
       selectedEvent: null, //Shows the infoWindow to the selected place upon a marker
       maxCostPerSeat: 50,
       minCostPerSeat: 0,
@@ -157,7 +156,6 @@ class SearchPage extends Component {
   };
 
   getEventListForRendering() {
-
     const state = this.state;
     let list = this.state.eventList;
     console.log("LIST: " , state);
@@ -168,10 +166,9 @@ class SearchPage extends Component {
       && !state.allergies.some(v => event.allergies.includes(v)));   
 
       console.log("FILTER LIST: " , filteredList);
-
       
     var events = filteredList.map((item, idx) => 
-      <div onClick={this.viewEventDetailPage(item)} className="event-list-item">
+      <div onClick={() => this.viewEventDetailPage(item)} className="event-list-item">
         <h5 key={idx}>{item.title}</h5>
         <div className="event-list-date">{item.date}</div>
         <div className="event-list-description">{item.description}</div>
