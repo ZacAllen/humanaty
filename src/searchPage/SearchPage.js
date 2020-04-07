@@ -172,7 +172,7 @@ class SearchPage extends Component {
       selectedEvent: event
     });
 
-    viewEventDetailPage(event);
+  this.viewEventDetailPage(event);
   }
   
   render() {

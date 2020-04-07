@@ -33,7 +33,8 @@ class CheckoutForm extends Component {
       name_on_card: '',
       eventId: this.props.eventId,
       attendees: this.props.attendees,
-      userId: this.props.userId
+      userId: this.props.userId,
+      paid: false
       
     }
     this.viewEventDetailPage= this.viewEventDetailPage.bind(this)
@@ -60,8 +61,10 @@ class CheckoutForm extends Component {
       description: res.data.description, allergies: res.data.allergies, 
       additionalInfo: res.data.additionalInfo, id: res.data.id}
    
+ });
+ alert("Successfully registered for " + res.data.title);
  })
- })
+
  }
 
 
@@ -99,6 +102,7 @@ class CheckoutForm extends Component {
     //verify that the payment completed properly
     if (confirmation.paymentIntent && confirmation.paymentIntent.status === 'succeeded') {
       console.log("success");
+      // this.setState({paid: true})
     } else {
       console.log("failure");
     }
