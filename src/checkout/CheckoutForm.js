@@ -81,18 +81,20 @@ class CheckoutForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-            Card details
+            Card Details
             <CardElement options={CARD_ELEMENT_OPTIONS}/>
         </label>
-        <label className="inputheader">Name on Card</label>
-        <div className="input-box">
-          <input
+        <div>
+          <label className="inputheader">Name on Card</label>
+          <div className="input-box">
+            <input
             type="text"
             name="name-on-card"
             className="zip-input"
             class="form-control"
-            value={this.state.name_on_card}
+            defaultvalue={this.state.name_on_card}
             onChange={this.handleChange}/>
+          </div>
         </div>
         <button 
           disabled={!this.props.stripe}
