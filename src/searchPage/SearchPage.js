@@ -156,32 +156,45 @@ class SearchPage extends Component {
   };
 
   getEventListForRendering() {
+
     const state = this.state;
     let list = this.state.eventList;
-    console.log("LIST: " , state);
+    console.log("LIST: " , list);
 
     let filteredList = list.filter(event => 
       event.accessibilityAccommodations === state.accessibilityAccommodations
       && event.costPerSeat > state.minCostPerSeat && event.costPerSeat < state.maxCostPerSeat
-      && !state.allergies.some(v => event.allergies.includes(v)));   
+      && !state.allergies.some(v => event.allergies.includes(v))  
+      );   
 
       console.log("FILTER LIST: " , filteredList);
-
       
     var events = filteredList.map((item, idx) => 
-      <div onClick={this.viewEventDetailPage} className="event-list-item">
+      <div onClick={() => this.viewEventDetailPage(item) } className="event-list-item">
         <h5 key={idx}>{item.title}</h5>
+        <div className="event-list-date">{item.date}</div>
         <div className="event-list-description">{item.description}</div>
-        <a>** //TODO: Redirect me to EventDetailPage **</a>
+        <a class="EventDetail" id = "eventDetailPage" href="/event-detail" >View Event Detail</a>
+        
       </div>
       );
+   
     return events;
   }
 
-  viewEventDetailPage() {
-    alert("Go to event detail page, bring the event ID with you");
-  }
 
+   viewEventDetailPage(item) {
+
+  this.props.history.push({
+    pathname: '/event-detail', 
+    state: {  title: item.title, location: item.location, date: item.date,
+      cost: item.costPerSeat, meal: item.meal, guest: item.guestNum, hostID: item.hostID,
+      accessibility: item.accessibilityAccommodations, attendees: item.attendees,
+      description: item.description, allergies: item.allergies, 
+      additionalInfo: item.additionalInfo, id: item.id}  
+  })
+}
+    
   handleFilterChange(event) {
     const target = event.target;
     const value = target.name === 'accessibilityAccommodations' ? target.checked : target.value;
@@ -192,15 +205,14 @@ class SearchPage extends Component {
     });
   }
 
-
   handleMarkerClicked = (event) => {
-    alert("//TODO: redirect me to event detail page");
-    console.log("//TODOOOOOOO",event.id);
     this.setState({  
       mapPosition:  event.location.geopoint,
       zoom: 16,
       selectedEvent: event
     });
+
+  this.viewEventDetailPage(event);
   }
   
   render() {

@@ -122,7 +122,15 @@ class CreateEvent extends React.Component {
     
         this.setState({
           [name]: value
-        })  
+        })
+
+        this.setState({
+          location: {
+            city: this.state.city,
+            address: this.state.address,
+            state: this.state.state
+          }
+        });
       }
         
   }
@@ -506,7 +514,7 @@ class CreateEvent extends React.Component {
             <input
               type="number"
               min="1" max="10"
-              name="guest"
+              name="guestNum"
               className="guests form-control"
               value={props.guestNum}
               placeholder="0"

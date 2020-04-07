@@ -55,24 +55,24 @@ class NavBar extends Component {
     if (this.state.loggedIn == true) {
       return (
         <div>  
-          <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-            <div class = "container">
-              <a class="navbar-brand js-scroll-trigger" id = "humanatyTitle" href="/">huMANAty</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+          <nav className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div className = "container">
+              <a className="navbar-brand js-scroll-trigger" id = "humanatyTitle" href="/">huMANAty</a>
+              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="/">Explore</a>
+              <div className="collapse navbar-collapse" id="navbarResponsive">
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <a className="nav-link js-scroll-trigger" href="/">Explore</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger">About</a>
+                <li className="nav-item">
+                  <a className="nav-link js-scroll-trigger">About</a>
                 </li>
-                <li class="nav-item" id = "create">
-                  <a class="nav-link js-scroll-trigger" id = "createEvent" href="/create-event">Create</a>
+                <li className="nav-item" id = "create">
+                  <a className="nav-link js-scroll-trigger" id = "createEvent" href="/create-event">Create</a>
                 </li>
-                <li class="nav-item" id = "account">
+                <li className="nav-item" id = "account">
                  <Account isLoggedOut = {this.loggedOutHandler}/>
                 </li>
               </ul>
