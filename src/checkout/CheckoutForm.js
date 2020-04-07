@@ -92,7 +92,7 @@ class CheckoutForm extends Component {
             name="name-on-card"
             className="zip-input"
             class="form-control"
-            defaultvalue={this.state.name_on_card}
+            defaultValue={this.state.name_on_card}
             onChange={this.handleChange}/>
           </div>
         </div>
