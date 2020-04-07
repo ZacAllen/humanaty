@@ -46,7 +46,6 @@ class CheckoutPage extends Component {
 
     render() {
         return (
-            <Elements stripe={stripePromise}>
             <div id="registerevent">
                 <NavBar/>
                 <div className="event">
@@ -165,12 +164,13 @@ class CheckoutPage extends Component {
                         <span className="numberCircle"><span>2</span></span>
                         <label htmlFor="name">Payment Details</label>
                         <div className="inputheader">
-                            <CheckoutForm />
+                            <Elements stripe={stripePromise}>
+                                <CheckoutForm />
+                            </Elements>
                         </div>
                     </div>
                 </div>
             </div>
-            </Elements>
         );
     }
 }
