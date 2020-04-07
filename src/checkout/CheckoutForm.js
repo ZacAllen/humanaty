@@ -44,7 +44,9 @@ class CheckoutForm extends Component {
     // We don't want to let default form submission happen here,
     // which would refresh the page.
     event.preventDefault();
-    const {stripe, elements} = this.props;
+
+    //retrieve props
+    const{stripe, elements, guest_num, cost} = this.props;
 
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
@@ -52,13 +54,12 @@ class CheckoutForm extends Component {
       return;
     }
 
-    var payment_obj = {amount: 1099};
-
-    console.log(payment_obj);
+    //Create a payment object to send to the server, send it to the server
+    var payment_obj = {amount: guest_num * cost, guest_num: guest_num, cost: cost};
     const result = await Axios.post('http://localhost:9000/test-payment', payment_obj);
 
+    //retrieve the client secret for the payment and wait for the Stripe API to confirm it
     var client_secret = result.data.client_secret;
-
     const confirmation = await stripe.confirmCardPayment(client_secret, {
       payment_method: {
         card: elements.getElement(CardElement),
@@ -68,8 +69,7 @@ class CheckoutForm extends Component {
       }
     });
 
-    console.log(confirmation);
-
+    //verify that the payment completed properly
     if (confirmation.paymentIntent && confirmation.paymentIntent.status === 'succeeded') {
       console.log("success");
     } else {
@@ -103,12 +103,4 @@ class CheckoutForm extends Component {
   }
 }
 
-export default function InjectedCheckoutForm() {
-  return (
-    <ElementsConsumer>
-      {({stripe, elements}) => (
-        <CheckoutForm stripe={stripe} elements={elements}/>
-      )}
-    </ElementsConsumer>
-  );
-}
+export default CheckoutForm;

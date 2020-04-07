@@ -65,9 +65,6 @@ class EventDetailPage extends Component {
     }
 
     goToPayment() {
-        var obj = {id: this.state.id, amount: this.state.cost * this.state.value,
-                    guest_num: this.state.value};
-        axios.post('http://localhost:9000/receive-payment/', obj);
         this.props.history.push({
             pathname: '/checkout', 
             state: {  title: this.state.title,

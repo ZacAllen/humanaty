@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Elements} from '@stripe/react-stripe-js';
+import {Elements, ElementsConsumer} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 
 import CheckoutForm from './CheckoutForm';
@@ -35,6 +35,8 @@ class CheckoutPage extends Component {
             state: '',
             zip: ''
         }
+
+        console.log(this.props);
     }
 
     handleChange = event => {
@@ -164,9 +166,14 @@ class CheckoutPage extends Component {
                         <span className="numberCircle"><span>2</span></span>
                         <label htmlFor="name">Payment Details</label>
                         <div className="inputheader">
-                            <Elements stripe={stripePromise}>
-                                <CheckoutForm />
-                            </Elements>
+                        <Elements stripe={stripePromise}>
+                            <ElementsConsumer>
+                                {({stripe, elements}) => (
+                                    <CheckoutForm stripe={stripe} elements={elements} 
+                                    guest_num={parseInt(this.state.guest_num)} cost={this.state.cost}/>
+                                 )}
+                            </ElementsConsumer>
+                        </Elements>
                         </div>
                     </div>
                 </div>
