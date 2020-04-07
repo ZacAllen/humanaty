@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import './EventCreation.css';
 import NavBar from '../navbar/NavBar.js';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Dropdown from 'react-bootstrap/Dropdown';
 import axios from 'axios';
 import MultiSelect from "@khanacademy/react-multi-select";
 import ImageUploader from 'react-images-upload';
@@ -22,6 +23,7 @@ const allergyOptions = [
 
 const defaultPhoto = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/220px-Good_Food_Display_-_NCI_Visuals_Online.jpg";
 
+var farmOptions = [];
 
 class CreateEvent extends React.Component {
   constructor(props) {
@@ -52,8 +54,25 @@ class CreateEvent extends React.Component {
       errors: {
         name: '',
         address: '',
-      }
+      },
+      farms: []
     };
+  }
+
+  componentDidMount() {
+    this.getFarmers();
+    
+  }
+
+  getFarmers = async () => {
+    var self = this;
+    const res = await axios.get('http://localhost:9000/farmList');
+    if (res) {
+      console.log("farms retrieved ", res.data);
+      for (var i = 0; i < res.data.length; i++) {
+        farmOptions[i] = {label: res.data[i], value: res.data[i]}
+      }
+    }
   }
 
   onDrop = picture => {
@@ -111,6 +130,9 @@ class CreateEvent extends React.Component {
   setAllergies = allergies => {
     this.setState({allergies: allergies})
   }
+  setFarms = farms => {
+    this.setState({farms: farms})
+  }
 
   validated = () => {
     console.log("HEEERRR");
@@ -144,6 +166,7 @@ class CreateEvent extends React.Component {
                   allergies: allergies, 
                   costPerSeat: this.state.costPerSeat,
                   additionalInfo: this.state.additionalInfo,
+                  farms: this.state.farms,
                   photoGallery: photoGallery}
 
                   console.log("Event",obj);
@@ -171,6 +194,7 @@ class CreateEvent extends React.Component {
               additionalInfo: event.additionalInfo,
               id: eventId,
               photoGallery: event.photoGallery,
+              farms: event.farms
             }
           });
         }  
@@ -275,8 +299,10 @@ class CreateEvent extends React.Component {
         currentStep={this.state.currentStep} 
         handleChange={this.handleChange}
         setAllergies={this.setAllergies}
+        setFarms = {this.setFarms}
         handleSubmit={this.handleSubmit}
         allergies={this.state.allergies}
+        farms = {this.state.farms}
         description={this.state.description}
         additionalInfo={this.state.additionalInfo}
         photoGallery={this.state.photoGallery}
@@ -527,6 +553,7 @@ class CreateEvent extends React.Component {
   
   function Step3(props) {
     const {allergies} = props;
+    const {farms} = props;
     if (props.currentStep !== 3) {
       return null
     } 
@@ -576,6 +603,25 @@ class CreateEvent extends React.Component {
               value={props.additionalInfo}
               onChange={props.handleChange}>
             </input>
+          </div>
+
+          <div className="labels">
+            <label htmlFor="name">Ingredients Sourced From</label>
+          </div>
+          <div className="farmsDropdown">
+          <MultiSelect
+                  className="farms"
+                  options={farmOptions}
+                  selected={farms}
+                  onSelectedChanged={farms => props.setFarms(farms)}
+                  
+                  overrideStrings={{
+                    selectSomeItems: "Select a Farm",
+                    allItemsAreSelected: "All Items are Selected",
+                    search: "Search farms",
+                }}
+                  
+                  />
           </div>
 
           <div className="labels">
