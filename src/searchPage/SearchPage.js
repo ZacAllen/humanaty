@@ -137,15 +137,15 @@ class SearchPage extends Component {
   onChange = ( event ) => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
   getEventListForRendering() {
     
     var events = this.state.eventList.map((item, idx) => 
       <div  onClick={() => this.viewEventDetailPage(item) } className="event-list-item">
         <h5 key={idx}>{item.title}</h5>
-        
+        <div className="event-list-date">{item.date}</div>
         <div className="event-list-description">{item.description}</div>
-        {/* <a>** //TODO: Redirect me to EventDetailPage **</a> */}
-        <a class="EventDetail" id = "eventDetailPage" href="/EventDetailPage" >Event Detail Page</a>
+        <a class="EventDetail" id = "eventDetailPage" href="/event-detail" >View Event Detail</a>
         
       </div>
       );
@@ -154,36 +154,25 @@ class SearchPage extends Component {
   }
 
    viewEventDetailPage(item) {
-    //alert("Go to event detail page, bring the event ID with you");
-  // axios.get('http://localhost:9000/event/', item).then(res => {
 
-  //   console.log(item);
-
- 
   this.props.history.push({
-    pathname: '/EventDetailPage', 
+    pathname: '/event-detail', 
     state: {  title: item.title, location: item.location, date: item.date,
       cost: item.costPerSeat, meal: item.meal, guest: item.guestNum, hostID: item.hostID,
       accessibility: item.accessibilityAccommodations, attendees: item.attendees,
-       description: item.description, allergies: item.allergies, 
-       additionalInfo: item.additionalInfo, id: item.id}
-    
+      description: item.description, allergies: item.allergies, 
+      additionalInfo: item.additionalInfo, id: item.id}  
   })
-  // console.log(pathname)
 }
     
-
-
-
-
   handleMarkerClicked = (event) => {
-    alert("//TODO: redirect me to event detail page");
-    console.log("//TODOOOOOOO",event.id);
     this.setState({  
       mapPosition:  event.location.geopoint,
       zoom: 16,
       selectedEvent: event
     });
+
+    viewEventDetailPage(event);
   }
   
   render() {

@@ -89,21 +89,22 @@ class ProfilePage extends Component {
   }
 
   viewEventDetail = async (e) => {
-    console.log(e);
-    alert("//TODO: redirect me to event detail page, my eventID is: ", e);
-    this.props.history.push({
-    pathname: '/EventDetailPage', 
-    state: {  title: e.title, location: e.location, date: e.date,
-      cost: e.costPerSeat, meal: e.meal, guest: e.guestNum, hostID: e.hostID,
-      accessibility: e.accessibilityAccommodations, attendees: e.attendees,
-       description: e.description, allergies: e.allergies, 
-       additionalInfo: e.additionalInfo, id: e.id}
+    // console.log(e);
+     axios.get('http://localhost:9000/event/' + e).then(res => {
+     this.props.history.push({
+    pathname: '/event-detail', 
+    state: {  title: res.data.title, location: res.data.location, date: res.data.date,
+      cost: res.data.costPerSeat, meal: res.data.meal, guest: res.data.guestNum, hostID: res.data.hostID,
+      accessibility: res.data.accessibilityAccommodations, attendees: res.data.attendees,
+       description: res.data.description, allergies: res.data.allergies, 
+       additionalInfo: res.data.additionalInfo, id: res.data.id}
     
   })
-  }
+  })
+
+}
 
   viewProfilePage = async (e) => {
-    console.log("BANG:  ", e);
     this.setState({ 
       user : {},
       eventsHosting : [],
@@ -144,21 +145,26 @@ class ProfilePage extends Component {
         <div class="section" style={user.hostVerified ? {} : { display: 'none' }} id="eventsHosted">  
             <label>{user.displayName}'s Hosted Events </label>
             <EventThumbnails eventList={this.state.eventsHosted} viewEventDetail={this.viewEventDetail}/>
+
         </div>
 
         <div class="section" style={user.hostVerified ? {} : { display: 'none' }} id="eventsHosting">  
             <label>{user.displayName}'s Upcoming Events </label>
             <EventThumbnails eventList={this.state.eventsHosting} viewEventDetail={this.viewEventDetail}/>
+       
         </div>
 
         <div class="section" style={!user.hostVerified ? {} : { display: 'none' }} id="eventsAttending">  
             <label>{user.displayName}'s Upcoming Experiences </label>
             <EventThumbnails eventList={this.state.eventsAttending} viewEventDetail={this.viewEventDetail}/>
+  
         </div>
 
         <div class="section" style={!user.hostVerified ? {} : { display: 'none' }} id="eventsAttended">  
             <label>{user.displayName}'s Past Experiences </label>
             <EventThumbnails eventList={this.state.eventsAttended} viewEventDetail={this.viewEventDetail}/>
+            
+      
         </div>
 
         <hr></hr>

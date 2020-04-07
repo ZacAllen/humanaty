@@ -13,7 +13,7 @@ import Map from '../searchPage/map/Map.js';
 Geocode.setApiKey("AIzaSyDKNJ1TI_zJnzqBEmMzjlpw3tUBdoCK66g");
 Geocode.enableDebug();
 
-class RegisterEvent extends Component {
+class EventDetailPage extends Component {
 
     constructor(props) {
         super(props)
@@ -34,29 +34,23 @@ class RegisterEvent extends Component {
             additionalInfo: this.props.location.state.additionalInfo,
             id: this.props.location.state.id,
             loggedIn: false,
-            user:"",
+            user: {},
             hostName: "",
             access: "",
             value: 1,
         };
+        this.viewProfile = this.viewProfile.bind(this);
         this.handleChange = this.handleChange.bind(this)
-       
-   
- 
- 
+
     }
     componentDidMount() {
         axios.get('http://localhost:9000/isUserLoggedIn').then(res => {
-        const loggedIn = res.data;
-        this.setState({loggedIn});
-    })
-    //this does not currently acocunt for if the user logs in after the fact
-
-
-
+            const loggedIn = res.data;
+            this.setState({loggedIn});
+        })
+        //this does not currently acocunt for if the user logs in after the fact
         axios.get('http://localhost:9000/user/' + this.state.hostID).then(res => 
-            this.setState({hostName: res.data.displayName})
-    
+            this.setState({hostName: res.data.displayName, user:res.data}) 
         )
 
         if (this.state.accessibility) {
@@ -64,15 +58,13 @@ class RegisterEvent extends Component {
         } else {
             this.setState({access: "No"})
         }
-
     }
 
     handleChange(event) {
         this.setState({value: event.target.value})
- 
     }
+
     goToPayment() {
-   
         var obj = {id: this.state.id, amount: this.state.cost * this.state.value,
                     guest_num: this.state.value};
         axios.post('http://localhost:9000/receive-payment/', obj);
@@ -82,13 +74,17 @@ class RegisterEvent extends Component {
              cost: this.state.cost, guest: this.state.guestNum, hostID: this.state.hostID,
              attendees: this.state.attendees, description:this.state.description, 
              id: this.state.id, meal: this.state.meal, date: this.state.date, 
-             location: this.state.location, guest_num: this.state.value, hostName: this.state.hostName}
-            
+             location: this.state.location, guest_num: this.state.value, hostName: this.state.hostName}          
           })
     }
-    
-  
-    
+
+    viewProfile() {
+        this.props.history.push({
+            pathname: '/profile-page',
+            state: { user : this.state.user }       
+        })
+    }
+      
     render() {
         return (
             <div id="registerevent">
@@ -141,11 +137,10 @@ class RegisterEvent extends Component {
                 <div className="myEvent">
                     <label htmlFor="name">{this.state.title} </label>  
                 </div>    
-                <div className="host">
-                    <img 
-                        src="https://getdrawings.com/free-icon/google-account-icon-65.png"
+                <div className="host" onClick={this.viewProfile}>
+                    <img src="https://getdrawings.com/free-icon/google-account-icon-65.png"
                         className="acctimg"></img>
-                    <label htmlFor="name">{this.state.displayName}</label>  
+                    <label htmlFor="name">{this.state.user.displayName}</label>  
                 </div>
                 
                 <div className="mealdescriptions">
@@ -209,7 +204,12 @@ class RegisterEvent extends Component {
                         location= {this.state.location}
                         ></iframe>
                     </div> */}
-                    <div id="map-container">
+                            <div className="detailheaders">
+                    <label htmlFor="name">Location</label>  
+                </div>
+                <div className = "detaildescriptions"> <label htmlFor="name">{this.state.location.city}, {this.state.location.state} </label>
+                </div>
+                    {/* <div id="map-container">
           <Map
             google={this.state.google}
             mapPosition= {this.state.location}
@@ -218,7 +218,7 @@ class RegisterEvent extends Component {
             zoom={12}
             selectedEvent={this.state.title}
           />
-        </div>
+        </div> */}
                 {/* </div> */}
                 <div className="detaildescriptions">
                     <p>*Note the exact location of this event will not be available to guests until 48 hours before the meal</p>
@@ -233,4 +233,4 @@ class RegisterEvent extends Component {
     }
 }
 
-   export default RegisterEvent;
+   export default EventDetailPage;
