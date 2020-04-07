@@ -10,9 +10,21 @@ import Script from 'react-load-script';
 import Geocode from "react-geocode";
 import Map from './map/Map.js';
 import axios from 'axios';
+import MultiSelect from "@khanacademy/react-multi-select";
 
 Geocode.setApiKey("AIzaSyDKNJ1TI_zJnzqBEmMzjlpw3tUBdoCK66g");
 Geocode.enableDebug();
+
+const allergyOptions = [
+  {label: "fish", value: "fish"},
+  {label: "penut", value: "penut"},
+  {label: "eggs", value: "eggs"},
+  {label: "milks", value: "milks"},
+  {label: "shellfish", value: "shellfish"},
+  {label: "soybean", value: "soybean"},
+  {label: "tree nuts", value: "tree Nuts"},
+  {label: "wheats", value: "wheats"},
+];
 
 class SearchPage extends Component {
   
@@ -25,8 +37,12 @@ class SearchPage extends Component {
       markerPosition: this.props.location.state.markerPosition,
       zoom: 12, //Hides or the shows the infoWindow
       activeMarker: {}, //Shows the active marker upon click
-      selectedEvent: null, 
 //Shows the infoWindow to the selected place upon a marker
+      selectedEvent: null, //Shows the infoWindow to the selected place upon a marker
+      maxCostPerSeat: 50,
+      minCostPerSeat: 0,
+      accessibilityAccommodations: false,
+      allergies: []
     }
 
     this.autocompleteInput = React.createRef();
@@ -34,6 +50,8 @@ class SearchPage extends Component {
     this.handlePlaceChanged = this.handlePlaceChanged.bind(this);
     this.getEventsByCity = this.getEventsByCity.bind(this);
     this.handleMarkerClicked = this.handleMarkerClicked.bind(this);
+    this.handleFilterChange = this.handleFilterChange.bind(this);
+
   }
 
   componentDidMount() {
@@ -139,9 +157,21 @@ class SearchPage extends Component {
   };
 
   getEventListForRendering() {
-    
-    var events = this.state.eventList.map((item, idx) => 
-      <div  onClick={() => this.viewEventDetailPage(item) } className="event-list-item">
+
+    const state = this.state;
+    let list = this.state.eventList;
+    console.log("LIST: " , state);
+
+    let filteredList = list.filter(event => 
+      event.accessibilityAccommodations === state.accessibilityAccommodations
+      && event.costPerSeat > state.minCostPerSeat && event.costPerSeat < state.maxCostPerSeat
+      && !state.allergies.some(v => event.allergies.includes(v)));   
+
+      console.log("FILTER LIST: " , filteredList);
+
+      
+    var events = filteredList.map((item, idx) => 
+      <div onClick={this.viewEventDetailPage(item)} className="event-list-item">
         <h5 key={idx}>{item.title}</h5>
         <div className="event-list-date">{item.date}</div>
         <div className="event-list-description">{item.description}</div>
@@ -165,6 +195,17 @@ class SearchPage extends Component {
   })
 }
     
+  handleFilterChange(event) {
+    const target = event.target;
+    const value = target.name === 'accessibilityAccommodations' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+
   handleMarkerClicked = (event) => {
     this.setState({  
       mapPosition:  event.location.geopoint,
@@ -177,6 +218,7 @@ class SearchPage extends Component {
   
   render() {
     const listItems = this.getEventListForRendering();
+    const {allergies} = this.state;
     return (
       <div id="search-container">
         <Script url="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKNJ1TI_zJnzqBEmMzjlpw3tUBdoCK66g&libraries=places"          
@@ -184,6 +226,38 @@ class SearchPage extends Component {
         <div id="place-container"> 
           <input ref={this.autocompleteInput}  id="autocomplete" placeholder='Search'
           type="text"></input>
+          <div className="event-list-filter">
+            <form>
+                Wheelchair accessible?:
+                <input
+                  name="accessibilityAccommodations"
+                  type="checkbox"
+                  checked={this.state.accessibilityAccommodations}
+                  onChange={this.handleFilterChange} />
+              <br />
+                Allergies:
+                <MultiSelect
+                  options={allergyOptions}
+                  selected={allergies}
+                  onSelectedChanged={allergies => this.setState({allergies})}/>
+                min cost/seat:
+                <input
+                  className="filter-input"
+                  name="maxCostPerSeat"
+                  type="number"
+                  value={this.state.minCostPerSeat}
+                  onChange={this.handleFilterChange} />
+                max cost/seat:
+                <input
+                  className="filter-input"
+                  name="maxCostPerSeat"
+                  type="number"
+                  value={this.state.maxCostPerSeat}
+                  onChange={this.handleFilterChange} />
+            </form>
+
+
+          </div>
           <div className="event-list-container">
             {listItems}
           </div>
