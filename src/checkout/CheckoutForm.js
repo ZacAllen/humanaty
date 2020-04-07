@@ -32,6 +32,17 @@ class CheckoutForm extends Component {
       name_on_card: ''
     }
   }
+  viewEventDetailPage() {
+
+    // this.props.history.push({
+    //   pathname: '/event-detail', 
+    //   state: {  title: item.title, location: item.location, date: item.date,
+    //     cost: item.costPerSeat, meal: item.meal, guest: item.guestNum, hostID: item.hostID,
+    //     accessibility: item.accessibilityAccommodations, attendees: item.attendees,
+    //     description: item.description, allergies: item.allergies, 
+    //     additionalInfo: item.additionalInfo, id: item.id}  
+    // })
+  }
 
   handleChange = event => {
     const {name, value} = event.target;
@@ -77,6 +88,7 @@ class CheckoutForm extends Component {
     }
   };
 
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -98,7 +110,7 @@ class CheckoutForm extends Component {
         </div>
         <button 
           disabled={!this.props.stripe}
-          className="paynowbutton"
+          className="paynowbutton" onClick={() => this.viewEventDetailPage()} href='/event-detail'
           >Pay Now</button>
       </form>
     );
