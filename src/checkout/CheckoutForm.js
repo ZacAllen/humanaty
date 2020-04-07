@@ -6,6 +6,7 @@ import './CardSectionStyles.css'
 
 import Axios from 'axios';
 
+
 const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
@@ -29,20 +30,17 @@ class CheckoutForm extends Component {
     super(props);
 
     this.state = {
-      name_on_card: ''
+      name_on_card: '',
+      eventId: this.props.eventId,
+      attendees: this.props.attendees,
+      userId: this.props.userId
+      
     }
-  }
-  viewEventDetailPage() {
+    this.viewEventDetailPage= this.viewEventDetailPage.bind(this)
 
-    // this.props.history.push({
-    //   pathname: '/event-detail', 
-    //   state: {  title: item.title, location: item.location, date: item.date,
-    //     cost: item.costPerSeat, meal: item.meal, guest: item.guestNum, hostID: item.hostID,
-    //     accessibility: item.accessibilityAccommodations, attendees: item.attendees,
-    //     description: item.description, allergies: item.allergies, 
-    //     additionalInfo: item.additionalInfo, id: item.id}  
-    // })
+    console.log(this.state.eventId);
   }
+ 
 
   handleChange = event => {
     const {name, value} = event.target;
@@ -50,6 +48,22 @@ class CheckoutForm extends Component {
       [name]: value
     })
   }
+  viewEventDetailPage= event => {
+
+    Axios.get('http://localhost:9000/event/' + this.state.eventId).then(res => {
+
+      this.props.history.push({
+   pathname: '/event-detail', 
+   state: {  title: res.data.title, location: res.data.location, date: res.data.date,
+     cost: res.data.costPerSeat, meal: res.data.meal, guest: res.data.guestNum, hostID: res.data.hostID,
+     accessibility: res.data.accessibilityAccommodations, attendees: res.data.attendees,
+      description: res.data.description, allergies: res.data.allergies, 
+      additionalInfo: res.data.additionalInfo, id: res.data.id}
+   
+ })
+ })
+ }
+
 
   handleSubmit = async (event) => {
     // We don't want to let default form submission happen here,
@@ -58,12 +72,14 @@ class CheckoutForm extends Component {
 
     //retrieve props
     const{stripe, elements, guest_num, cost} = this.props;
+  
 
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
       // Make  sure to disable form submission until Stripe.js has loaded.
       return;
     }
+
 
     //Create a payment object to send to the server, send it to the server
     var payment_obj = {amount: guest_num * cost, guest_num: guest_num, cost: cost};
@@ -110,7 +126,7 @@ class CheckoutForm extends Component {
         </div>
         <button 
           disabled={!this.props.stripe}
-          className="paynowbutton" onClick={() => this.viewEventDetailPage()} href='/event-detail'
+          className="paynowbutton" onClick={this.viewEventDetailPage} href="/event-detail"
           >Pay Now</button>
       </form>
     );

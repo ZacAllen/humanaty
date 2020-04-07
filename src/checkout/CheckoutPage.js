@@ -23,7 +23,7 @@ class CheckoutPage extends Component {
             cost: this.props.location.state.cost,
             guest: this.props.location.state.cost,
             hostID: this.props.location.state.hostID,
-            attendees: this.props.location.state.attendees,
+            attendees: [this.props.location.state.attendees],
             description: this.props.location.state.description,
             id: this.props.location.state.id,
             meal: this.props.location.state.meal,
@@ -33,7 +33,8 @@ class CheckoutPage extends Component {
             address: '',
             city: '',
             state: '',
-            zip: ''
+            zip: '',
+            userId: ''
         }
 
         console.log(this.props);
@@ -45,6 +46,18 @@ class CheckoutPage extends Component {
             [name]: value
         })
     }
+    componentDidMount() {
+        axios.get('http://localhost:9000/current').then(res => {
+
+        this.setState({userId: res.data.id}); 
+  
+      }
+
+    )
+    this.setState({attendees: this.state.attendees.concat(this.state.userId)});
+
+    }
+
 
     render() {
         return (
@@ -170,7 +183,8 @@ class CheckoutPage extends Component {
                             <ElementsConsumer>
                                 {({stripe, elements}) => (
                                     <CheckoutForm stripe={stripe} elements={elements} 
-                                    guest_num={parseInt(this.state.guest_num)} cost={this.state.cost}/>
+                                    guest_num={parseInt(this.state.guest_num)} cost={this.state.cost}
+                                 eventId={this.state.id}history={this.props.history} attendees={this.state.attendees}/>
                                  )}
                             </ElementsConsumer>
                         </Elements>
