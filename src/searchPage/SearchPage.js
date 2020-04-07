@@ -168,7 +168,6 @@ class SearchPage extends Component {
       );   
 
       console.log("FILTER LIST: " , filteredList);
-
       
     var events = filteredList.map((item, idx) => 
       <div onClick={() => this.viewEventDetailPage(item) } className="event-list-item">
@@ -183,16 +182,18 @@ class SearchPage extends Component {
     return events;
   }
 
-  viewEventDetailPage(item) {
-    this.props.history.push({
+
+   viewEventDetailPage(item) {
+
+  this.props.history.push({
     pathname: '/event-detail', 
     state: {  title: item.title, location: item.location, date: item.date,
-        cost: item.costPerSeat, meal: item.meal, guest: item.guestNum, hostID: item.hostID,
-        accessibility: item.accessibilityAccommodations, attendees: item.attendees,
-        description: item.description, allergies: item.allergies, 
-        additionalInfo: item.additionalInfo, id: item.id}  
-    })
-  }
+      cost: item.costPerSeat, meal: item.meal, guest: item.guestNum, hostID: item.hostID,
+      accessibility: item.accessibilityAccommodations, attendees: item.attendees,
+      description: item.description, allergies: item.allergies, 
+      additionalInfo: item.additionalInfo, id: item.id}  
+  })
+}
     
   handleFilterChange(event) {
     const target = event.target;
