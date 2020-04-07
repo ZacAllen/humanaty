@@ -54,16 +54,19 @@ class CheckoutForm extends Component {
     Axios.get('http://localhost:9000/event/' + this.state.eventId).then(res => {
 
       this.props.history.push({
-   pathname: '/event-detail', 
-   state: {  title: res.data.title, location: res.data.location, date: res.data.date,
-     cost: res.data.costPerSeat, meal: res.data.meal, guest: res.data.guestNum, hostID: res.data.hostID,
-     accessibility: res.data.accessibilityAccommodations, attendees: res.data.attendees,
-      description: res.data.description, allergies: res.data.allergies, 
-      additionalInfo: res.data.additionalInfo, id: res.data.id}
-   
- });
- alert("Successfully registered for " + res.data.title);
- })
+      pathname: '/event-detail', 
+      state: {  title: res.data.title, location: res.data.location, date: res.data.date,
+        cost: res.data.costPerSeat, meal: res.data.meal, guest: res.data.guestNum, hostID: res.data.hostID,
+        accessibility: res.data.accessibilityAccommodations, attendees: res.data.attendees,
+        description: res.data.description, allergies: res.data.allergies, 
+        additionalInfo: res.data.additionalInfo, id: res.data.id}});
+
+      alert("Successfully registered for " + res.data.title.eventId 
+      + " The address for this event is: " + res.data.location.address
+      + ", " + res.data.location.city
+      + " " + res.data.location.state
+      + ", " + res.data.location.zip);
+    })
 
  }
 
