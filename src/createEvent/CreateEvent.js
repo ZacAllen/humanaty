@@ -166,6 +166,7 @@ class CreateEvent extends React.Component {
                   allergies: allergies, 
                   costPerSeat: this.state.costPerSeat,
                   additionalInfo: this.state.additionalInfo,
+                  farms: this.state.farms,
                   photoGallery: photoGallery}
 
                   console.log("Event",obj);
@@ -193,6 +194,7 @@ class CreateEvent extends React.Component {
               additionalInfo: event.additionalInfo,
               id: eventId,
               photoGallery: event.photoGallery,
+              farms: event.farms
             }
           });
         }  
