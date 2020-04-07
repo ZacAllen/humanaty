@@ -90,4 +90,13 @@
     overflow:auto;
 }
 
+.event-list-filter {
+
+}
+
+.filter-input {
+    width: 40px;
+    border-radius: 20%;
+}
+
 
