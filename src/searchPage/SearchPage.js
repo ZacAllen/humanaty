@@ -163,7 +163,7 @@ class SearchPage extends Component {
 
     let filteredList = list.filter(event => 
       event.accessibilityAccommodations === state.accessibilityAccommodations
-      && event.costPerSeat > state.minCostPerSeat && event.costPerSeat < state.maxCostPerSeat
+      && event.costPerSeat >= state.minCostPerSeat && event.costPerSeat < state.maxCostPerSeat
       && !state.allergies.some(v => event.allergies.includes(v))  
       );   
 
