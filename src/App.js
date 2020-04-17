@@ -44,7 +44,9 @@ class App extends Component {
                 <Route path="/event-detail" component={EventDetailPage} />
                 {/* <Route path="*" component={Page404} /> */}
             </div>
+            
             <Footer />
+            
         </Router>
       );
   }

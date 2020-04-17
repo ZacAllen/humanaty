@@ -88,7 +88,7 @@ render() {
       props => (        
         <Autocomplete
           style={{
-            width: '800px',
+            width: '700px',
             height: '40px',
             paddingLeft: '16px',
             marginTop: '2px',

@@ -65,11 +65,11 @@ class ReviewInput extends Component {
             var sharesAnEvent =  currentUserEvents.some(item => profileUserEvents.includes(item));
 
             // Using alerts for now to check edge cases, feel free to comment out for testing
-            if (profileuser === currentuser) {
-                alert("You cannot leave a review of yourself!")
-            } else if (!sharesAnEvent) {
-                alert("You cannot review someone you have not shared an event with!")
-            } else {
+            // if (profileuser === currentuser) {
+            //     alert("You cannot leave a review of yourself!")
+            // } else if (!sharesAnEvent) {
+            //     alert("You cannot review someone you have not shared an event with!")
+            // } else {
                     axios.post('http://localhost:9000/review/', obj).then(function(response) {
                     if (response) {
                         console.log(response);
@@ -77,7 +77,7 @@ class ReviewInput extends Component {
                         console.log("No res");
                     }
                 });  
-            }   
+            // }   
 
               
         }
