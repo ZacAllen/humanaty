@@ -61,7 +61,7 @@ class CheckoutForm extends Component {
         description: res.data.description, allergies: res.data.allergies, 
         additionalInfo: res.data.additionalInfo, id: res.data.id}});
 
-      alert("Successfully registered for " + res.data.title.eventId 
+      alert("Successfully registered for " + res.data.title 
       + " The address for this event is: " + res.data.location.address
       + ", " + res.data.location.city
       + " " + res.data.location.state

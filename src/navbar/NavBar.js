@@ -67,7 +67,7 @@ class NavBar extends Component {
                   <a className="nav-link js-scroll-trigger" href="/">Explore</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link js-scroll-trigger">About</a>
+                  <a className="nav-link js-scroll-trigger" href="#about">About</a>
                 </li>
                 <li className="nav-item" id = "create">
                   <a className="nav-link js-scroll-trigger" id = "createEvent" href="/create-event">Create</a>
@@ -96,7 +96,7 @@ class NavBar extends Component {
                   <a className="nav-link js-scroll-trigger">Explore</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link js-scroll-trigger">About</a>
+                  <a className="nav-link js-scroll-trigger" href="#about">About</a>
                 </li>
                 <li className="nav-item" id = "login">
                   <Login isLoggedIn = {this.loggedInHandler}/>
