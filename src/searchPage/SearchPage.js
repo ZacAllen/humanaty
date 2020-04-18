@@ -227,13 +227,17 @@ class SearchPage extends Component {
           type="text"></input>
           <div className="event-list-filter">
             <form>
-                Wheelchair accessible?:
-                <input
-                  name="accessibilityAccommodations"
-                  type="checkbox"
-                  checked={this.state.accessibilityAccommodations}
-                  onChange={this.handleFilterChange} />
-              <br />
+              <div className="wheelchair-container"><span>Wheelchair accessibility: </span> 
+              <label class="switch">
+                  <input
+                    type="checkbox"
+                    checked={this.state.accessibilityAccommodations}
+                    onChange={this.handleFilterChange}
+                    name="accessibilityAccommodations"/>
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              
                 <div className="allergies-container"><span>Allergies: </span>
                 <MultiSelect
                   options={allergyOptions}
@@ -261,6 +265,7 @@ class SearchPage extends Component {
           </div>
           <div className="event-list-container">
             {listItems}
+            <div className="event-list-footer"></div>
           </div>
         </div>
         <div id="map-container">

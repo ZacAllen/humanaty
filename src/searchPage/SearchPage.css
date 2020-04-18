@@ -14,9 +14,13 @@
     float: right;
 }
 
+.wheelchair-container {
+}
+
 .allergies-container {
     align-items: center;
     display: inline-flex;
+    margin-bottom: 5px;
 }
 
 .multi-select {
@@ -92,13 +96,21 @@
     cursor: pointer;
 }
 
+.event-list-footer {
+    height: 40px;
+}
+
+.switch {
+    margin: 5px;
+}
+
 .event-list-container {
     position: relative; 
     bottom:0; 
     left:0; 
     width:400px; 
     height:100%;
-    overflow:auto;
+    /* overflow:auto; */
 }
 
 .event-list-filter {
