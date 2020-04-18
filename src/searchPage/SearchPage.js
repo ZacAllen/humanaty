@@ -18,8 +18,8 @@ Geocode.enableDebug();
 const allergyOptions = [
   {label: "fish", value: "fish"},
   {label: "penut", value: "penut"},
-  {label: "eggs", value: "eggs"},
-  {label: "milks", value: "milks"},
+  {label: "eggss", value: "eggs"},
+  {label: "milk", value: "milk"},
   {label: "shellfish", value: "shellfish"},
   {label: "soybean", value: "soybean"},
   {label: "tree nuts", value: "tree nuts"},
