@@ -7,6 +7,7 @@ import NavBar from '../navbar/NavBar.js';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import axios from 'axios';
+import Map from '../searchPage/map/Map.js';
 import MultiSelect from "@khanacademy/react-multi-select";
 import ImageUploader from 'react-images-upload';
 
@@ -214,7 +215,7 @@ class CreateEvent extends React.Component {
    
   _next = () => {
     let currentStep = this.state.currentStep
-    currentStep = currentStep >= 2 ? 3: currentStep + 1
+    currentStep = currentStep >= 3 ? 4: currentStep + 1
     this.setState({
       currentStep: currentStep
     })
@@ -247,7 +248,7 @@ class CreateEvent extends React.Component {
   
   nextButton(){
     let currentStep = this.state.currentStep;
-    if(currentStep < 3){
+    if(currentStep < 4){
       return (
         <button 
           className="btn btn-primary buttons" 
@@ -261,7 +262,7 @@ class CreateEvent extends React.Component {
 
   submitButton() {
     let currentStep = this.state.currentStep;
-    if(currentStep === 3){
+    if(currentStep === 4){
       return (
         <button
             className="submit btn btn-primary buttons"
@@ -307,15 +308,19 @@ class CreateEvent extends React.Component {
         currentStep={this.state.currentStep} 
         handleChange={this.handleChange}
         setAllergies={this.setAllergies}
-        setFarms = {this.setFarms}
-        handleSubmit={this.handleSubmit}
         allergies={this.state.allergies}
-        farms = {this.state.farms}
         description={this.state.description}
         additionalInfo={this.state.additionalInfo}
         photoGallery={this.state.photoGallery}
         handleChangePhoto={this.state.handleChangePhoto}
         onDrop={this.onDrop}
+      />
+      <Step4 
+        currentStep={this.state.currentStep}
+        handleChange={this.handleChange}
+        setFarms = {this.setFarms}
+        handleSubmit={this.handleSubmit}
+        farms = {this.state.farms}
       />
       {this.previousButton()}
       {this.nextButton()}
@@ -338,6 +343,7 @@ class CreateEvent extends React.Component {
         <div class="progress-container">
           <ul class="progress">
             <li class="active"></li>
+            <li></li>
             <li></li>
             <li></li>
           </ul>
@@ -449,12 +455,7 @@ class CreateEvent extends React.Component {
                 onChange={props.handleChange}
                 placeholder="Zipcode"/>
             </div> 
-
           </div> {/* city zip state */}
-          
-          
-
-
 
           <div className="labels">
             <label htmlFor="name">Date/Time</label>
@@ -494,6 +495,7 @@ class CreateEvent extends React.Component {
           <ul class="progress">
             <li class="active"></li>
             <li class="active"></li>
+            <li></li>
             <li></li>
           </ul>
         </div>
@@ -561,7 +563,6 @@ class CreateEvent extends React.Component {
   
   function Step3(props) {
     const {allergies} = props;
-    const {farms} = props;
     if (props.currentStep !== 3) {
       return null
     } 
@@ -575,6 +576,7 @@ class CreateEvent extends React.Component {
               <li class="active"></li>
               <li class="active"></li>
               <li class="active"></li>
+              <li></li>
           </ul>
         </div>
         <div className = "box">
@@ -614,25 +616,6 @@ class CreateEvent extends React.Component {
           </div>
 
           <div className="labels">
-            <label htmlFor="name">Ingredients Sourced From</label>
-          </div>
-          <div className="farmsDropdown">
-          <MultiSelect
-                  className="farms"
-                  options={farmOptions}
-                  selected={farms}
-                  onSelectedChanged={farms => props.setFarms(farms)}
-                  
-                  overrideStrings={{
-                    selectSomeItems: "Select a Farm",
-                    allItemsAreSelected: "All Items are Selected",
-                    search: "Search farms",
-                }}
-                  
-                  />
-          </div>
-
-          <div className="labels">
             <label htmlFor="name">Photo</label>
           </div>
           <div className="input-group">
@@ -657,6 +640,59 @@ class CreateEvent extends React.Component {
                 maxFileSize={5242880}
             /> */}
         </div>
+      </div>
+    );
+  }
+
+  function Step4(props) {
+    if (props.currentStep !== 4) {
+      return null
+    }
+    const {farms} = props;
+    return(
+      <div className="inner-container">
+        <div className="header">
+          Create an Event
+        </div>
+        <div class="progress-container">
+          <ul class="progress">
+            <li class="active"></li>
+            <li class="active"></li>
+            <li class="active"></li>
+            <li class="active"></li>
+          </ul>
+        </div>
+        <div className = "box">
+          <div className="labels">
+            <label htmlFor="name">Ingredients Sourced From</label>
+          </div>
+          <div className="farmsDropdown">
+            <MultiSelect
+                  className="farms"
+                  options={farmOptions}
+                  selected={farms}
+                  onSelectedChanged={farms => props.setFarms(farms)}
+                  
+                  overrideStrings={{
+                    selectSomeItems: "Select a Farm",
+                    allItemsAreSelected: "All Items are Selected",
+                    search: "Search farms",
+                }}
+            />
+          <div id="map-container">
+            <Map
+              eventList={this.state.eventList}
+              google={this.state.google}
+              mapPosition= {this.state.mapPosition}
+              markerPosition= {this.state.markerPosition}
+              height='500px'
+              zoom={this.state.zoom}
+              selectedEvent={this.state.selectedEvent}
+              handleMarkerClicked={this.handleMarkerClicked}
+            />
+          </div>
+        </div>
+      </div>
       </div>
     );
   }
