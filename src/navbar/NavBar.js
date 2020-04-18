@@ -11,7 +11,7 @@ class NavBar extends Component {
     super(props);
     this.state = {
       loggedIn: false,
-      isHost : false
+      isHost : true
     }
     this.loggedInHandler = this.loggedInHandler.bind(this);
     this.loggedOutHandler = this.loggedOutHandler.bind(this);
@@ -39,7 +39,7 @@ class NavBar extends Component {
     let navbarComponent  = this; //this is so we can reference the component inside the callback to the api
     axios.get('http://localhost:9000/isUserLoggedIn').then(function(response) {
       if (response.data) {
-        navbarComponent.setState({loggedIn: true})
+        navbarComponent.setState({loggedIn: true});
       } else {
         navbarComponent.setState({loggedIn: false})
       }
