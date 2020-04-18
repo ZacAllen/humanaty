@@ -55,6 +55,7 @@ label {
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
     color: white;
-    background-color: #85e9a7;
+    background-color:#00674b
+    ;
     /* border-color: #285e8e; set the color you want here */
 }

@@ -76,11 +76,13 @@
 
 .progress li.active {
     margin-left: 1px;
-    background-color:#6EB892;
+    background-color:#00674b
+    ;
 }
 
 .progress li.active + li.after {
-    background-color: #6EB892;
+    background-color:#00674b
+    ;
 }
 
 .notice {

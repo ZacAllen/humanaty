@@ -130,10 +130,12 @@
   .reservebutton:hover {
 
     /* this is for white -> filled in */
-    background-color: #C8E4D7;
+    background-color: #00674b
+    ;
     width: 15em;
     border-radius: 10ch;
-    border: #C8E4D7;
+    border: #00674b
+    ;
     border-style: solid;
     color: rgb(99, 109, 109);
     padding: 15px 32px;
@@ -152,9 +154,11 @@
     background-color: white;
     width: 14em;
     border-radius: 10ch;
-    border: #C8E4D7;
+    border: #00674b
+    ;
     border-style: solid;
-    color: #C8E4D7;
+    color: #00674b
+    ;
     padding: 15px 32px;
     text-align: center;
     display: inline-block;
