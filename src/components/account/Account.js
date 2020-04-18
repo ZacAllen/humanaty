@@ -30,9 +30,11 @@ function Account(props) {
             if (response.data.hostVerified) {
                 setMode("Host")
                 setChecked(true)
+                props.toggleHost(true);
             } else { //Setting checked status of toggle switch so its remembered on reload
                 setMode("Guest")
                 setChecked(false)
+                props.toggleHost(false);
             }
         })
        
@@ -46,12 +48,14 @@ function Account(props) {
                 })
                 setMode("Guest")
                 setChecked(false)
+                props.toggleHost(false);
             } else {
                 axios.get('http://localhost:9000/changeStatus').then(function(response) {
                     console.log(response.data);
                 })
                 setMode("Host") //vice versa
                 setChecked(true)
+                props.toggleHost(true);
             }
         })
     }

@@ -9,9 +9,17 @@ import SignUp from '../signUp/SignUp.js';
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    this.state = {loggedIn: false}
+    this.state = {
+      loggedIn: false,
+      isHost : false
+    }
     this.loggedInHandler = this.loggedInHandler.bind(this);
     this.loggedOutHandler = this.loggedOutHandler.bind(this);
+    this.toggleHost = this.toggleHost.bind(this);
+  }
+
+  toggleHost(param) {
+    this.setState({isHost: param})
   }
 
   loggedInHandler() {
@@ -51,7 +59,18 @@ class NavBar extends Component {
 
   }
 
+  getCreate() {
+    let isHost = this.state.isHost;
+    if (!isHost) {
+      return;
+    }
+    return <li className="nav-item" id = "create">
+      <a className="nav-link js-scroll-trigger" id = "createEvent" href="/create-event">Create</a>
+    </li>
+  }
+
   render() {
+    const create = this.getCreate();
     if (this.state.loggedIn == true) {
       return (
         <div>  
@@ -69,11 +88,9 @@ class NavBar extends Component {
                 <li className="nav-item">
                   <a className="nav-link js-scroll-trigger" href="#about">About</a>
                 </li>
-                <li className="nav-item" id = "create">
-                  <a className="nav-link js-scroll-trigger" id = "createEvent" href="/create-event">Create</a>
-                </li>
+                {create}
                 <li className="nav-item" id = "account">
-                 <Account isLoggedOut = {this.loggedOutHandler}/>
+                 <Account toggleHost={this.toggleHost} isLoggedOut = {this.loggedOutHandler}/>
                 </li>
               </ul>
               </div>
