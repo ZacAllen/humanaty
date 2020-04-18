@@ -82,7 +82,7 @@ function Account(props) {
             <div>
                 {/* Will replace placeholder with actual image fetched from database; in the future users will have an
                 image url field that we will get image from */}
-                <img id = "navbar-profile-pic" src={user.photoURL} alt="profile pic" onClick={handleShow}/>
+                <img id = "navbar-profile-pic" src={require('./placeholder.png')} alt="profile pic" width="30" height="30" onClick={handleShow}/>
                 <Modal dialogClassName='custom-dialog' show = {show} onHide = {handleClose}>
                     <Modal.Header>
                         <div className-="modal-header-containter">
