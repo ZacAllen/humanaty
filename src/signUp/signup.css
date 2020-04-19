@@ -3,17 +3,20 @@
 }
 
 .btn-lg, .btn-primary {
-    background-color: rgba(23, 167, 35, 0.822);
+    background-color:#00674b
+    ;
     border: none;
 }
 
 .btn-lg:hover, .btn-primary:hover {
-    background-color: lightgreen;   
+    background-color:#4c9f38
+    ;   
 }
 .btn-lg:active, .btn-primary:active {
     border: none;
     box-shadow:none;
-    background-color: lightgreen !important; /*needs !important here to prevent override by bootstrap defaults */
+    background-color:#4c9f38
+    !important; /*needs !important here to prevent override by bootstrap defaults */
 }
 input, textarea {
     background-color: rgb(245, 255, 246) !important;
