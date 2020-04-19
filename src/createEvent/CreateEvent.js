@@ -12,13 +12,13 @@ import ImageUploader from 'react-images-upload';
 
 const allergyOptions = [
   {label: "fish", value: "fish"},
-  {label: "peanut", value: "peanut"},
+  {label: "penut", value: "penut"},
   {label: "eggs", value: "eggs"},
-  {label: "milks", value: "milks"},
+  {label: "milk", value: "milk"},
   {label: "shellfish", value: "shellfish"},
   {label: "soybean", value: "soybean"},
-  {label: "tree nuts", value: "tree Nuts"},
-  {label: "wheats", value: "wheats"},
+  {label: "tree nuts", value: "tree nuts"},
+  {label: "wheat", value: "wheat"},
 ];
 
 const defaultPhoto = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/220px-Good_Food_Display_-_NCI_Visuals_Online.jpg";
