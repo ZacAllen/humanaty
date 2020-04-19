@@ -1,6 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Release Notes (Version 1.0)
+This implementation of the HuMANAty React website includes the following software features:<br />
+  * Account Creation/Log In <br />
+  * Unique Profile Page for all Users <br />
+  * Toggling Between Host/Guest Modes <br />
+  * Creating Events (Host Mode) <br />
+  * Selecting a Participating Farm from Which Food Is Sourced (Host Mode)
+  * Searching for Events (Using Google API) <br />
+  * Registering for Events <br />
+  * Reviewing a Host <br />
+  * Reviewing a Guest <br />
+  * Payment as a Part of Event Registration (Using Stripe API) <br />
+  
+Recent bug fixes include:
+  * "Create" Button on the NavBar only appears in Host Mode
+  * Proper width of the Search Bar
+
+We were not able to implement the following features with this release:<br />
+  * Saving a Card to an Account (Using Stripe API)
+  * Receiving Payments for Events (Using Stripe API - Host-Specific)
+  * Third-Party Validation of Host
+  * Displaying Participating Farms on a Map During Event Creation
+  * Photo Gallery
 
 ## Available Scripts
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 
