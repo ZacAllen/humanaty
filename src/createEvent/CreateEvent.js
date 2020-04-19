@@ -3,23 +3,28 @@
 import React, { Component } from 'react';
 
 import './EventCreation.css';
+import FarmerMap from './FarmerMap';
 import NavBar from '../navbar/NavBar.js';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 import Dropdown from 'react-bootstrap/Dropdown';
 import axios from 'axios';
-import Map from '../searchPage/map/Map.js';
+import Geocode from "react-geocode";
 import MultiSelect from "@khanacademy/react-multi-select";
 import ImageUploader from 'react-images-upload';
 
+Geocode.setApiKey("AIzaSyDKNJ1TI_zJnzqBEmMzjlpw3tUBdoCK66g");
+Geocode.enableDebug();
+
 const allergyOptions = [
   {label: "fish", value: "fish"},
-  {label: "peanut", value: "peanut"},
+  {label: "penut", value: "penut"},
   {label: "eggs", value: "eggs"},
-  {label: "milks", value: "milks"},
+  {label: "milk", value: "milk"},
   {label: "shellfish", value: "shellfish"},
   {label: "soybean", value: "soybean"},
-  {label: "tree nuts", value: "tree Nuts"},
-  {label: "wheats", value: "wheats"},
+  {label: "tree nuts", value: "tree nuts"},
+  {label: "wheat", value: "wheat"},
 ];
 
 const defaultPhoto = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/220px-Good_Food_Display_-_NCI_Visuals_Online.jpg";
@@ -56,8 +61,21 @@ class CreateEvent extends React.Component {
         name: '',
         address: '',
       },
-      farms: []
+      farms: [],
+      mapPosition: {
+        lat: 33.7490,
+        lng: -84.3880
+      },
+      markerPosition: {
+        lat: 33.7490,
+        lng: -84.3880
+      },
+      zoom: 12,
+      activeMarker: {},
+      selectedFarm: null
     };
+
+    this.handleMarkerClicked = this.handleMarkerClicked.bind(this);
   }
 
   componentDidMount() {
@@ -274,6 +292,14 @@ class CreateEvent extends React.Component {
     }
     return null;
   }
+
+  handleMarkerClicked = (event) => {
+    this.setState({  
+      mapPosition:  event.location.geopoint,
+      zoom: 16,
+      selectedFarm: event
+    });
+  }
     
   render() {    
     return (
@@ -318,10 +344,17 @@ class CreateEvent extends React.Component {
       <Step4 
         currentStep={this.state.currentStep}
         handleChange={this.handleChange}
-        setFarms = {this.setFarms}
+        setFarms={this.setFarms}
         handleSubmit={this.handleSubmit}
-        farms = {this.state.farms}
+        farms={this.state.farms}
+        google={this.state.google}
+        mapPosition={this.state.mapPosition}
+        markerPosition={this.state.markerPosition}
+        zoom={this.state.zoom}
+        selectedFarm={this.state.selectedFarm}
+        handleMarkerClicked={this.handleMarkerClicked}
       />
+
       {this.previousButton()}
       {this.nextButton()}
       {this.submitButton()}
@@ -455,8 +488,8 @@ class CreateEvent extends React.Component {
                 onChange={props.handleChange}
                 placeholder="Zipcode"/>
             </div> 
-          </div> {/* city zip state */}
 
+          </div> {/* city zip state */}
           <div className="labels">
             <label htmlFor="name">Date/Time</label>
           </div>
@@ -614,7 +647,6 @@ class CreateEvent extends React.Component {
               onChange={props.handleChange}>
             </input>
           </div>
-
           <div className="labels">
             <label htmlFor="name">Photo</label>
           </div>
@@ -645,10 +677,10 @@ class CreateEvent extends React.Component {
   }
 
   function Step4(props) {
+    const {farms} = props;
     if (props.currentStep !== 4) {
       return null
-    }
-    const {farms} = props;
+    } 
     return(
       <div className="inner-container">
         <div className="header">
@@ -656,10 +688,10 @@ class CreateEvent extends React.Component {
         </div>
         <div class="progress-container">
           <ul class="progress">
-            <li class="active"></li>
-            <li class="active"></li>
-            <li class="active"></li>
-            <li class="active"></li>
+              <li class="active"></li>
+              <li class="active"></li>
+              <li class="active"></li>
+              <li class="active"></li>
           </ul>
         </div>
         <div className = "box">
@@ -668,31 +700,29 @@ class CreateEvent extends React.Component {
           </div>
           <div className="farmsDropdown">
             <MultiSelect
-                  className="farms"
-                  options={farmOptions}
-                  selected={farms}
-                  onSelectedChanged={farms => props.setFarms(farms)}
-                  
-                  overrideStrings={{
-                    selectSomeItems: "Select a Farm",
-                    allItemsAreSelected: "All Items are Selected",
-                    search: "Search farms",
-                }}
-            />
-          <div id="map-container">
-            <Map
-              eventList={this.state.eventList}
-              google={this.state.google}
-              mapPosition= {this.state.mapPosition}
-              markerPosition= {this.state.markerPosition}
-              height='500px'
-              zoom={this.state.zoom}
-              selectedEvent={this.state.selectedEvent}
-              handleMarkerClicked={this.handleMarkerClicked}
+              className="farms"
+              options={farmOptions}
+              selected={farms}
+              onSelectedChanged={farms => props.setFarms(farms)}
+              overrideStrings={{
+                selectSomeItems: "Select a Farm",
+                allItemsAreSelected: "All Items are Selected",
+                search: "Search farms",
+              }}
             />
           </div>
+          <div id="map-container">
+            <FarmerMap
+              farmList={props.farms}
+              google={props.google}
+              mapPosition={props.mapPosition}
+              markerPosition={props.markerPosition}
+              height='275px'
+              zoom={props.zoom}
+              handleMarkerClicked={props.handleMarkerClicked}
+            />
         </div>
-      </div>
+        </div>
       </div>
     );
   }
