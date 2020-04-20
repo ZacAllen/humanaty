@@ -17,13 +17,13 @@ Geocode.enableDebug();
 
 const allergyOptions = [
   {label: "fish", value: "fish"},
-  {label: "penut", value: "penut"},
+  {label: "peanut", value: "peanut"},
   {label: "eggs", value: "eggs"},
-  {label: "milks", value: "milks"},
+  {label: "milk", value: "milk"},
   {label: "shellfish", value: "shellfish"},
   {label: "soybean", value: "soybean"},
-  {label: "tree nuts", value: "tree Nuts"},
-  {label: "wheats", value: "wheats"},
+  {label: "tree nuts", value: "tree nuts"},
+  {label: "wheat", value: "wheat"},
 ];
 
 class SearchPage extends Component {
@@ -38,7 +38,7 @@ class SearchPage extends Component {
       zoom: 12, //Hides or the shows the infoWindow
       activeMarker: {}, //Shows the active marker upon click
       selectedEvent: null, //Shows the infoWindow to the selected place upon a marker
-      maxCostPerSeat: 50,
+      maxCostPerSeat: 99,
       minCostPerSeat: 0,
       accessibilityAccommodations: false,
       allergies: []
@@ -227,38 +227,45 @@ class SearchPage extends Component {
           type="text"></input>
           <div className="event-list-filter">
             <form>
-                Wheelchair accessible?:
-                <input
-                  name="accessibilityAccommodations"
-                  type="checkbox"
-                  checked={this.state.accessibilityAccommodations}
-                  onChange={this.handleFilterChange} />
-              <br />
-                Allergies:
+              <div className="wheelchair-container"><span>Wheelchair accessibility: </span> 
+              <label class="switch">
+                  <input
+                    type="checkbox"
+                    checked={this.state.accessibilityAccommodations}
+                    onChange={this.handleFilterChange}
+                    name="accessibilityAccommodations"/>
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              
+                <div className="allergies-container"><span>Allergies: </span>
                 <MultiSelect
                   options={allergyOptions}
                   selected={allergies}
-                  onSelectedChanged={allergies => this.setState({allergies})}/>
-                min cost/seat:
-                <input
-                  className="filter-input"
-                  name="maxCostPerSeat"
-                  type="number"
-                  value={this.state.minCostPerSeat}
-                  onChange={this.handleFilterChange} />
-                max cost/seat:
-                <input
-                  className="filter-input"
-                  name="maxCostPerSeat"
-                  type="number"
-                  value={this.state.maxCostPerSeat}
-                  onChange={this.handleFilterChange} />
+                  onSelectedChanged={allergies => this.setState({allergies})}/></div>  
+                <div className="cost-container">
+                  min cost/seat:
+                  <input
+                    className="filter-input"
+                    name="maxCostPerSeat"
+                    type="number"
+                    value={this.state.minCostPerSeat}
+                    onChange={this.handleFilterChange} />
+                  max cost/seat:
+                  <input
+                    className="filter-input"
+                    name="maxCostPerSeat"
+                    type="number"
+                    value={this.state.maxCostPerSeat}
+                    onChange={this.handleFilterChange} />
+                </div>                          
             </form>
 
 
           </div>
           <div className="event-list-container">
             {listItems}
+            <div className="event-list-footer"></div>
           </div>
         </div>
         <div id="map-container">

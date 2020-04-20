@@ -1,9 +1,8 @@
+/* eslint-disable */
+
 import React, {Component} from 'react';
-
 import {CardElement, ElementsConsumer} from '@stripe/react-stripe-js';
-
 import './CardSectionStyles.css'
-
 import Axios from 'axios';
 
 

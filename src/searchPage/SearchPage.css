@@ -1,5 +1,5 @@
 #place-container {
-    width : 450px;
+    width : 500px;
     height: 100%;
     background-color:whitesmoke;
     /* position: fix; */
@@ -7,11 +7,26 @@
     -webkit-box-shadow: 2px 0px 5px -2px rgba(0,0,0,0.75);
     -moz-box-shadow: 2px 0px 5px -2px rgba(0,0,0,0.75);
     box-shadow: 2px 0px 5px -2px rgba(0,0,0,0.75);
-    
+    overflow: auto;
 }
 #map-container {
     width : 100%;
     float: right;
+}
+
+.wheelchair-container {
+}
+
+.allergies-container {
+    align-items: center;
+    display: inline-flex;
+    margin-bottom: 5px;
+}
+
+.multi-select {
+    min-width: 250px;
+    /* width: auto; */
+    padding: 0px 10px;
 }
 
 #search-container {
@@ -60,14 +75,14 @@
 
 }
 
-.event-list-item {
+/* .event-list-item {
     margin: 0; 
     height: 150px;
     padding: 20px;
     list-style-type: none;
     text-align: left;
     border-bottom: 1px solid #c7c7c7;
-}
+} */
 
 .event-list-description {
     overflow: hidden;
@@ -81,17 +96,26 @@
     cursor: pointer;
 }
 
+.event-list-footer {
+    height: 40px;
+}
+
+.switch {
+    margin: 5px;
+}
+
 .event-list-container {
     position: relative; 
     bottom:0; 
     left:0; 
     width:400px; 
     height:100%;
-    overflow:auto;
+    /* overflow:auto; */
 }
 
 .event-list-filter {
-
+    text-align: left;
+    padding: 0px 15px;
 }
 
 .filter-input {

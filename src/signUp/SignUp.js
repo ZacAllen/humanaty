@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import './signup.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';

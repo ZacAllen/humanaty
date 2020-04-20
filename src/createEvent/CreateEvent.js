@@ -3,22 +3,28 @@
 import React, { Component } from 'react';
 
 import './EventCreation.css';
+import FarmerMap from './FarmerMap';
 import NavBar from '../navbar/NavBar.js';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 import Dropdown from 'react-bootstrap/Dropdown';
 import axios from 'axios';
+import Geocode from "react-geocode";
 import MultiSelect from "@khanacademy/react-multi-select";
 import ImageUploader from 'react-images-upload';
 
+Geocode.setApiKey("AIzaSyDKNJ1TI_zJnzqBEmMzjlpw3tUBdoCK66g");
+Geocode.enableDebug();
+
 const allergyOptions = [
   {label: "fish", value: "fish"},
-  {label: "peanut", value: "peanut"},
+  {label: "penut", value: "penut"},
   {label: "eggs", value: "eggs"},
-  {label: "milks", value: "milks"},
+  {label: "milk", value: "milk"},
   {label: "shellfish", value: "shellfish"},
   {label: "soybean", value: "soybean"},
-  {label: "tree nuts", value: "tree Nuts"},
-  {label: "wheats", value: "wheats"},
+  {label: "tree nuts", value: "tree nuts"},
+  {label: "wheat", value: "wheat"},
 ];
 
 const defaultPhoto = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/220px-Good_Food_Display_-_NCI_Visuals_Online.jpg";
@@ -55,8 +61,21 @@ class CreateEvent extends React.Component {
         name: '',
         address: '',
       },
-      farms: []
+      farms: [],
+      mapPosition: {
+        lat: 33.7490,
+        lng: -84.3880
+      },
+      markerPosition: {
+        lat: 33.7490,
+        lng: -84.3880
+      },
+      zoom: 12,
+      activeMarker: {},
+      selectedFarm: null
     };
+
+    this.handleMarkerClicked = this.handleMarkerClicked.bind(this);
   }
 
   componentDidMount() {
@@ -143,7 +162,6 @@ class CreateEvent extends React.Component {
   }
 
   validated = () => {
-    console.log("HEEERRR");
     var event = this.state;
     if (event.title === "" || event.address === "" || event.city === "" || event.zip === "" || event.zip.length < 5 || event.state === "") {
       return false;
@@ -214,7 +232,7 @@ class CreateEvent extends React.Component {
    
   _next = () => {
     let currentStep = this.state.currentStep
-    currentStep = currentStep >= 2 ? 3: currentStep + 1
+    currentStep = currentStep >= 3 ? 4: currentStep + 1
     this.setState({
       currentStep: currentStep
     })
@@ -247,7 +265,7 @@ class CreateEvent extends React.Component {
   
   nextButton(){
     let currentStep = this.state.currentStep;
-    if(currentStep < 3){
+    if(currentStep < 4){
       return (
         <button 
           className="btn btn-primary buttons" 
@@ -261,7 +279,7 @@ class CreateEvent extends React.Component {
 
   submitButton() {
     let currentStep = this.state.currentStep;
-    if(currentStep === 3){
+    if(currentStep === 4){
       return (
         <button
             className="submit btn btn-primary buttons"
@@ -272,6 +290,14 @@ class CreateEvent extends React.Component {
       )
     }
     return null;
+  }
+
+  handleMarkerClicked = (event) => {
+    this.setState({  
+      mapPosition:  event.location.geopoint,
+      zoom: 16,
+      selectedFarm: event
+    });
   }
     
   render() {    
@@ -307,16 +333,27 @@ class CreateEvent extends React.Component {
         currentStep={this.state.currentStep} 
         handleChange={this.handleChange}
         setAllergies={this.setAllergies}
-        setFarms = {this.setFarms}
-        handleSubmit={this.handleSubmit}
         allergies={this.state.allergies}
-        farms = {this.state.farms}
         description={this.state.description}
         additionalInfo={this.state.additionalInfo}
         photoGallery={this.state.photoGallery}
         handleChangePhoto={this.state.handleChangePhoto}
         onDrop={this.onDrop}
       />
+      <Step4 
+        currentStep={this.state.currentStep}
+        handleChange={this.handleChange}
+        setFarms={this.setFarms}
+        handleSubmit={this.handleSubmit}
+        farms={this.state.farms}
+        google={this.state.google}
+        mapPosition={this.state.mapPosition}
+        markerPosition={this.state.markerPosition}
+        zoom={this.state.zoom}
+        selectedFarm={this.state.selectedFarm}
+        handleMarkerClicked={this.handleMarkerClicked}
+      />
+
       {this.previousButton()}
       {this.nextButton()}
       {this.submitButton()}
@@ -338,6 +375,7 @@ class CreateEvent extends React.Component {
         <div class="progress-container">
           <ul class="progress">
             <li class="active"></li>
+            <li></li>
             <li></li>
             <li></li>
           </ul>
@@ -451,11 +489,6 @@ class CreateEvent extends React.Component {
             </div> 
 
           </div> {/* city zip state */}
-          
-          
-
-
-
           <div className="labels">
             <label htmlFor="name">Date/Time</label>
           </div>
@@ -495,6 +528,7 @@ class CreateEvent extends React.Component {
             <li class="active"></li>
             <li class="active"></li>
             <li></li>
+            <li></li>
           </ul>
         </div>
         <div className = "box">
@@ -528,7 +562,7 @@ class CreateEvent extends React.Component {
             <input
               type="number"
               min="0" max="200"
-              name="guest"
+              name="costPerSeat"
               step="any"
               className="costPerSeat form-control"
               placeholder="0.0"
@@ -561,7 +595,6 @@ class CreateEvent extends React.Component {
   
   function Step3(props) {
     const {allergies} = props;
-    const {farms} = props;
     if (props.currentStep !== 3) {
       return null
     } 
@@ -575,6 +608,7 @@ class CreateEvent extends React.Component {
               <li class="active"></li>
               <li class="active"></li>
               <li class="active"></li>
+              <li></li>
           </ul>
         </div>
         <div className = "box">
@@ -612,26 +646,6 @@ class CreateEvent extends React.Component {
               onChange={props.handleChange}>
             </input>
           </div>
-
-          <div className="labels">
-            <label htmlFor="name">Ingredients Sourced From</label>
-          </div>
-          <div className="farmsDropdown">
-          <MultiSelect
-                  className="farms"
-                  options={farmOptions}
-                  selected={farms}
-                  onSelectedChanged={farms => props.setFarms(farms)}
-                  
-                  overrideStrings={{
-                    selectSomeItems: "Select a Farm",
-                    allItemsAreSelected: "All Items are Selected",
-                    search: "Search farms",
-                }}
-                  
-                  />
-          </div>
-
           <div className="labels">
             <label htmlFor="name">Photo</label>
           </div>
@@ -656,6 +670,57 @@ class CreateEvent extends React.Component {
                 imgExtension={['.jpg', '.gif', '.png', '.gif']}
                 maxFileSize={5242880}
             /> */}
+        </div>
+      </div>
+    );
+  }
+
+  function Step4(props) {
+    const {farms} = props;
+    if (props.currentStep !== 4) {
+      return null
+    } 
+    return(
+      <div className="inner-container">
+        <div className="header">
+          Create an Event
+        </div>
+        <div class="progress-container">
+          <ul class="progress">
+              <li class="active"></li>
+              <li class="active"></li>
+              <li class="active"></li>
+              <li class="active"></li>
+          </ul>
+        </div>
+        <div className = "box">
+          <div className="labels">
+            <label htmlFor="name">Ingredients Sourced From</label>
+          </div>
+          <div className="farmsDropdown">
+            <MultiSelect
+              className="farms"
+              options={farmOptions}
+              selected={farms}
+              onSelectedChanged={farms => props.setFarms(farms)}
+              overrideStrings={{
+                selectSomeItems: "Select a Farm",
+                allItemsAreSelected: "All Items are Selected",
+                search: "Search farms",
+              }}
+            />
+          </div>
+          <div id="map-container">
+            <FarmerMap
+              farmList={props.farms}
+              google={props.google}
+              mapPosition={props.mapPosition}
+              markerPosition={props.markerPosition}
+              height='275px'
+              zoom={props.zoom}
+              handleMarkerClicked={props.handleMarkerClicked}
+            />
+        </div>
         </div>
       </div>
     );
