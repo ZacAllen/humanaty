@@ -21,6 +21,14 @@ We were not able to implement the following features with this release:<br />
   * Third-Party Validation of Host
   * Displaying Participating Farms on a Map During Event Creation
   * Photo Gallery
+  * More Advanced Profile Customization
+
+Known bugs in the current release: <br />
+  * Rating stars appear improperly sized on certain non-Chrome browsers like Firefox.
+  * Viewing events with no farm data will crash the web app (this is unlikely to happen unless the user intentionally <br />
+  created such an event)
+  * In Chrome, sometimes the search bar autofill function does not work properly unless the user waits 2-3 seconds before searching.
+
 ## Install Guide  
 Pre-requisites: <br />
 * Install npm (https://nodejs.org/en/download/) 
@@ -53,4 +61,5 @@ Run Instructions (assuming installation is complete): <br/>
 
 Troubleshooting: <br /> 
 * When running the program, if the terminal displays an error that says any module is “not found,”  delete the node_modules folder in the frontend and/or api directory, and from the command prompt, inside the same directory, run “npm install” like during the installation to re-install any missing files.
+
 
