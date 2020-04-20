@@ -21,6 +21,13 @@ We were not able to implement the following features with this release:<br />
   * Third-Party Validation of Host
   * Displaying Participating Farms on a Map During Event Creation
   * Photo Gallery
+  * More Advanced Profile Customization
+
+Known bugs in the current release: <br />
+  * Rating stars appear improperly sized on certain non-Chrome browsers like Firefox.
+  * Viewing events with no farm data will crash the web app (this is unlikely to happen unless the user intentionally <br />
+  created such an event)
+  * In Chrome, sometimes the search bar autofill function does not work properly unless the user waits 2-3 seconds before searching.
 
 ## Available Scripts
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
