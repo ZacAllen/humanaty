@@ -21,71 +21,36 @@ We were not able to implement the following features with this release:<br />
   * Third-Party Validation of Host
   * Displaying Participating Farms on a Map During Event Creation
   * Photo Gallery
+## Install Guide  
+Pre-requisites: <br />
+* Install npm (https://nodejs.org/en/download/) 
+* On this page there is a link to download Node.js which also contains npm. Under “Recommended for Most Users,” click the installer link for your operating system, and save then launch this file. Install Node.js to the recommended default  path (for example, on Windows this path is C:\Program Files\nodejs). 
+* In the “Custom Setup” page of the installation window, do not modify anything and click Next.
+* Do not check the box in the “Tools for Native Modules” window. Click Next.
+* On the final page, click “Install” and let the installation run until finished.
+Dependent Libraries: <br />
+* Node.js (npm)
+* This is the only library that will need to be manually installed. All other libraries used (Stripe, Maps) will be automatically equipped when running npm. 
+Download Instructions: <br />
+* (If using git) Clone this repository and the humanaty-api repository to your desired location.
+* (If downloading manually) Download and unzip the huMANAty frontend and api files from the drive links provided. These can be downloaded to any location on your computer, but make sure you remember the directories for later. 
+Installation of Application: <br />
+* Open the command prompt and on the command line, navigate to the folder of the download location for the frontend application files.
+* In this folder, type “npm install” in the command prompt window and press enter.  Several lines of text quickly flash on the screen as    npm installs all required libraries to run the app. This may take a few minutes.
+* When it is finished, you should see the folder path again, and you should be able to type again.
+* After completing the previous steps, in the command prompt, navigate to the folder of the download location for the back end/api files.
+* Again, in the command prompt, type “npm install” and press enter.
+* Similar text should flash in the command window again as it installs the required api libraries. Again, this may take a couple minutes.
 
-## Available Scripts
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Run Instructions (assuming installation is complete): <br/>
+* Run from terminal/ command prompt→
+* Navigate into the folder for the application for huMANAty API (back end) 
+* Type “npm start” in the terminal and run the command
+* Open up another terminal→ 
+* Navigate into the folder for the application for huMANAty (front end) 
+* Type “npm start” in the terminal and run the command
+* The web application should open up to localhost:3000 (or whatever the closet open port is) on the user’s default browser. Type “localhost:3000” into the address bar of your preferred browser to access the web page.
 
-In the project directory, you can run:
+Troubleshooting: <br /> 
+* When running the program, if the terminal displays an error that says any module is “not found,”  delete the node_modules folder in the frontend and/or api directory, and from the command prompt, inside the same directory, run “npm install” like during the installation to re-install any missing files.
 
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
