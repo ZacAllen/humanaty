@@ -19,7 +19,8 @@ class About extends Component {
           <div class="container">
             <div class="row">
               <div class="col-lg-8 mx-auto">
-                <h2>About Us</h2>
+               
+                <h2><img src = {require('./logo.svg')} class = "logo"></img>About Us</h2>
                 <p class="lead">huMANAty connects communities to the Farm-to-Table ecosystem to improve farm
                 sustainability, drive social impact, economic development and entrepreneurship, and build a more 
                 humane world.</p>
@@ -34,6 +35,7 @@ class About extends Component {
               <div class = "col-lg-8 mx-auto">
                     <img src = {require('./wck.svg')} class = "wck"></img>
                     <p class = "wckText">Proud Sponsor of the World Central Kitchen</p>
+                  
               </div>
             </div>
           </div>

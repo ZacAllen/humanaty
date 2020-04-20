@@ -15,7 +15,7 @@
 #plateContainer {
     height: 100%;
     width: 100%;
-    background-image: url("humanatybackground.png");
+    background-image: url("BackgroundTwo.png");
     background-size: 60%;
     background-repeat: no-repeat;
     background-position: 55%;
@@ -29,7 +29,8 @@
 #home-section {
     height: 100%;
     width: 100%;
-    background-image: url("humanatybackground.png");
+    background-image: url("BackgroundTwo.png"); 
+
     background-size: 60%;
     background-repeat: no-repeat;
     background-position: 55%;
