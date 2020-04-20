@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { Component } from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './ProfilePage.css';
@@ -97,7 +99,7 @@ class ProfilePage extends Component {
       cost: res.data.costPerSeat, meal: res.data.meal, guest: res.data.guestNum, hostID: res.data.hostID,
       accessibility: res.data.accessibilityAccommodations, attendees: res.data.attendees,
        description: res.data.description, allergies: res.data.allergies, 
-       additionalInfo: res.data.additionalInfo, id: res.data.id}
+       additionalInfo: res.data.additionalInfo, id: res.data.id, farms: res.data.farms}
     
   })
   })

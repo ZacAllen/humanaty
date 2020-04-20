@@ -1,3 +1,6 @@
+/* eslint-disable */
+
+
 import React, {Component} from 'react';
 import {Elements, ElementsConsumer} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';

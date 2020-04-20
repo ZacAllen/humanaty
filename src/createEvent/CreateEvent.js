@@ -162,7 +162,6 @@ class CreateEvent extends React.Component {
   }
 
   validated = () => {
-    console.log("HEEERRR");
     var event = this.state;
     if (event.title === "" || event.address === "" || event.city === "" || event.zip === "" || event.zip.length < 5 || event.state === "") {
       return false;
@@ -563,7 +562,7 @@ class CreateEvent extends React.Component {
             <input
               type="number"
               min="0" max="200"
-              name="guest"
+              name="costPerSeat"
               step="any"
               className="costPerSeat form-control"
               placeholder="0.0"

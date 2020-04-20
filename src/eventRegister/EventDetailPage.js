@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+/* eslint-disable */
 
+import React, { Component } from 'react';
 import './EventDetailPage.css';
 import NavBar from '../navbar/NavBar.js';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -18,6 +19,7 @@ class EventDetailPage extends Component {
     constructor(props) {
         super(props)
 
+        console.log("HEREEE", this.props.location.state)
         this.state = {
    
             title: this.props.location.state.title,
@@ -33,6 +35,7 @@ class EventDetailPage extends Component {
             allergies: this.props.location.state.allergies,
             additionalInfo: this.props.location.state.additionalInfo,
             id: this.props.location.state.id,
+            farms: this.props.location.state.farms,
             loggedIn: false,
             user: {},
             hostName: "",
@@ -41,6 +44,7 @@ class EventDetailPage extends Component {
         };
         this.viewProfile = this.viewProfile.bind(this);
         this.handleChange = this.handleChange.bind(this)
+        this.renderFarms = this.renderFarms.bind(this)
 
     }
     componentDidMount() {
@@ -81,8 +85,16 @@ class EventDetailPage extends Component {
             state: { user : this.state.user }       
         })
     }
+
+    renderFarms() {
+        let farms = this.state.farms;
+        return <ul>
+                {farms.map(farm => <li>{farm}</li>)}
+            </ul>
+    }
       
     render() {
+        let farms = this.renderFarms();
         return (
             <div id="registerevent">
                 <NavBar/>
@@ -91,7 +103,7 @@ class EventDetailPage extends Component {
             <div className="inner-container">
                 <div className="detail-box">
                     <div className="modprice">
-                        <label htmlFor="name">$ {this.state.cost}</label> 
+                        <label htmlFor="name">Cost: $ {this.state.cost} / seat</label> 
                     </div>
                     <div>
                         <ul className = "modseparate"></ul>
@@ -179,7 +191,9 @@ class EventDetailPage extends Component {
                 <div className="detailheaders">
                     <label htmlFor="name">Additional Info</label>  
                 </div>
-                <div className = "detaildescriptions"> <label htmlFor="name">{this.state.additionalInfo} </label>
+                        <div className = "detaildescriptions"> <label htmlFor="name">{this.state.additionalInfo}</label>
+                        Food source:
+                        {farms}
                 </div>
                 <div>
                     <ul className = "detailseparate"></ul>

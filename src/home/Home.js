@@ -1,3 +1,6 @@
+/* eslint-disable */
+
+
 import React, { Component } from 'react';
 import './Home.css';
 import Script from 'react-load-script';
