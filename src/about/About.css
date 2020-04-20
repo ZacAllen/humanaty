@@ -21,3 +21,7 @@
     margin: auto;
     height: 400px;
 }
+
+#logo {
+    size: 2em;
+}
