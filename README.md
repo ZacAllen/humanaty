@@ -36,12 +36,15 @@ Pre-requisites: <br />
 * In the “Custom Setup” page of the installation window, do not modify anything and click Next.
 * Do not check the box in the “Tools for Native Modules” window. Click Next.
 * On the final page, click “Install” and let the installation run until finished. <br />
+
 Dependent Libraries: <br />
 * Node.js (npm)
 * This is the only library that will need to be manually installed. All other libraries used (Stripe, Maps) will be automatically equipped when running npm. <br />
+
 Download Instructions: <br />
 * (If using git) Clone this repository and the humanaty-api repository to your desired location.
 * (If downloading manually) Download and unzip the huMANAty frontend and api files from the drive links provided. These can be downloaded to any location on your computer, but make sure you remember the directories for later. <br />
+
 Installation of Application: <br />
 * Open the command prompt and on the command line, navigate to the folder of the download location for the frontend application files.
 * In this folder, type “npm install” in the command prompt window and press enter.  Several lines of text quickly flash on the screen as    npm installs all required libraries to run the app. This may take a few minutes.
